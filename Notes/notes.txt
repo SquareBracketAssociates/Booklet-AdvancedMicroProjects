@@ -1,0 +1,110 @@
+https://kata-log.rocks
+
+One idea would be to 
+	- write tests
+	- write a first not optimal solution
+	- write a better solution
+
+Description
+Hints
+
+## Quizz pour les slides
+
+## Uno player
+	https://github.com/cdlm/kata-uno
+
+## Direction 
+	
+
+## Exisiting Exos
+	- Telling Coffee Machine
+		poudre 
+		payer
+	- Calculator 
+		Composite
+		Visitor 
+		Command pour les plus
+	- Logger
+		Decorator Streams
+		Strategy
+		Observer
+			https://github.com/jecisc/TinyLogger
+			https://github.com/Ducasse/TinyLogger
+		
+	- FileManager 
+		composite command
+		Observer
+		stream decorator
+	- Tamagotchi State
+	- TestRunner
+		composite template methods
+		strategy input
+	
+## Microdown Stef
+	- Cas reel -> a etudier en bonus 
+	Factory
+	Builder
+	Visitor
+	Composite
+	Template
+	
+## Sokoban
+	direction representation as hierarchy
+	move as I want to get in, and the new location asks me to move
+	
+## Exos conversion 
+	Another Double dispatch
+		Peage 
+			Car truck 
+
+## Robot moves
+	- line based order + command + Factory
+	https://kata-log.rocks/mars-rover-kata
+	
+## ** Lan Simulation
+
+
+## ** DSL 
+	deja fait
+
+## Trivia 
+	A bad trivial pursuit that we should extend
+	https://kata-log.rocks/bugs-zero-kata
+	
+## Bowling
+	Could look interesting
+
+## Parrot 
+	is super simple so I could get the bad version super fast
+	
+## could be interesting because it has multiple classes
+- https://github.com/emilybache/SupermarketReceipt-Refactoring-Kata/
+- https://github.com/emilybache/GildedRose-Refactoring-Kata/blob/main/GildedRoseRequirements_fr.md	
+- https://kata-log.rocks/unusual-spending-kata
+
+	
+
+### Too algorithmic
+	Harry potter books
+	Elephant Carpaccio
+	Configure your own Wardrobe 
+	FizzBuzzKata
+	Manhattan distance
+	Yatzi no idea why it is interesting
+		https://github.com/emilybache/Yatzy-Refactoring-Kata/tree/main/python
+
+
+
+
+## could be possible but Q should send me the code and pdf
+### Bad graph algo
+Graph Quentin
+	One ugly algo
+	- No initialization of color in the node class
+	- while with cumbersome 
+	
+Solution
+	add 
+	graph>> isFullyColored
+	ask noeud to color itself (color itself only if its two neighbor do not have the same color than myself)
+welsh powell
