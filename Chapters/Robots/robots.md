@@ -1,4 +1,4 @@
-## Robots
+## Saturn PathFinder
 
 ![Pillar logo](figures/pillar.png width=30&anchor=fig)
 
