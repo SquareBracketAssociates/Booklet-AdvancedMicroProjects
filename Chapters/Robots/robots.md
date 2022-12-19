@@ -1,12 +1,16 @@
 ## The Saturn PathFinder
 
-![A 2D space and a robot in ascii](figures/space.png width=30&anchor=fig)
+
 
 We launched a pathfinder robot on Mars and the communication with the robot is difficult.
 To interact with this robot we can send it _orders_ in _scripts_ from Earth and the robot executes them. 
 Energy and communication are limited so we use a compact representation of scripts. 
 
 Now you will define different orders and functionality such as replay, way back home, and path optimizations.
+
+
+![A 2D space and a robot in ascii](figures/space.png width=35&anchor=figSpace)
+
 
 This micro project is about a robot handling orders and executing them.
 Doing this project you will learn the Command design pattern.
