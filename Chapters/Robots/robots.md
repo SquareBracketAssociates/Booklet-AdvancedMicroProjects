@@ -1,20 +1,35 @@
-## Saturn PathFinder
+## The Saturn PathFinder
 
-![Pillar logo](figures/pillar.png width=30&anchor=fig)
+![A 2D space and a robot in ascii](figures/space.png width=30&anchor=fig)
 
-We launch a pathfinder robot on Mars and the communication with the robot is difficult.
-To interact with this robot we can send it orders from Earth and the robot execute them. 
+We launched a pathfinder robot on Mars and the communication with the robot is difficult.
+To interact with this robot we can send it _orders_ in _scripts_ from Earth and the robot executes them. 
 Energy and communication are limited so we use a compact representation of scripts. 
+
+Now you will define different orders and functionality such as replay, way back home, and path optimizations.
 
 This micro project is about a robot handling orders and executing them.
 Doing this project you will learn the Command design pattern.
 
 ### Robot and its space
 
-A robot lives in a 2D space and receives script containing orders.
-The following test illustrates this. 
+A robot lives in a 2D space 
+
+```
+| rb b |
+rb := RbsRobot new.
+b := RbsBoard new.
+rb setBoard: b.
+rb startLocation: 4@1.
+```
+
+
+### Scripts 
+A robot receives script containing _orders_.
+The following test illustrates this.
 - First a robot is created.
-- Second a board is created. The robot is placed in the space
+- Second a board is created. The robot is placed in the space.
+- Third the robot can execute a script.
 
 ```
 testExecute
@@ -45,9 +60,6 @@ load
 ### Robot
 
 The first step is to implement orders such as `mov`, `dir`
-
-
-
 
 ```
 mov 10
@@ -99,7 +111,10 @@ mov 3'.
 ```
 
 
-#### Introduce the possibility for the robot to drop an item on the map
+### Dropping an item
+
+Introduce the possibility for the robot to drop an item on the map.
+Introduce the class `RbsItem` and a command to drop an item.
 
 
 ```
@@ -200,8 +215,8 @@ mov 3'.
 
 ### Challenge: Replay
 
-How to support replay
-
+We would to monitor what the robot is doing to be able to replay it. 
+Here is a typical script and we can replay it with another starting position.
 
 ```
 testReplay
@@ -239,27 +254,177 @@ Now you should introduce a way to keep the created commands so that they can be 
 #### Introduce new commands to control replay
 
 Note that in the test above we used `rb startLocation: 5@1.` instead of `rb executeCommandBased: 
-'base 4 1'`. This is due to the fact that we cannot control when the recording is starting and that we cannot reset it either.
-We propose you to introduce the following commands: `resetMonitor` and `replay`.
+'base 5 1'`. This is due to the fact that we cannot control when the recording is starting and that we cannot reset it or stop it either.
+We propose you to introduce the following commands: `startM`, `stopM`, `restM`, and `replay`.
 
+Add a new instance variable monitoring to the robot class and two methods to control it as well as an initialization. 
 
 ```
-resM
-mov 10
+startMonitoring 	
+	monitoring := true 
+```
+
+```
+stopMonitoring 
+	monitoring := false 
+```
+
+The following test shows that we are registering `stopM` as a command. 
+We will fix that below.
+
+```
+testMonitoringIsOnPerDefault
+
+	| rb b |
+	rb := RbsRobot new.
+	b := RbsBoard new.
+	rb setBoard: b.	
+	rb executeCommandBased: 
+'base 5 1 
 dir #east
+stopM
+mov 3'.
+	self assert: rb path size equals: 3
+```	
 
+The following test verifiess that once the monitoring is stopped and the path reset, the path is empty
+```
+testReset
+
+	| rb b |
+	rb := RbsRobot new.
+	b := RbsBoard new.
+	rb setBoard: b.	
+	rb executeCommandBased: 
+'base 5 1 
+dir #east
+stopM
+resM
+mov 3'.
+	self assert: rb path size equals: 0
 ```
 
-### Orders as commands
-
-Commands and Factory
 
 
-### Reimplement optimization
 
-### Reimplement replay
+#### Not recording commands
 
-### Challenge Three: Automatic way back home
+The following test may loop so pay attention because replay will replay the sequence. 
+```
+testReplayAsCommand
+
+	| rb b |
+	rb := RbsRobot new.
+	b := RbsBoard new.
+	rb setBoard: b.
+	rb executeCommandBased: 
+'base 4 1'.
+	rb executeCommandBased: 
+'resM
+dir #east
+mov 2
+mov 3
+dir #north
+mov 3'.
+	self assert: rb position equals: 9@4.
+rb executeCommandBased: 'base 5 1
+replay'.
+	self assert: rb position equals: 10@4
+```
+
+We could rely on the script programmer to always stop the monitoring before placing a replay order.
+But to have better security and avoid endless loop because `replay` would be replaying itself, it is important that `replay` is not added to the path of commands.
+The following test loops because the replay order is causing itself to be kicked. 
+
+Propose one solution where `replay` is not added to the path. Such a solution can be defined without any conditional by giving each command
+the responsibility to add itself to the path
+
+Instead of doing a conditional before adding the command the path, we can just ask the command to add itself to the path of the robot. 
+This way the replay command can ignore it. 
+So introducing a hook in place of calling directly the path addition (`path addLast: cmd.`) is a nice solution because each command
+can define its own behavior. 
+
+
+```
+executeCommandBased: aString
+	...
+	path addLast: cmd.
+	...
+```
+
+becomes
+
+```
+executeCommandBased: aString
+	...
+	cmd addToPathOf: self
+	...
+```
+
+This forces us to introduce a method named for example `addToPath:` in the robot class to expose path addition. 
+Once the corresponding logic is added and used the following test will pass. 
+
+```
+testAddToPathCommandsDoesNotContainReplay
+
+	| rb b |
+	rb := RbsRobot new.
+	b := RbsBoard new.
+	rb setBoard: b.	
+	rb executeCommandBased: 
+'base 5 1 
+dir #east
+mov 3
+replay'.
+	self assert: rb path size equals: 3
+```	
+
+Once the command stop, start, reset and replay are not monitored anymore the tests should be changed.
+For example `testMonitoringIsOnPerDefault` checks that the path is now only containing two commands.
+```
+testMonitoringIsOnPerDefault
+
+	| rb b |
+	rb := RbsRobot new.
+	b := RbsBoard new.
+	rb setBoard: b.	
+	rb executeCommandBased: 
+'base 5 1 
+dir #east
+stopM
+mov 3'.
+	self assert: rb path size equals: 2
+```
+
+Now we are ready to use replay as an order.
+The following test verifies it. 
+
+```
+testReplayAsCommand
+
+	| rb b |
+	rb := RbsRobot new.
+	b := RbsBoard new.
+	rb setBoard: b.
+	rb executeCommandBased: 
+'base 4 1'.
+	rb executeCommandBased: 
+'resM
+dir #east
+mov 2
+mov 3
+dir #north
+mov 3'.
+	self assert: rb position equals: 9@4.
+rb executeCommandBased: 'stopM
+base 5 1
+replay'.
+	self assert: rb position equals: 10@4
+```
+
+
+
+### Challenge: Automatic way back home
 
 ```
 resetMonitor
@@ -282,7 +447,8 @@ A way back action with take a list of commands and produce a new list of command
 ### Challenge: Path optimizations
 
 This extension is about supporting path optimizations.
-Indeed n following `mov` commands merge as the sum of the commands.
+Let us imagine that the treatment of 
+Indeed n `mov` commands merge as the sum of the commands.
 
 ```
 move 10
@@ -307,8 +473,15 @@ dir #north
 ```
 
 We suggest the following design. Introduce a message `aCommand mergeWith: anotherCommand` that returns a list containing the situation after trying to merge: 
-When two commands can merge returns a list containing the command resulting from the merge.
-When two commands do not merge returns a list containing the two original commands.
+- When two commands can merge, returns a list containing the command resulting from the merge.
+- When two commands do not merge, returns a list containing the two original commands.
+
+You can use double dispatch to determine how commands of different classes are merged. 
+As a default you can decide that different commands do not merge.
+
+
+
+
 
 
 
@@ -332,9 +505,42 @@ RbsRobotTest >> testMergeUNmergeableCommandsBecauseDifferent
 	self assert: cmdList first distance equals: 10.
 ```
 
+Once the merge semantics is in place you can use this logic to optimize full paths as illustrated by the following test.
+
+```
+testOptimizeMergeThreeMovesAndOthers
+
+	| rb b |
+	rb := RbsRobot new.
+	b := RbsBoard new.
+	rb setBoard: b.
+	rb startLocation: 4@1.
+	rb optimizePath: 
+'mov 2
+mov 3
+mov 4
+dir #east'.
+	self 
+		assert: (rb path collect: [ :each | each printString ]) 
+		equals: #( 'mov 9' 'dir #east')
+```
+#### Extensions
+
+You can also add the fact that a mov 5 followed by a mov -5 does not produce any command. Returning an empty list should be managed.
+
+
+### Extensions
+
+Here is a list of extensions:
+- The robot should be able to pick an item.
+- It can have a certain capacity and cannot carry too many items.
 
 ### Conclusion
 
+This micro project shows you that representing actions as objects lets us manipulate programs at the right level of abstractions.
+Functionality as undo, replay, or path optimizations are easier to develop using commands.
+In addition refraining from using conditions is interesting because it forces us to delegate responsibilities to the objects and 
+this makes your design more modular.
 
 
 
