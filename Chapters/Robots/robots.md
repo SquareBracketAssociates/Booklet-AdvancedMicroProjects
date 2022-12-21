@@ -1,23 +1,21 @@
-## The Saturn PathFinder
+## A Saturn PathFinder
 
 
 
-We launched a pathfinder robot on Mars and the communication with the robot is difficult.
-To interact with this robot we can send it _orders_ in _scripts_ from Earth and the robot executes them. 
-Energy and communication are limited so we use a compact representation of scripts. 
+We launched a pathfinder robot on Saturn and the communication with the robot is difficult.
+To interact with this robot we send it _orders_ in _scripts_ from Earth and the robot executes them.
+Energy and communication are limited so we use a compact representation of scripts.
 
-Now you will define different orders and functionality such as replay, way back home, and path optimizations.
-
-
-![A 2D space and a robot in ascii](figures/space.png width=35&anchor=figSpace)
+Your mission is to define different orders and functionalities such as replay, way back home, and path optimizations.
 
 
-This micro project is about a robot handling orders and executing them.
-Doing this project you will learn the Command design pattern.
+![A 2D space and a robot in ascii.](figures/space.png width=35&anchor=figSpace)
 
-### Robot and its space
+Doing this project you will learn the Command design pattern and delegation to objects that encapsulate their behavior.
 
-A robot lives in a 2D space 
+### A robot in its space
+
+A robot lives in a 2D space. It starts in a location. The following code snippet is producing Figure *@figSpace@*.
 
 ```
 | rb b |
@@ -25,11 +23,17 @@ rb := RbsRobot new.
 b := RbsBoard new.
 rb setBoard: b.
 rb startLocation: 4@1.
+rb inspect
 ```
 
+Loading the Robots-Board package, we give all the board logic and board tests in addition to basic behavior for tiles composing the space.
+The class RbsRobot is the class that you will extend. 
+
+![A minimal design](figures/Robot-Basic.pdf width=60)
 
 ### Scripts 
-A robot receives script containing _orders_.
+
+A robot receives script as string containing _orders_.
 The following test illustrates this.
 - First a robot is created.
 - Second a board is created. The robot is placed in the space.
@@ -52,41 +56,59 @@ mov 3'.
 	self assert: rb position equals: 9@4
 ```
 
-#### A typical session
+The script contains different orders: such as `mov 3`, `dir #north`.
+
+
+### Robot implementation
+
+The first step is to implement orders such as `mov`, `dir`. Each order can be implementation defining method such as `move: aDistance` and `direction:`.
+Propose an implementation for these methods. Here is a possible test for the `move:`.
 
 ```
-mov 10
-dir #east
-dropL
-load
+testRobotMove
+
+	| rb b |
+	rb := RbsRobot new.
+	b := RbsBoard new.
+	rb setBoard: b.
+	rb startLocation: 4@1.
+	"should make sure that previous tile is put back"
+	self assert: (rb board atX: 4 atY: 1) equals: rb.
+	rb move: 10.
+	self assert: (rb board atX: 14 atY: 1) equals: rb.
+	self assert: (rb board atX: 14 atY: 1) equals: rb
 ```
 
-### Robot
-
-The first step is to implement orders such as `mov`, `dir`
-
-```
-mov 10
-```
-
-```
-dir #east
-```
 
 
 ### Sending order to robots
 
-- `parseLines`
-- `parseLine`
-- `executeCommand:`
+The following helper method split the script into line based orders.
 
+```
+identifyOrdersOf: aString
 
+	| orders |
+	orders := aString splitOn: Character cr.
+	orders := orders collect: [ :each | each splitOn: Character space ].
+	^ orders
+```
+
+In addition you can use the following expression `Object readFrom: aString` to get the Pharo object represented by the string. 
+
+```
+Object readFrom: '1'
+> 1
+
+Object readFrom: 'true'
+> true
+```
 
 
 
 ### Adding new orders
 
-We propose now to introduce new orders
+We propose now to introduce new orders.
 
 #### Base
 
@@ -118,17 +140,16 @@ mov 3'.
 ### Dropping an item
 
 Introduce the possibility for the robot to drop an item on the map.
-Introduce the class `RbsItem` and a command to drop an item.
+Introduce the class `RbsItem` with, for example, `o` as textual representation and handle the order in the `execute:` method.
 
 
 ```
 dropL
 ```
 
-
 ### Introducing Commands
 
-Imagine that you defined `execute:` as follows: 
+Imagine that you originally defined the `execute:` method as follows: 
 
 ```
 execute: aString
@@ -142,10 +163,12 @@ execute: aString
 					self direction: (Object readFrom: each second) ] ] ]
 ```
 
-You saw that adding a new order is tedious and make the conditional statements more and more complex. 
+You certainly saw that adding a new order is tedious and make the conditional statements more and more complex. 
 This can get even more complex if we want to implement a replay of the orders.
+We propose to use Commands. 
+Commands are objects representing actions. 
 
-We will now propose to introduce Commands.
+![A design with Command.](figures/Robot-BasicCommands.pdf width=80)
 
 #### Command
 
@@ -196,6 +219,7 @@ executeCommandBasedV1: aString
 	(self identifyOrdersOf: aString) do: [ :each |
 		((self commandClassFor: each first) new
 			handleArguments: each allButFirst; yourself) executeOn: self ]
+```
 
 Implement all the commands so that the following test should pass.
 
@@ -219,7 +243,7 @@ mov 3'.
 
 ### Challenge: Replay
 
-We would to monitor what the robot is doing to be able to replay it. 
+We would like to monitor what the robot is doing to be able to replay it. 
 Here is a typical script and we can replay it with another starting position.
 
 ```
@@ -243,7 +267,7 @@ mov 3'.
 	self assert: rb position equals: 10@4
 ```
 
-Let us imagine that the method execute commandBased: was implemented as
+Let us imagine that the method execute `commandBased:` was implemented as
 
 ```
 RbsRobot >> executeCommandBased: aString
@@ -253,7 +277,9 @@ RbsRobot >> executeCommandBased: aString
 			handleArguments: each allButFirst; yourself) executeOn: self ]
 ```
 
-Now you should introduce a way to keep the created commands so that they can be replayed.
+You should introduce a way to keep the created commands so that they can be replayed.
+For example consider adding an instance variable `path` initialized as an OrderedCollection and add commands when you create them
+in the previous method.
 
 #### Introduce new commands to control replay
 
