@@ -515,19 +515,106 @@ replay'.
 
 ### Challenge: Automatic way back home
 
-
-
 It can be tedious to bring back the robot to its location be inverting one by one the orders that compose a script. 
-We propose to enhance our robots with a `wayBack`. 
+We propose to enhance our robots with a `wayBack` order. 
 A way back action with take a list of commands and produce a new list of commands with the opposite actions.
+Figure *@wayback@* illustrates the behavior:
+
+When we have a simple path
 
 ```
-resetMonitor
-move 10
-turnLeft
-checkBackHome
-> #((turnRight) (move 10))
+dir #east 
+mov 5 
+dir #north 
+mov 3 
+dir #east 
+mov 4
+wback
 ```
+
+the robot should perform the following path back. We stressed that the directions should be inversed.
+
+```
+dir #east => west
+mov 4 
+dir #north 
+mov 3 
+dir #east => west 
+mov 5 
+```
+What we see is that we should not only 
+- remove the way back order
+- reverse the list 
+- but also convert direction in the opposite ones.
+
+![A simple path and a way back home.](figures/SimplePathAndWayBack.pdf label=wayback)
+
+Notice that multiple mov orders can be before a change direction as in the equivalent path: 
+
+```
+dir #east => west
+mov 2 
+mov 2 
+dir #north 
+mov 1
+mov 1
+mov 1 
+dir #east => west 
+mov 5 
+```
+
+A a first step we propose to introduce a simple message on the direction command class and the root of command.
+
+```
+RbsCommand >> asWayBack
+
+	^ self
+```
+
+Imagine the implementation for the direction commands. 
+```
+testDirectionWyaBAck
+	| opposite |
+	opposite := (RbsDirectionCommand new direction: #east) asWayBack.
+	self assert: opposite direction equals: #west.	
+	opposite := (RbsDirectionCommand new direction: #west) asWayBack.
+	self assert: opposite direction equals: #east.
+```
+
+To help you in this challenge we propose you to use the following method `ifCutOn: isSplitterBlock doWithCutAndUncuts: aTwoArgBlock finally: aBlock`.
+If it is not available in Pharo, just define it on `SequenceableCollection`. The following tests should illustrate clearly what the method does.  
+
+```
+testCut
+
+	| res |
+	res := OrderedCollection new. 
+	#(2 2 #east 1 1 1 #north 5 #east 666) 
+		ifCutOn: [ :s | s isSymbol ] 
+		doWithCutAndUncuts: [ :cut :before | res addLast: cut; addAll: before ]
+		finally: [:u | res addLast: u].
+	self assert: res equals: #(#east 2 2 #north 1 1 1 #east 5 666) asOrderedCollection
+```
+
+```
+SequenceableCollection >> ifCutOn: isSplitterBlock doWithCutAndUncuts: aTwoArgBlock finally: aBlock
+	"Applies aTwoArgBlock (with current splitter objects and previous unsplit objects) to the receiver. When uncuts are left executes aBlock with them.
+	An optimised version could work with indexes to avoid creating intermediate collections."	
+	
+	| uncuts cut current |
+	uncuts := OrderedCollection new. 
+	1 to: self size do: [ :i |	
+		current := (self at: i).	
+		cut := isSplitterBlock value: current.
+		cut
+			ifFalse: [ uncuts addLast: current ] 
+			ifTrue: [ 
+					aTwoArgBlock value: current value: uncuts.
+					uncuts := OrderedCollection new ]].
+	uncuts isEmpty 
+		ifFalse: [ aBlock value: uncuts ]
+```
+
 
 
 
@@ -646,7 +733,7 @@ Here is a list of extensions:
 - The robot should be able to pick an item.
 - It can have a certain capacity and cannot carry too many items.
 
-- The way the new location of the robot is based on a boring conditional. Can you imagine a better way?
+- The definition of the new location of a robot is based on a boring conditional. Can you imagine a better way?
 
 ```
 computeNewPosition: anInteger 
