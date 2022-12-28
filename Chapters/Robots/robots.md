@@ -22,7 +22,7 @@ A robot lives in a 2D space. It starts in a location. The following code snippet
 rb := RbsRobot new.
 b := RbsBoard new.
 rb setBoard: b.
-rb startLocation: 4@1.
+rb x: 4 y: 1.
 rb inspect
 ```
 
@@ -49,7 +49,7 @@ testExecute
 	rb := RbsRobot new.
 	b := RbsBoard new.
 	rb setBoard: b.
-	rb startLocation: 4@1.
+	rb x: 4 y: 1.
 	rb execute: 
 'dir #east
 mov 2
@@ -74,7 +74,7 @@ testRobotMove
 	rb := RbsRobot new.
 	b := RbsBoard new.
 	rb setBoard: b.
-	rb startLocation: 4@1.
+	rb x: 4 y: 1.
 	"should make sure that previous tile is put back"
 	self assert: (rb board atX: 4 atY: 1) equals: rb.
 	rb move: 10.
@@ -123,7 +123,7 @@ testRobotMovePreservesGround
 	rb := RbsRobot new.
 	b := RbsBoard new.
 	rb setBoard: b.
-	rb startLocation: 4@1.
+	rb x: 4 y: 1.
 	self assert: rb previousTile class equals: RbsGround.
 	self assert: rb previousTile x equals: 4.
 	rb move: 10.
@@ -288,7 +288,7 @@ testExecuteCommandBased
 	rb := RbsRobot new.
 	b := RbsBoard new.
 	rb setBoard: b.
-	rb startLocation: 4@1.
+	rb x: 4 y: 1.
 	rb executeCommandBased: 
 'dir #east
 mov 2
@@ -320,7 +320,7 @@ mov 3
 dir #north
 mov 3'.
 	self assert: rb position equals: 9@4.
-	rb startLocation: 5@1.
+	rb x: 5 y: 1.
 	rb replay.
 	self assert: rb position equals: 10@4
 ```
@@ -341,7 +341,7 @@ in the previous method.
 
 #### Introduce new commands to control replay
 
-Note that in the test above we used `rb startLocation: 5@1.` instead of `rb executeCommandBased: 
+Note that in the test above we used `rb x:5 y: 1.` instead of `rb executeCommandBased: 
 'base 5 1'`. This is due to the fact that we cannot control when the recording is starting and that we cannot reset it or stop it either.
 We propose you to introduce the following commands: `startM`, `stopM`, `restM`, and `replay`.
 
@@ -604,7 +604,7 @@ SequenceableCollection >> ifCutOn: isSplitterBlock doWithCutAndUncuts: aTwoArgBl
 	| uncuts cut current |
 	uncuts := OrderedCollection new. 
 	1 to: self size do: [ :i |	
-		current := (self at: i).	
+		current := self at: i.	
 		cut := isSplitterBlock value: current.
 		cut
 			ifFalse: [ uncuts addLast: current ] 
@@ -710,7 +710,7 @@ testOptimizeMergeThreeMovesAndOthers
 	rb := RbsRobot new.
 	b := RbsBoard new.
 	rb setBoard: b.
-	rb startLocation: 4@1.
+	rb x: 4 y: 1.
 	rb optimizePath: 
 'mov 2
 mov 3
@@ -763,11 +763,3 @@ This micro project shows you that representing actions as objects lets us manipu
 Functionality as undo, replay, or path optimizations are easier to develop using commands.
 In addition refraining from using conditions is interesting because it forces us to delegate responsibilities to the objects and 
 this makes your design more modular.
-
-
-
-
-
-
-
-
