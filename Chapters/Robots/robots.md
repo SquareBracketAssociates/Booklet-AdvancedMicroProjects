@@ -26,13 +26,20 @@ rb x: 4 y: 1.
 rb inspect
 ```
 
-Loading the `Robots-Board` package, we give all the board logic and board tests in addition to basic behavior for tiles composing the space.
 A board is composed of cells.
 Pay attention that a cell in the board only contains one element: a ground tile or a robot. So when moving a robot to a cell will 'erase' the background. 
 So when moving a robot should put back the previous tile. 
-The class `RbsRobot` is the class that you will extend. 
+
 
 ![A minimal design.](figures/Robot-Basic.pdf width=60)
+
+### Getting the code 
+
+To help you developping this project we provide some core behavior. 
+The robot code is available at: `https://github.com/pharo-mooc/AdvancedDesignMoocProjectCode`.
+- To start, load the package `Robots-Board` package, it contains the board logic, board tests in addition to basic behavior for tiles composing the space.
+- Once you define the class RbsRobot as subclass of RbsAbstractRobot, load the package `Robots-Tests`. It contains the tests for the behavior you will have to define. 
+
 
 ### Scripts 
 
@@ -41,6 +48,7 @@ The following test illustrates this.
 - First a robot is created.
 - Second a board is created. The robot is placed in the space.
 - Third the robot can execute a script.
+
 
 ```
 testExecute
