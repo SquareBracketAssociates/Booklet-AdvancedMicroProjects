@@ -2,6 +2,7 @@
 
 
 <!inputFile|path=Chapters/Robots/robots.md!>
+<!inputFile|path=Chapters/Compass/compass.md!>
 
 <!inputFile|path=Chapters/Sokoban/Sokoban.md!>
 

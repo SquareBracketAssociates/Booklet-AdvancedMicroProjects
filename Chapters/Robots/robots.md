@@ -32,7 +32,7 @@ Pay attention that a cell in the board only contains one element: a ground tile 
 So when moving a robot should put back the previous tile. 
 The class `RbsRobot` is the class that you will extend. 
 
-![A minimal design](figures/Robot-Basic.pdf width=60)
+![A minimal design.](figures/Robot-Basic.pdf width=60)
 
 ### Scripts 
 
@@ -732,7 +732,7 @@ You can also add the fact that a mov 5 followed by a mov -5 does not produce any
 Here is a list of extensions:
 - The robot should be able to pick an item.
 - It can have a certain capacity and cannot carry too many items.
-
+- Passing a symbol to the direction is bad because the script developer may mistype it and exposing the internal logic is a bad idea. Propose a solution.
 - The definition of the new location of a robot is based on a boring conditional. Can you imagine a better way?
 
 ```
@@ -755,6 +755,8 @@ To give you a hint, we could have a little hierarchy with direction and each dir
 East computeFor: 4@1 distance: 10 
 > 14@1
 ```
+
+
 
 
 ### Conclusion
