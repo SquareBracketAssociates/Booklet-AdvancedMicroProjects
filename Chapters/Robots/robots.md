@@ -33,13 +33,6 @@ So when moving a robot should put back the previous tile.
 
 ![A minimal design.](figures/Robot-Basic.pdf width=60)
 
-### Getting the code 
-
-To help you developping this project we provide some core behavior. 
-The robot code is available at: `https://github.com/pharo-mooc/AdvancedDesignMoocProjectCode`.
-- To start, load the package `Robots-Board` package, it contains the board logic, board tests in addition to basic behavior for tiles composing the space.
-- Once you define the class RbsRobot as subclass of RbsAbstractRobot, load the package `Robots-Tests`. It contains the tests for the behavior you will have to define. 
-
 
 ### Scripts 
 
@@ -70,7 +63,29 @@ mov 3'.
 The script contains different orders: such as `mov 3`, `dir #north`.
 
 
-### Robot implementation
+
+### Getting the code 
+
+To help you developping this project we provide some core behavior. 
+The robot code is available at: `https://github.com/pharo-mooc/AdvancedDesignMoocProjectCode`.
+- To start, load the baseline name `RobotsProject`, it contains the board logic, board tests in addition to basic behavior for tiles composing the space. Note that this 
+- Once you define the class `RbsRobot` (for example in a package named `Robots`) as subclass of `RbsAbstractRobot`, load the package `Robots-Tests`. It contains the tests for the behavior you will have to define. 
+
+
+### Basic robot behavior
+
+Define methods `direction:` and `direction` to define the direction of the robot and initialize it for example to point to the east.
+
+```
+testRobotDefaultDirection
+
+	| rb |
+	rb := RbsRobot new.
+	self assert: rb direction equals: #east
+```
+
+
+### Robot move
 
 The first step is to implement orders such as `mov`, `dir`. Each order can be implementation defining method such as `move: aDistance` and `direction:`.
 Propose an implementation for these methods. Here is a possible test for the `move:`.
@@ -92,7 +107,7 @@ testRobotMove
 
 Pay attention that `move:` should put back the ground after moving. 
 
-To help you we propose to use the method `computeNewPosition:`, but there is bug.
+To help you we propose to use the following method `computeNewPosition:`, but there is bug (it does not return a point).
 Write a couple of tests and fix the method.
 
 ```
@@ -112,6 +127,7 @@ computeNewPosition: anInteger
 
 The method `move:` now handle the fact that we put back the background tile when moving the robot. 
 But we were tired and there is a bug in that method, fix it!
+
 ```
 move: anInteger 
 	
@@ -144,11 +160,11 @@ testRobotMovePreservesGround
 
 
 ### Sending order to robots
-
-The following helper method split the script into line based orders.
+Now we are ready to implement the method `execute:` that will execute the orders.
+The following helper method splits the script into line based orders.
 
 ```
-identifyOrdersOf: aString
+RbsRobot >> identifyOrdersOf: aString
 
 	| orders |
 	orders := aString splitOn: Character cr.
@@ -165,6 +181,27 @@ Object readFrom: '1'
 Object readFrom: 'true'
 > true
 ```
+
+You should make the following test passes:
+
+```
+testExecute
+
+	| rb b |
+	rb := RbsRobot new.
+	b := RbsBoard new.
+	rb setBoard: b.
+	rb x: 4 y: 1.
+	rb execute: 
+'dir #east
+mov 2
+mov 3
+dir #north
+mov 3'.
+	self assert: rb position equals: 9@4
+```
+
+
 
 
 
@@ -209,6 +246,7 @@ Introduce the class `RbsItem` with, for example, the character `o` as textual re
 dropL
 ```
 
+
 ### Introducing Commands
 
 Imagine that you originally defined the `execute:` method as follows: 
@@ -227,8 +265,9 @@ execute: aString
 
 You certainly saw that adding a new order is tedious and make the conditional statements more and more complex. 
 This can get even more complex if we want to implement a replay of the orders.
-We propose to use Commands. 
-Commands are objects representing actions. 
+We propose to use Commands. Commands are objects representing actions. 
+
+Load the package named `Robots-BasicCommands-Tests`. It contains some tests to help you creating commands. 
 
 ![A design with Command.](figures/Robot-BasicCommands.pdf width=80)
 
@@ -310,6 +349,7 @@ mov 3'.
 ### Challenge: Replay
 
 We would like to monitor what the robot is doing to be able to replay it. 
+Load the package `Robots-Replay-Tests`.
 Here is a typical script and we can replay it with another starting position.
 
 ```
@@ -524,7 +564,7 @@ replay'.
 ### Challenge: Automatic way back home
 
 It can be tedious to bring back the robot to its location be inverting one by one the orders that compose a script. 
-We propose to enhance our robots with a `wayBack` order. 
+We propose to enhance our robots with a `wayBack` order. Load the package `Robots-WayBack-Tests`.
 A way back action with take a list of commands and produce a new list of commands with the opposite actions.
 Figure *@wayback@* illustrates the behavior:
 
@@ -628,7 +668,7 @@ SequenceableCollection >> ifCutOn: isSplitterBlock doWithCutAndUncuts: aTwoArgBl
 
 ### Challenge: Path optimizations
 
-This extension is about supporting path optimizations.
+This extension is about supporting path optimizations. Load the package 'Robots-Optimize-Tests`.
 Let us imagine that the treatment of a command is costly on Saturn. 
 Then it can be better to optimize the received script before executing it.
 Optimization can be quite simple, indeed n `mov` commands can be merged as a single move command with the sum of the commands.
