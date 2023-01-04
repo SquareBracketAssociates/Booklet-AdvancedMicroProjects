@@ -663,7 +663,9 @@ SequenceableCollection >> ifCutOn: isSplitterBlock doWithCutAndUncuts: aTwoArgBl
 		ifFalse: [ aBlock value: uncuts ]
 ```
 
+#### Extensions
 
+- We could introduce a turn back message that given a command return its opposite based on its previous state. Given a path sequence east mov 5 north mov 3 east mov 7  it would generate the sequence west mov 7 north mov 3 south mov 5...
 
 
 ### Challenge: Path optimizations
