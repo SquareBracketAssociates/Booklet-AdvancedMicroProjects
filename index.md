@@ -4,9 +4,11 @@
 <!inputFile|path=Chapters/Robots/robots.md!>
 <!inputFile|path=Chapters/Compass/compass.md!>
 
+<!inputFile|path=Chapters/DSL/DSL.md!>
+<!inputFile|path=Chapters/DSLDoubleDispatch/DSLDoubleDispatch.md!>
 <!inputFile|path=Chapters/Sokoban/Sokoban.md!>
 
-Potentiel candidates
+## Potentiel candidates
 - Uno Checker git@github.com:Ducasse/UnoChecker.git https://github.com/cdlm/kata-uno
 - Expressions and Visitors
 - TinyLogger git@github.com:Ducasse/TinyLogger.git to put some decorator?
