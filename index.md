@@ -8,6 +8,7 @@
 <!inputFile|path=Chapters/Visitor/Visitor.md!>
 
 <!inputFile|path=Chapters/Sokoban/Sokoban.md!>
+<!inputFile|path=Chapters/Unguided/Unguided.md!>
 
 ## Potentiel candidates
 - Uno Checker git@github.com:Ducasse/UnoChecker.git https://github.com/cdlm/kata-uno
