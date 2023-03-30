@@ -7,6 +7,8 @@
 <!inputFile|path=Chapters/Expression/Expression.md!>
 <!inputFile|path=Chapters/Visitor/Visitor.md!>
 
+
+<!inputFile|path=Chapters/Games/Games.md!>
 <!inputFile|path=Chapters/Sokoban/Sokoban.md!>
 <!inputFile|path=Chapters/Unguided/Unguided.md!>
 
