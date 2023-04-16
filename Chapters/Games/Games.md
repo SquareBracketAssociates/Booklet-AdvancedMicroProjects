@@ -1,9 +1,30 @@
-## Game design
+## About modeling game model
+
+This chapter lists some game logic. The idea is to be able to use elements of such list as input for design exercises. 
+In a second step adding an UI Layer based on Bloc is left to the reader following for example the tutorial.
 
 
 ### Miner
 
-![ 2048 ](figures/MineSweeper.png width=60&label=mine)
+Game field composition: The field contains free places and bombs. Free places display the number of adjacent bombs or if they contain a bomb (marked by the user).
+
+Goal: The use should identify the bombs using hints based on the number of adjacents bomb in the 8 directions. 
+
+The user has two kinds of action: declare that a cell contains a bomb or declare that it is free and asking for a validation.
+
+- Free cell declaration: If the user is wrong and there was a bomb then he loses the game.
+If the user is right then the cell displays the number of adjacent bomb around the cell. 
+- Bomb declaration: when a cell is 
+
+When all the cells have been revealed or marked as a bomb, the game proceeds to the validation. 
+If the bombs are correctly identified the user wins.
+
+![ Minesweeper: identifying mine ](figures/MineSweeper2.png width=40&label=mine)
+
+
+### Same game
+
+
 
 ### Nonogram
 
@@ -13,15 +34,16 @@
 
 ### Lightout
 
-![ 2048 ](figures/Quinto.png width=60&label=quinto)
+![ LightOut or Quinto ](figures/Quinto.png width=60&label=quinto)
 
 ### Memory
 
-![ 2048 ](figures/Memory.png width=60&label=Memory)
+![ Memory ](figures/Memory.png width=60&label=Memory)
 
 ### SlideOut
 
-![(a) Starting from its origin, the laser beam should reach the target. (b) Rotating a mirror changes the path of the laser beam](figures/Laser-2-Concept-MirrorRotation.png width=60&label=GameOne)
+
+![SlideOut: Elements can slides in one direction but are blocked by others. The goal is to get the red element out.](figures/SlideOut.png width=60&label=GameOne)
 
 ### Laser game
 
