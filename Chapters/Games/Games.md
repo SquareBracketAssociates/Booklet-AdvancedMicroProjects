@@ -4,9 +4,13 @@ This chapter lists some game logic. The idea is to be able to use elements of su
 In a second step adding an UI Layer based on Bloc is left to the reader following for example the tutorial.
 
 
-### Miner
+### Minesweeper
 
-Game field composition: The field contains free places and bombs. Free places display the number of adjacent bombs or if they contain a bomb (marked by the user).
+Game field: The field is composed of cells: a cell may be clean or suspected to contain a bomb. 
+At the beginning the status of a cell status is unknown or closed.
+Once a cell is open, a clean cell displays the number of its adjacent bombs. 
+Using this information closed cells can be tagged as suspected to contain a bomb. 
+
 
 Goal: The use should identify the bombs using hints based on the number of adjacents bomb in the 8 directions. 
 
@@ -19,18 +23,18 @@ If the user is right then the cell displays the number of adjacent bomb around t
 When all the cells have been revealed or marked as a bomb, the game proceeds to the validation. 
 If the bombs are correctly identified the user wins.
 
-![ Minesweeper: identifying mine ](figures/MineSweeper2.png width=40&label=mine)
+![ Minesweeper: identifying mine ](figures/MineSweeper2.png width=80&label=mine)
 
 
 ### Same game
 
-
+![ SameGame : collapsing columns by removing one by one colored of the cell of the same color. ](figures/SameGame.png width=40&label=mine)
 
 ### Nonogram
 
 ### 2048
 
-![ 2048 ](figures/2048.png width=60&label=2048)
+![ 2048 ](figures/2048.png width=40&label=2048)
 
 ### Lightout
 
@@ -38,7 +42,7 @@ If the bombs are correctly identified the user wins.
 
 ### Memory
 
-![ Memory ](figures/Memory.png width=60&label=Memory)
+![ Memory ](figures/Memory.png width=40&label=Memory)
 
 ### SlideOut
 
