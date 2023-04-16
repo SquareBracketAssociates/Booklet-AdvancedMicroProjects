@@ -1,12 +1,27 @@
 ## Game design
 
+
+### Miner
+
+![ 2048 ](figures/MineSweeper.png width=60&label=mine)
+
 ### Nonogram
 
 ### 2048
 
+![ 2048 ](figures/2048.png width=60&label=2048)
+
+### Lightout
+
+![ 2048 ](figures/Quinto.png width=60&label=quinto)
+
 ### Memory
 
+![ 2048 ](figures/Memory.png width=60&label=Memory)
+
 ### SlideOut
+
+![(a) Starting from its origin, the laser beam should reach the target. (b) Rotating a mirror changes the path of the laser beam](figures/Laser-2-Concept-MirrorRotation.png width=60&label=GameOne)
 
 ### Laser game
 
