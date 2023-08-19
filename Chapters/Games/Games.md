@@ -1,6 +1,8 @@
 ## About modeling game model
 
 This chapter lists some game logic. The idea is to be able to use elements of such list as input for design exercises. 
+All the games in this chapter requires an 2D grid.
+
 In a second step adding an UI Layer based on Bloc is left to the reader following for example the tutorial.
 
 
@@ -16,21 +18,19 @@ Goal: The use should identify the bombs using hints based on the number of adjac
 
 The user has two kinds of action: declare that a cell contains a bomb or declare that it is free and asking for a validation.
 
-- Free cell declaration: If the user is wrong and there was a bomb then he loses the game.
-If the user is right then the cell displays the number of adjacent bomb around the cell. 
+- Free cell declaration: If the user is wrong and there was a bomb then he loses the game. If the user is right then the cell displays the number of adjacent bomb around the cell. 
 - Bomb declaration: when a cell is 
 
 When all the cells have been revealed or marked as a bomb, the game proceeds to the validation. 
 If the bombs are correctly identified the user wins.
 
-![ Minesweeper: identifying mine ](figures/MineSweeper2.png width=80&label=mine)
+![ Minesweeper: identifying mines based on the number of adjacent cells containing a bomb.](figures/MineSweeper2.png width=80&label=mine)
 
 
-### Same game
 
-![ SameGame : collapsing columns by removing one by one colored of the cell of the same color. ](figures/SameGame.png width=40&label=mine)
 
-### Nonogram
+
+
 
 ### 2048
 
@@ -74,3 +74,14 @@ A further intermediate result is produced by rotating the mirror shown in Figure
 As a last step, one more mirror is moved to get the laser back to the target cell as shown in Figure *LongerPathThree*. This time the path of the laser is longer than before. And of course it was strictly a random coincidence that the initial cells configuration already provided a correct path for the laser.
 
 That's the general idea. We can add laser cell-path counters and other game instrumentation as we develop.
+
+
+### Same game
+
+![ SameGame : collapsing columns by removing one by one colored of the cell of the same color. ](figures/SameGame.png width=40&label=mine)
+
+### Nonogram
+
+### Taquin
+
+### 

@@ -89,7 +89,7 @@ Now certain dices can only be played by certain player:
 
 ### About the DSL 
 
-In the DSL we can imnplement the solution without double dispatch. Do it.
+In the DSL we can implement the solution without double dispatch. Do it.
 
 
 
