@@ -7,6 +7,10 @@ This booklet is a collection of design exercises at different levels of guidance
 
 
 # Guided Exercices
+<!inputFile|path=Chapters/SimpleLan/Simple-LAN-Definition.md!>
+<!inputFile|path=Chapters/SimpleLan/Simple-LAN-Self.md!>
+<!inputFile|path=Chapters/SimpleLan/Simple-LAN-Hooks.md!>
+<!inputFile|path=Chapters/SimpleLan/Simple-LAN-Responsibility.md!>
 
 <!inputFile|path=Chapters/DSL/DSL.md!>
 <!inputFile|path=Chapters/DSLDoubleDispatch/DSLDoubleDispatch.md!>
@@ -17,7 +21,10 @@ This booklet is a collection of design exercises at different levels of guidance
 
 # Unguided Extensions
 
+<!inputFile|path=Chapters/SimpleLan/Simple-LAN-Extensions.md!>
 <!inputFile|path=Chapters/Unguided/Unguided.md!>
+
+
 
 # Unguided Games
 
