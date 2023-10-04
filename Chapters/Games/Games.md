@@ -1,4 +1,4 @@
-## About modeling game model
+## Designing Games
 
 This chapter lists some game logic. The idea is to be able to use elements of such list as input for design exercises. 
 All the games in this chapter requires an 2D grid.
@@ -6,23 +6,95 @@ All the games in this chapter requires an 2D grid.
 In a second step adding an UI Layer based on Bloc is left to the reader following for example the tutorial.
 
 
+You can get some ideas how to develop your game studying the Myg Framework.
+This framework has been used to develop a Miner, Sokoban and Takuzu. 
+
+The Myg framework is a framework to build games. 
+A Miner, Sokoban and Takuzu have been built on top of it.
+It provides ways to build levels and other facilities.
+
+```
+Metacello new
+ 	baseline: 'Myg';
+ 	repository: 'github://Ducasse/Myg:toplo-paging/src';
+ 	onConflictUseIncoming;
+ 	load
+```
+You will just need to execute `MygSokoban openWithMenuBar`.
+
+You can find some other examples in 
+
+```
+Metacello new
+    baseline: 'BlocTutorials';
+    repository: 'github://pharo-graphics/Tutorials:dev-1.0/src';
+    load
+```
+
+It is based on the Bloc framework 
+
+### Bloc 
+
+Bloc is a new graphical library that will be part of Pharo in the future.
+You can find some slides: 
+- https://www.slideshare.net/esug/bloc-for-pharo-current-state-and-future-perspective
+- http://www.github.com/pharo-graphics/Bloc
+
+### Possible Games
+
+Here is a list of possible games to develop:
+
+- Light Beamer
+- Sudoku
+- 2048
+- Memory
+- Snake 
+- Tetris 
+- Picross (nonogram)
+- SlideOut
+- Quinto
+- Game of Life
+- SameGame
+- Taquin
+- Maze generator
+- Bomberman
+
+You can find some ideas of games at: 
+[https://inventwithpython.com/blog/2012/02/20/i-need-practice-programming-49-ideas-for-game-clones-to-code/](https://inventwithpython.com/blog/2012/02/20/i-need-practice-programming-49-ideas-for-game-clones-to-code)
+
+### Resources
+
+
+Besides the Myg framework mentioned above, there are some resources available that you can study.
+
+The book Learning Object-oriented Design with TDD in Pharo available on http://books.pharo.org contains a chapter building step by step a model of Snakes and Ladders. 
+
+In addition the book "Building a memory game with Bloc" available on http://book.pharo.org and https://github.com/SquareBracketAssociates/Booklet-BuildingMemoryGameWithBloc presents how to build a simple memory game. 
+
+In the Tutorial project of the Bloc repository there is an implementation of the 20248 game. It is in draft mode but you can get inspiration from it too.
+
+
+
 ### Minesweeper
 
-Game field: The field is composed of cells: a cell may be clean or suspected to contain a bomb. 
-At the beginning the status of a cell status is unknown or closed.
+#### Game field: 
+The field is composed of cells: a cell may be clean or suspected to contain a bomb. 
+At the beginning, the status of a cell status is unknown or closed.
 Once a cell is open, a clean cell displays the number of its adjacent bombs. 
 Using this information closed cells can be tagged as suspected to contain a bomb. 
 
 
-Goal: The use should identify the bombs using hints based on the number of adjacents bomb in the 8 directions. 
+#### Goal: 
+The user should identify the bombs using hints based on the number of adjacent bombs in the 8 directions. 
 
-The user has two kinds of action: declare that a cell contains a bomb or declare that it is free and asking for a validation.
+The user has two kinds of action: 
+- declare that a cell contains a bomb or 
+- declare that a ce;;  is free and asking for a validation.
 
 - Free cell declaration: If the user is wrong and there was a bomb then he loses the game. If the user is right then the cell displays the number of adjacent bomb around the cell. 
-- Bomb declaration: when a cell is 
+- Bomb declaration: when a cell is declared as a bomb a bomb is displayed.
 
-When all the cells have been revealed or marked as a bomb, the game proceeds to the validation. 
-If the bombs are correctly identified the user wins.
+When all the cells have been revealed or marked as a bomb, the game proceeds to the validation.  If the bombs are correctly identified the user wins.
 
 ![ Minesweeper: identifying mines based on the number of adjacent cells containing a bomb.](figures/MineSweeper2.png width=80&label=mine)
 
