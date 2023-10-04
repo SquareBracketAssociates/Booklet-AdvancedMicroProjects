@@ -1,21 +1,30 @@
-# Advanced Micro Projects
+## Introduction
 
-This booklet is a collection of design exercises at different levels of guidance. 
-- The first part proposes several little projects to exercise double dispatch, command patterns, and visitor.
-- The second part proposes some unguided extensions to the previous projects.
-- The third part presents some games.
+This book is a collection of design exercises at different levels of guidance and difficulties.
+- The first part is going of the basics and can be skipped if you know object-oriented basics.
+- The second part proposes several little projects to exercise double dispatch, command and visitor patterns.
+- The third part proposes some unguided extensions to the previous projects.
+- The fourth part presents some games.
 
 
-# Guided Exercices
+
+
+# Starting with basics
 <!inputFile|path=Chapters/SimpleLan/Simple-LAN-Definition.md!>
 <!inputFile|path=Chapters/SimpleLan/Simple-LAN-Self.md!>
 <!inputFile|path=Chapters/SimpleLan/Simple-LAN-Hooks.md!>
 <!inputFile|path=Chapters/SimpleLan/Simple-LAN-Responsibility.md!>
 
+
+# Guided Exercices 
 <!inputFile|path=Chapters/DSL/DSL.md!>
+<!inputFile|path=Chapters/PaperStoneScissor/PaperStoneScissor.md!>
+
 <!inputFile|path=Chapters/DSLDoubleDispatch/DSLDoubleDispatch.md!>
 <!inputFile|path=Chapters/Robots/robots.md!>
 <!inputFile|path=Chapters/Compass/compass.md!>
+
+<!inputFile|path=Chapters/DSLDoubleDispatch/DSLDoubleDispatch.md!>
 <!inputFile|path=Chapters/Expression/Expression.md!>
 <!inputFile|path=Chapters/Visitor/Visitor.md!>
 
@@ -28,7 +37,11 @@ This booklet is a collection of design exercises at different levels of guidance
 
 # Unguided Games
 
-In this part, we propose you to design some simple board games. 
+In this part, we propose you to design some simple board games using the Bloc graphical framework taking as example the game of the Myg project.
+
+
+## Designing Games
+
 You can get some ideas how to develop your game studying the Myg Framework.
 This framework has been used to develop a Miner, Sokoban and Takuzu. 
 
@@ -56,12 +69,16 @@ Metacello new
 
 It is based on the Bloc framework 
 
-## Bloc 
-Bloc is a new graphical library
+### Bloc 
+
+Bloc is a new graphical library that will be part of Pharo in the future.
+You can find some slides: 
 - https://www.slideshare.net/esug/bloc-for-pharo-current-state-and-future-perspective
 - http://www.github.com/pharo-graphics/Bloc
 
-## Possible Games
+### Possible Games
+
+Here is a list of possible games to develop:
 
 - Light Beamer
 - Sudoku
@@ -79,10 +96,9 @@ Bloc is a new graphical library
 - Bomberman
 
 You can find some ideas of games at: 
-https://inventwithpython.com/blog/2012/02/20/i-need-practice-programming-49-ideas-for-game-clones-to-code/
+[https://inventwithpython.com/blog/2012/02/20/i-need-practice-programming-49-ideas-for-game-clones-to-code/](https://inventwithpython.com/blog/2012/02/20/i-need-practice-programming-49-ideas-for-game-clones-to-code)
 
-###Resources
+### Resources
 
 <!inputFile|path=Chapters/Games/Games.md!>
-<!inputFile|path=Chapters/Sokoban/Sokoban.md!>
 
