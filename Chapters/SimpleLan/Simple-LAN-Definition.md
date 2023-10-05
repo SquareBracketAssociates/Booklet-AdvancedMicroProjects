@@ -5,6 +5,8 @@ shows that objects encapsulate responsibilities and that inheritance is used to 
 
 You will define step by step an application that simulates a simple Local Area Network (LAN).  You will create several classes: `LNPacket`, `LNNode`, `LNWorkstation`, and `LNPrintServer`. We start with the simplest version of a LAN. In subsequent exercises, we will add new requirements and modify the proposed implementation to take them into account.
 
+![An example of a LAN with packets.](figures/lan-simple width=80)
+
 
 ###  Creating the class `LNNode`
 
