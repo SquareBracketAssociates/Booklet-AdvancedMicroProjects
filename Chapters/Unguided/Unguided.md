@@ -1,4 +1,4 @@
-## Litlle unguided projects
+## Little unguided projects
 
 In this chapter we present a list of small projects that we encourage you to code. 
 Such projects are fun and playing with them will force you to practice different coding idioms or design patterns.
