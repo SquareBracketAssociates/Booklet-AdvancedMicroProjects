@@ -1,44 +1,38 @@
-## Designing Games
+## Designing little board games
 
-This chapter lists some game logic. The idea is to be able to use elements of such list as input for design exercises. 
-All the games in this chapter requires an 2D grid.
+This chapter lists some game descriptions. The idea is to be able to use elements of such a list as design exercises. All the games in this chapter requires a 2D grid that can be found in the package Array2D of the following http://github.com/Pharo-contribution repository.
 
-In a second step adding an UI Layer based on Bloc is left to the reader following for example the tutorial.
+We suggest to focus first on designing the model of the game with tests.
+In a second step you can add an UI layer based on the new Bloc framework. 
 
+### Loading Myg and Bloc
 
-You can get some ideas how to develop your game studying the Myg Framework.
-This framework has been used to develop a Miner, Sokoban and Takuzu. 
-
-The Myg framework is a framework to build games. 
+You can get some ideas how to develop your game UI by studying the Myg framework. The Myg framework is a framework to build games. 
 A Miner, Sokoban and Takuzu have been built on top of it.
 It provides ways to build levels and other facilities.
 
 ```
 Metacello new
  	baseline: 'Myg';
- 	repository: 'github://Ducasse/Myg:toplo-paging/src';
+ 	repository: 'github://Ducasse/Myg:v1.0.1/src';
  	onConflictUseIncoming;
  	load
 ```
-You will just need to execute `MygSokoban openWithMenuBar`.
+You will just need to execute `MygSokoban open`.
 
-You can find some other examples in 
 
-```
-Metacello new
-    baseline: 'BlocTutorials';
-    repository: 'github://pharo-graphics/Tutorials:dev-1.0/src';
-    load
-```
 
-It is based on the Bloc framework 
 
 ### Bloc 
 
 Bloc is a new graphical library that will be part of Pharo in the future.
+If you see the name Toplo, Toplo is new widgets library built on top of Bloc. It is still under heavy development. 
+
 You can find some slides: 
 - https://www.slideshare.net/esug/bloc-for-pharo-current-state-and-future-perspective
 - http://www.github.com/pharo-graphics/Bloc
+- You can find the presentations of Bloc at ESUG 2022 and 2023 on youtube. 
+
 
 ### Possible Games
 
@@ -48,22 +42,20 @@ Here is a list of possible games to develop:
 - Sudoku
 - 2048
 - Memory
-- Snake 
+- Snakes and Ladders
 - Tetris 
 - Picross (nonogram)
 - SlideOut
-- Quinto
-- Game of Life
 - SameGame
 - Taquin
-- Maze generator
 - Bomberman
+- Four in a row
+- Maze generator
 
 You can find some ideas of games at: 
 [https://inventwithpython.com/blog/2012/02/20/i-need-practice-programming-49-ideas-for-game-clones-to-code/](https://inventwithpython.com/blog/2012/02/20/i-need-practice-programming-49-ideas-for-game-clones-to-code)
 
-### Resources
-
+### Other resources
 
 Besides the Myg framework mentioned above, there are some resources available that you can study.
 
@@ -71,11 +63,21 @@ The book Learning Object-oriented Design with TDD in Pharo available on http://b
 
 In addition the book "Building a memory game with Bloc" available on http://book.pharo.org and https://github.com/SquareBracketAssociates/Booklet-BuildingMemoryGameWithBloc presents how to build a simple memory game. 
 
-In the Tutorial project of the Bloc repository there is an implementation of the 20248 game. It is in draft mode but you can get inspiration from it too.
+In the Tutorial project of the Bloc repository there is an implementation of the 2048 game. It is in draft mode but you can get inspiration from it too.
+
+```
+Metacello new
+    baseline: 'BlocTutorials';
+    repository: 'github://pharo-graphics/Tutorials:dev-1.0/src';
+    load
+```
+
+Note that the implementation of 2048 is a sketch and was used to brainstorm on skinning. It should be rewrite using more recent implementations of Bloc.
 
 
 
-### Minesweeper
+
+## Minesweeper
 
 #### Game field: 
 The field is composed of cells: a cell may be clean or suspected to contain a bomb. 
@@ -89,7 +91,7 @@ The user should identify the bombs using hints based on the number of adjacent b
 
 The user has two kinds of action: 
 - declare that a cell contains a bomb or 
-- declare that a ce;;  is free and asking for a validation.
+- declare that a cell is free and asking for a validation.
 
 - Free cell declaration: If the user is wrong and there was a bomb then he loses the game. If the user is right then the cell displays the number of adjacent bomb around the cell. 
 - Bomb declaration: when a cell is declared as a bomb a bomb is displayed.
@@ -104,24 +106,23 @@ When all the cells have been revealed or marked as a bomb, the game proceeds to 
 
 
 
-### 2048
+## 2048
 
 ![ 2048 ](figures/2048.png width=40&label=2048)
 
-### Lightout
+## Lightout
 
 ![ LightOut or Quinto ](figures/Quinto.png width=60&label=quinto)
 
-### Memory
+## Memory
 
 ![ Memory ](figures/Memory.png width=40&label=Memory)
 
-### SlideOut
-
+## SlideOut
 
 ![SlideOut: Elements can slides in one direction but are blocked by others. The goal is to get the red element out.](figures/SlideOut.png width=60&label=GameOne)
 
-### Laser game
+## Laser game
 
 The game will be played on a grid. We will imagine having a laser beam that can be activated by the user. This will fire into the grid from a specific location. The laser beam will always fire from the bottom edge underneath the first column of cells (marked by the arrow in Figure *GameOne*). As the laser beam traverses inside our grid it can hit deflecting mirrors. These mirrors will divert the laser beam's direction as it travels. Ultimately the beam should hit a target location inside our grid.  Once the laser is fired we will see how the cells guide the laser to a destination. 
 
@@ -148,12 +149,12 @@ As a last step, one more mirror is moved to get the laser back to the target cel
 That's the general idea. We can add laser cell-path counters and other game instrumentation as we develop.
 
 
-### Same game
+## Same game
 
 ![ SameGame : collapsing columns by removing one by one colored of the cell of the same color. ](figures/SameGame.png width=40&label=mine)
 
-### Nonogram
+## Nonogram
 
-### Taquin
+## Taquin
 
-### 
+## Four in a row
