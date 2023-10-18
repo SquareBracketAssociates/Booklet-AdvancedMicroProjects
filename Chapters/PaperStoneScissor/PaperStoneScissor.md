@@ -1,7 +1,5 @@
-## Stone Paper Scissors
-
+## Stone paper scissors
 %spellchecked
-
 @cha_stone
 
 As we already saw sending a message is in fact making a choice. Indeed when we send a message, the method associated with the method in the class hierarchy of the receiver will be selected and executed. 
@@ -16,18 +14,16 @@ It is a clear illustration of the 'Don't ask, Tell' design principle.
 
 ![Stone paper scissors.](figures/StonePaperScissorsGame2 width=30)
 
-
-
 ### Starting with a couple of tests
 
 
 We start by implementing a couple of tests.
 Let us define a test class named `StonePaperScissorsTest`.
+
 ```
 TestCase << #StonePaperScissorsTest
 	package: 'StonePaperScissors'
 ```
-
 
 Now we can define a couple of tests showing for example that a paper is winning when a stone plays against a paper. We consider that the following tests are self-explanatory.
 
@@ -35,7 +31,6 @@ Now we can define a couple of tests showing for example that a paper is winning 
 StonePaperScissorsTest >> testStoneAgainstPaperIsWinning
 	self assert: (Stone new play: Paper new) equals: #paper
 ```
-
 
 ```
 StonePaperScissorsTest >> testScissorAgsinstPaperIsWinning

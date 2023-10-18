@@ -25,7 +25,6 @@ The purpose of this mini project is to define a little network simulator.
 <!inputFile|path=Chapters/Robots/robots.md!>
 <!inputFile|path=Chapters/Compass/compass.md!>
 
-<!inputFile|path=Chapters/DSLDoubleDispatch/DSLDoubleDispatch.md!>
 <!inputFile|path=Chapters/Expression/Expression.md!>
 <!inputFile|path=Chapters/Visitor/Visitor.md!>
 

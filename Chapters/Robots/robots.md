@@ -1,4 +1,4 @@
-## A Saturn PathFinder
+## A little saturn PathFinder
 
 
 
@@ -61,7 +61,6 @@ mov 3'.
 ```
 
 The script contains different orders: such as `mov 3`, `dir #north`.
-
 
 
 ### Getting the code 
@@ -247,7 +246,7 @@ dropL
 ```
 
 
-### Introducing Commands
+### Introducing commands
 
 Imagine that you originally defined the `execute:` method as follows: 
 

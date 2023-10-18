@@ -1,5 +1,4 @@
-## Revisiting the Die DSL: a Case for Double Dispatch
-
+## Revisiting the Die DSL: a case for double dispatch
 @ch:doubleDispatch
 
 In Chapter *@cha:dsl@*, using the Die DSL we could only sum die handles together as in `2 D20 + 1 D4`. In this new chapter we extend the Die DSL implementation to support the sum of a die with another one or with a die handle \(and vice versa\). 
@@ -11,7 +10,6 @@ Double dispatch is a technic that avoids hardcoding type checks and also is able
 Double dispatch is based on the _Don't ask, tell_ object-oriented principle applied twice. In the case of the `+` message, there is a first dispatch to select the adequate method. Then a second dispatch happens when in this method a new message is sent to the _argument_ of the `+` message telling this argument the way the current receiver should be summed. This description is clearly too abstract so we will go over a full example to explain it. 
 
 ### A little reminder
-
 
 In a previous chapter you implemented a small DSL to add dice and manage die handles. With this DSL, you could create dice and add them to a die handle. Later on you could sum two different die handles and obtain a new one following the "Dungeons and Dragons" ruling book. 
 
@@ -308,18 +306,13 @@ Now we are able to sum a die with a die handle as shown in Figure *@figDieDouble
 
 ### Stepping back
 
-
 You may ask why this is working. We defined two methods `sumWithDie:` one on class `Die` and one on the class `DieHandle`
 and when the method `+` on class `Die` will send the message `sumWithDie:` to either a die or a die handle, the message dispatch will select the correct method `sumWithDie:` for us as shown in Figure *@figDieDoubleDispatchPartial@*.
-
-
-
 
 ![Summing a die and a dicable](figures/DieDoubleDispatchPartial.pdf width=90&label=figDieDoubleDispatchPartial)
 
 
 ### Now a DieHandle as receiver
-
 
 Our solution does not handle the case where the receiver is a die handle. This is what we will address now. 
 Now we are ready to apply the same pattern than before but for the case where the receiver is a die handle. We will just say to the argument of the message `+` that we want to sum it with a _die handle_ this time.
@@ -331,7 +324,6 @@ as `sumWithHandle:` to be able to invoke it while redefining the method `+`. Bas
 DieHandle >> sumWithHandle: aDieHandle
 	... Your code ...
 ```
-
 
 % [[[
 % DieHandle >> sumWithHandle: aDieHandle
@@ -355,7 +347,6 @@ Now we can define a more powerful version of `+` by simply sending the message `
 DieHandle >> + aDicable
 	... Your code ...
 ```
-
 
 We said that this is version of `+` is more powerful than the one of `sumWithHandle:` because once we will implement the missing method `sumWithHandle:` on the class `Die`, the `+` method will be able to sum a die handle with a die or two die handles. 
 
@@ -400,9 +391,6 @@ DieHandleTest >> testAddingAnHandleWithADie
 	res := handle + (Die withFaces: 20).
 	self assert: res diceNumber equals: 3
 ```
-
-
-
 ### Conclusion
 
 
