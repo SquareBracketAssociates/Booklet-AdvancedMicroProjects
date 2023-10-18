@@ -1,7 +1,10 @@
 ## A Basic LAN Application
 
-The purpose of this exercise is to define a little network simulator. From an object-oriented point of view, it is really interesting because it 
-shows that objects encapsulate responsibilities and that inheritance is used to define incremental behavior. 
+The purpose of this mini project is to define a little network simulator. 
+ If you understand well basic object-oriented concepts, you can skip this part of the book.
+ 
+From an object-oriented point of view, it is really interesting because it  shows that objects encapsulate responsibilities and that inheritance is used to define incremental behavior.
+
 
 You will define step by step an application that simulates a simple Local Area Network (LAN).  You will create several classes: `LNPacket`, `LNNode`, `LNWorkstation`, and `LNPrintServer`. We start with the simplest version of a LAN. In subsequent exercises, we will add new requirements and modify the proposed implementation to take them into account.
 
@@ -27,10 +30,26 @@ Responsibility:
 Create a new package `LAN`, and create a subclass of `Object` called `LNNode`, with two instance variables: `name` and `nextLNNode`.
 
 #### Exercise: Accessors
-  Create accessors and mutators for the two instance variables. Document the mutators to inform users that the argument passed to `name:` should be a `Symbol`, and the arguments passed to `nextNode:` should be a LNNode. 
+Create accessors and mutators for the two instance variables. Document the mutators to inform users that the argument passed to `name:` should be a `Symbol`, and the arguments passed to `nextNode:` should be a `LNNode`. 
+We can imagine the following test to validate such a simple behavior.
+```
+LNNode >> testName
+	| node |
+	node := LNNode new.
+	node name: #PC1.
+	self assert: node name equals: #PC1
+```
+
 
 #### Exercise: `hasNextNode`   
 Define a method called `hasNextNode` that returns whether the receiver has a next LNNode or not. 
+The following test should pass. 
+
+```
+LNNode >> testHasNextNode
+
+	self deny: LNNode new hasNextNode 
+```
 
 #### Exercise: `printOn:`   
 Create an instance method named `printOn:` that puts the class name and name variable on the argument `aStream`. Include my next node's name only if there is a next node. 

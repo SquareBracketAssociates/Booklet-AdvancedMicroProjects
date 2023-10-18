@@ -97,6 +97,6 @@ propose a default behavior.
 The Pharo class library contains a lot of such hooks that allows an easy customization of the proposed
 behavior. The proposed requirement already exists in the system.
 
-### Follow up exercises.
+### Follow up exercises
 
 Study the method `printOn:` on the class `Object`. Check its implementors and senders.

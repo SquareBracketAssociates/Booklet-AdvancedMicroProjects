@@ -1,8 +1,7 @@
 ## Fundamentals on Self and Super
 
 
-This lesson is a reminder about self and super. If you understand well such concepts 
-you can skip this chaptter. 
+This lesson is a reminder about `self` and `super`.
 
 ### Self
 Let us have a look at `self`. When the following message is executed: 
