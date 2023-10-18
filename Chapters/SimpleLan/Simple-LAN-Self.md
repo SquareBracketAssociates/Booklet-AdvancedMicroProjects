@@ -3,7 +3,8 @@
 
 This lesson is a reminder about `self` and `super`.
 
-### Self
+### self
+
 Let us have a look at `self`. When the following message is executed: 
 
 ```

@@ -36,7 +36,7 @@ Several ways are possible:
 - It is also a good solution to propose a consistent and well-defined creation interface. For example one can only provide an instance creation method that requires the mandatory value for the instance and forbid the creation of other instances.
 
 
-### Enhancing the Packet API
+### Enhancing the `Packet` API
 Let us start with the class `Packet`.  This is the responsibility of a packet to say if the packet is addressed to a particular node or if it was sent
 by a particular node.
 - Define a method named `isAddressedTo: aNode` in 'testing' protocol that answers if a given packet is addressed to the specified node.
@@ -44,7 +44,7 @@ by a particular node.
 - Once these methods are defined, change the code of all the clients of the class `Packet` to use them.
 
 
-### Instance Initialization
+### Instance initialization
 
 Let us see how we can initialize instances. We investigate the two solutions for the `Packet` class.
 
@@ -97,7 +97,7 @@ Packet >> hasDefaultContent
 With this solution, we limit the knowledge to the internal coding of the default contents value to only
 one method. This way changing it does not affect the clients nor the other part of the class.
 
-### A Question of Creation Responsibility
+### A question of creation responsibility
 
 One of the problem with the previous approach for creating the nodes and the packets is the following: it
 is the responsibility of the client of the objects to create them well-formed. For example, it is possible to
@@ -149,7 +149,7 @@ Packet class >> to: aSymbol
 Imagine that we want to forbid the creation of non-well formed instances of these classes.
 To do so, we will simply redefine the creation method new so that it will raise an error.
 
-#### Exercise: forbidding `new`
+#### Exercise: Forbidding `new`
 
 Rewrite the new method of the class `Node` and `Packet` as the following:
 

@@ -3,7 +3,7 @@
 This chapter uses the basic LAN and adds new classes and behavior. Doing so, the design is
 extended to be more general and adaptive.
 
-### From a Ring to a Star
+### From a ring to a star
 
 Right now your LAN is a ring, the token has to pass through the nodes one by one and this is not possible to
 send a packet to multiple nodes at once as this is the case in star architecture.
@@ -11,7 +11,7 @@ send a packet to multiple nodes at once as this is the case in star architecture
 #### Propose a solution to this problem. You can for exemple define a new node that (1) can be connected to several nodes and (2) broadcast a packet to all its nodes except the one from which it received the packet. 
 
 
-### Handling Loops
+### Handling loops
 
 - When a packet is sent to an unknown node, it loops endlessly around the LAN. You will implement two
 solutions for this problem.
@@ -62,7 +62,7 @@ visitedNodes instance variable is initialized with an empty set.
 and `hasBeenAcceptedBy:`.
 - Write a test if your implementation works by sending a ‘bad’ node with a bad originator into the LAN.
 
-### Broadcasting and Multiple Addresses
+### Broadcasting and multiple addresses
 
  Up to now, when a packet reaches a node it is addressed to, the packet is handled by the node and the
 transmission of the packet is terminated (because is not sent to the next node in the network). 
@@ -75,7 +75,7 @@ First try to solve this problem, and implement it afterwards.
 In the current LAN, a packet only has one addressee. This exercise wants to add packets that have
 multiple addressees. Propose a solution for this problem, and implement it afterwards.
 
-### Introduce Links
+### Introduce links
 
 Currently a node is connected to the following one by a direct reference. We would like to get a model that is closer to reality. For this a node should have a link object that connects two nodes. 
 
@@ -83,19 +83,19 @@ A link will have a `from` and `to` variables that respectively refers to the cur
 
 Define some scenario as tests and introduce the class `LNLink`.
 
-### Different Documents
+### Different documents
 
  Suppose we have several kinds of documents (ASCII and Postscript) and two kinds of LANPrinter in the
 LAN (LANASCIIPrinter and LANPostscriptPrinter). We then want to make sure that every printer prints
 the right kind of document. Propose a solution for this problem.
 
-### Logging Node
+### Logging node
 
 We want to add a logging facility: this means each time a packet is sent from a node, we want to identify the
 node and the packet. Propose and implement a solution. Hint: introduce a new subclass of Node between
 Node and its subclasses and specialize the send: method.
 
-### Automatic Naming
+### Automatic naming
 
 The name of a node have to be specified by its creator. We would like to have an automatic naming process
 that occurs when no name are specified. Note that the names should be unique. As a solution we propose

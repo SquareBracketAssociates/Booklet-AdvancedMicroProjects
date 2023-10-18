@@ -7,14 +7,15 @@ This book is a collection of design exercises at different levels of guidance an
 - The fourth part presents some games.
 
 
-
-
 # Starting with basics
+
+The purpose of this mini project is to define a little network simulator. 
+ If you understand well basic object-oriented concepts, you can skip this part of the book even if this is fun to code a little simulator and in particular its less guided extensions.
+ 
 <!inputFile|path=Chapters/SimpleLan/Simple-LAN-Definition.md!>
 <!inputFile|path=Chapters/SimpleLan/Simple-LAN-Self.md!>
 <!inputFile|path=Chapters/SimpleLan/Simple-LAN-Hooks.md!>
 <!inputFile|path=Chapters/SimpleLan/Simple-LAN-Responsibility.md!>
-
 
 # Guided Exercices 
 <!inputFile|path=Chapters/DSL/DSL.md!>
@@ -29,6 +30,9 @@ This book is a collection of design exercises at different levels of guidance an
 <!inputFile|path=Chapters/Visitor/Visitor.md!>
 
 # Unguided Extensions
+
+In this part we propose multiple extensions to the previous mini projects.
+It is fun to challenge ourselves to see how we could support the proposed variations.
 
 <!inputFile|path=Chapters/SimpleLan/Simple-LAN-Extensions.md!>
 <!inputFile|path=Chapters/Unguided/Unguided.md!>

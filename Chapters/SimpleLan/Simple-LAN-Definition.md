@@ -1,7 +1,7 @@
-## A Basic LAN Application
+## A basic LAN application
 
 The purpose of this mini project is to define a little network simulator. 
- If you understand well basic object-oriented concepts, you can skip this part of the book.
+ If you understand well basic object-oriented concepts, you can skip this part of the book even if this is fun to code a little simulator and in particular its less guided extensions.
  
 From an object-oriented point of view, it is really interesting because it  shows that objects encapsulate responsibilities and that inheritance is used to define incremental behavior.
 

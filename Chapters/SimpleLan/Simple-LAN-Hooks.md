@@ -83,7 +83,7 @@ Then modify the `printOn:` method of the class `Node` to produce the following o
 ‘Node Mac connected to Printer PC1’
 ```
 
-### About Hook and Template
+### About hook and template
 
 The method `kindName` is called a hook method. 
 This reflects the fact that it allows the subclasses to specialize the behavior of the superclass, here the printing of all the different kinds of nodes.
