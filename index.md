@@ -33,7 +33,7 @@ The purpose of this mini project is to define a little network simulator.
 In this part we propose multiple extensions to the previous mini projects.
 It is fun to challenge ourselves to see how we could support the proposed variations.
 
-<!inputFile|path=Chapters/SimpleLan/Simple-LAN-Extensions.md!>
+%<!inputFile|path=Chapters/SimpleLan/Simple-LAN-Extensions.md!>
 <!inputFile|path=Chapters/Unguided/Unguided.md!>
 
 # Unguided Games

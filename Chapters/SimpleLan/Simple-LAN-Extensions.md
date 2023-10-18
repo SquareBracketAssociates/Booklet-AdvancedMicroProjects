@@ -8,35 +8,23 @@ extended to be more general and adaptive.
 Right now your LAN is a ring, the token has to pass through the nodes one by one and this is not possible to
 send a packet to multiple nodes at once as this is the case in star architecture.
 
-#### Propose a solution to this problem. You can for exemple define a new node that (1) can be connected to several nodes and (2) broadcast a packet to all its nodes except the one from which it received the packet. 
+#### Propose a solution to this problem. 
+You can for exemple define a new node that (1) can be connected to several nodes and (2) broadcast a packet to all its nodes except the one from which it received the packet. 
 
 
 ### Handling loops
 
-- When a packet is sent to an unknown node, it loops endlessly around the LAN. You will implement two
-solutions for this problem.
+- When a packet is sent to an unknown node, it loops endlessly around the LAN. You will implement two solutions for this problem.
 
-- Solution 1. The first obvious solution is to avoid that a node resends a packet if it was the originator of
-the packet that it is sent. Modify the accept: method of the class Node to implement such a functionality.
+- Solution 1. The first obvious solution is to avoid that a node resends a packet if it was the originator of the packet that it is sent. Modify the accept: method of the class Node to implement such a functionality.
 
-- Solution 2. The first solution is fragile because it relies on the fact that a packet is marked by its originator
-and that this node belongs to the LAN. A ‘bad’ node could pollute the network by originate packets with a
-anonymous name. Think about different solutions.
-Among the possible solutions, two are worth to be further analyzed:
+- Solution 2. The first solution is fragile because it relies on the fact that a packet is marked by its originator and that this node belongs to the LAN. A ‘bad’ node could pollute the network by originate packets with a anonymous name. Think about different solutions. Among the possible solutions, two are worth to be further analyzed:
 
--- 1. Each node keeps track of the packets it already received. When a packet already received is asked
-to be accepted again by the node, the packet is not sent again in the LAN. This solution implies
-that packet can be uniquely identified. Their current representation does not allow that. We could
-imagine to tag the packet with a unique generated identifier. Moreover, each node would have to
-remember the identity of all the packets and there is no simple way to know when the identity of
-treated node can be removed from the nodes.
+-- 1. Each node keeps track of the packets it already received. When a packet already received is asked to be accepted again by the node, the packet is not sent again in the LAN. This solution implies that packet can be uniquely identified. Their current representation does not allow that. We could imagine to tag the packet with a unique generated identifier. Moreover, each node would have to remember the identity of all the packets and there is no simple way to know when the identity of treated node can be removed from the nodes.
 
--- 2. Each packet keeps track of the node it visited. Every time a packet aarrived at a node, it is asked if it
-has already been here. This solution implies a modification of the communication between the nodes
-and the packet: the node must ask the status of the packet. This solution allows the construction of
-different packet semantics (one could imagine that packets are broadcasted to all the nodes, or have
-to be accepted twice). Moreover once a packet is accepted, the references to the visited nodes are
+-- 2. Each packet keeps track of the node it visited. Every time a packet aarrived at a node, it is asked if it has already been here. This solution implies a modification of the communication between the nodes and the packet: the node must ask the status of the packet. This solution allows the construction of different packet semantics (one could imagine that packets are broadcasted to all the nodes, or have to be accepted twice). Moreover once a packet is accepted, the references to the visited nodes are
 simply destroyed with the packet so there is no need to propagate this information among the nodes.
+
 We propose you to implement the second solution so that the class Packet provides the following
 interface (the new responsibilities are in bold).
 
