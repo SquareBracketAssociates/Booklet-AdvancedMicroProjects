@@ -1,12 +1,12 @@
 ## About hooks
 
-In this chapter you will learn how to introduce hooks and template methods to favor extensibility. First
-we look at the current situation and introduce changes step by steps.
+In this chapter you will learn how to introduce hooks and template methods to favor extensibility. 
+First we look at the current situation and introduce changes step by steps.
 
 
 ### Current situation
 
-The solution proposed for printing a Node just uses the default instance printing protocol of Phaor
+The solution proposed for printing a Node just uses the default instance printing protocol of Pharo.
 
 ```
 > (Node withName: #Node1 connectedTo: (Node new name: #PC1)) printString

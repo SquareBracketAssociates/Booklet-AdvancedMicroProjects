@@ -15,7 +15,7 @@ The purpose of this mini project is to define a little network simulator.
 <!inputFile|path=Chapters/SimpleLan/Simple-LAN-Definition.md!>
 <!inputFile|path=Chapters/SimpleLan/Simple-LAN-Self.md!>
 <!inputFile|path=Chapters/SimpleLan/Simple-LAN-Hooks.md!>
-<!inputFile|path=Chapters/SimpleLan/Simple-LAN-Responsibility.md!>
+
 
 # Guided Exercices 
 <!inputFile|path=Chapters/DSL/DSL.md!>
@@ -33,7 +33,7 @@ The purpose of this mini project is to define a little network simulator.
 In this part we propose multiple extensions to the previous mini projects.
 It is fun to challenge ourselves to see how we could support the proposed variations.
 
-%<!inputFile|path=Chapters/SimpleLan/Simple-LAN-Extensions.md!>
+%<!inputFile|path=Chapters/SimpleLan/Simple-LAN-Responsibility.md!>
 <!inputFile|path=Chapters/Unguided/Unguided.md!>
 
 # Unguided Games

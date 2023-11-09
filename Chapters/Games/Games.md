@@ -79,14 +79,7 @@ Note that the implementation of 2048 is a sketch and was used to brainstorm on s
 
 ## Minesweeper
 
-#### Game field: 
-The field is composed of cells: a cell may be clean or suspected to contain a bomb. 
-At the beginning, the status of a cell status is unknown or closed.
-Once a cell is open, a clean cell displays the number of its adjacent bombs. 
-Using this information closed cells can be tagged as suspected to contain a bomb. 
-
-
-#### Goal: 
+### Goal
 The user should identify the bombs using hints based on the number of adjacent bombs in the 8 directions. 
 
 The user has two kinds of action: 
@@ -100,7 +93,11 @@ When all the cells have been revealed or marked as a bomb, the game proceeds to 
 
 ![ Minesweeper: identifying mines based on the number of adjacent cells containing a bomb.](figures/MineSweeper2.png width=80&label=mine)
 
-
+### Game field
+The field is composed of cells: a cell may be clean or suspected to contain a bomb. 
+At the beginning, the status of a cell status is unknown or closed.
+Once a cell is open, a clean cell displays the number of its adjacent bombs. 
+Using this information closed cells can be tagged as suspected to contain a bomb. 
 
 
 
@@ -108,11 +105,21 @@ When all the cells have been revealed or marked as a bomb, the game proceeds to 
 
 ## 2048
 
+### Goal
+
+The user should merge numbers that are randomly drawn. 
+Two numbers of the same value are merged. The resulting number of the sum replaces the sum. 
+The user decides the merge by choosing one direction.
+
+The game starts with 2 and continues with the sum e.g., 4, 8, 16, 64.... It should adapt the numbers that are placed on the board in the sense that it does not have to 2 when the average numbers are 512.
+
 ![ 2048 ](figures/2048.png width=40&label=2048)
 
-## Lightout
+The game ends when the board is full.
 
-![ LightOut or Quinto ](figures/Quinto.png width=60&label=quinto)
+
+
+
 
 ## Memory
 
@@ -121,6 +128,10 @@ When all the cells have been revealed or marked as a bomb, the game proceeds to 
 ## SlideOut
 
 ![SlideOut: Elements can slides in one direction but are blocked by others. The goal is to get the red element out.](figures/SlideOut.png width=60&label=GameOne)
+
+
+
+
 
 ## Laser game
 
@@ -144,17 +155,34 @@ A further intermediate result is produced by rotating the mirror shown in Figure
 
 %+Finding a longer path, last move, rotate %mirror.>file://figures/2-LongerPath3-Slide.png|width=60|label=LongerPathThree+
 
-As a last step, one more mirror is moved to get the laser back to the target cell as shown in Figure *LongerPathThree*. This time the path of the laser is longer than before. And of course it was strictly a random coincidence that the initial cells configuration already provided a correct path for the laser.
+As a last step, one more mirror is moved to get the laser back to the target cell as shown in Figure *LongerPathThree*. This time the path of the laser is longer than before. And of course, it was strictly a random coincidence that the initial cell configuration already provided a correct path for the laser.
 
 That's the general idea. We can add laser cell-path counters and other game instrumentation as we develop.
 
 
 ## Same game
 
+### Goal 
+
+The goal of the game is to eliminate all the colored cells of the game. A group of connected cells of the same color are eliminated altogether. When a column is empty, it is eliminated so that the two side are touching each other.
+
 ![ SameGame : collapsing columns by removing one by one colored of the cell of the same color. ](figures/SameGame.png width=40&label=mine)
+
+
 
 ## Nonogram
 
+### Goal
+
+The goal of the game is to 
+
 ## Taquin
 
+
+
 ## Four in a row
+
+
+## Lightout
+
+![ LightOut or Quinto ](figures/Quinto.png width=60&label=quinto)
