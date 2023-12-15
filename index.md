@@ -1,6 +1,8 @@
 ## Introduction
 
-This book is a collection of design exercises at different levels of guidance and difficulties.
+This book accompanies the advanced object-oriented design mooc that is freely available at [https://advanced-design-mooc.pharo.org](https://advanced-design-mooc.pharo.org)
+
+It is a collection of design exercises at different levels of guidance and difficulties.
 - The first part starts presenting the basics and can be skipped if you know object-oriented basics.
 - The second part proposes several little projects to exercise double dispatch, command and visitor patterns.
 - The third part proposes some unguided extensions to the previous projects.
