@@ -2,17 +2,22 @@
 
 The material of the mooc available at [http://advanced-mooc.pharo.org](http://advanced-mooc.pharo.org) has been used 
 for very successful lectures. 
-
-We describe here after the pedagocial objectives, some key insights. 
-
+We describe here some possible pedagocial objectives, some key insights, and different setup to take advantages of such material.
 
 ### Possible pedagocial objectives
 
-The material proposed by the mooc can be used to give lectures on
+The material proposed by the mooc can be used to give lectures on the following topics:
 
 - Basic object-oriented programming (excluding Law of demeter, Typing, Design pattern for example)
-- Test Driven Design 
+- Test-Driven Design 
 - Advanced object-oriented design 
+
+In addition and as we will show below, such goals can be easily enriched with soft skills such as:
+
+- how to find information?
+- how to report information?
+- how to get some help by asking questions in forums or online chat?
+
 
 ### Essence of OO Design from 1/2 to 1 Day Lecture
 
