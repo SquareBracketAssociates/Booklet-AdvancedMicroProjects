@@ -108,7 +108,7 @@ The player can do a "flood fill" on the top left tile, changing the color of any
 
  Figure @*Floodit*@
 
-![ Flood it ](figures/FloodIt2048.png width=40&label=Floodit)
+![ Flood it ](figures/FloodIt.png width=40&label=Floodit)
 
 
 
