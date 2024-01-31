@@ -509,8 +509,8 @@ Of course, since we are test infested we add a new test.
 ```
 EEAdditionTest >> testEvaluateWithClassCreationMessage
 	| ep1 ep2 |
-	ep1 := EConstant constant5.
-	ep2 := EConstant constant3.
+	ep1 := EConstant value: 5.
+	ep2 := EConstant value: 3.
 	self assert: (EAddition left: ep1 right: ep2) evaluate equals: 8
 ```
 
@@ -656,7 +656,7 @@ Let us start with a test. Here we check that a constant is printed as its value.
 
 ```
 EConstantTest >> testPrinting
-	self assert: (EConstant value: 5) printString equals: '5'
+	self assert: EConstant constant5 printString equals: '5'
 ```
 
 
