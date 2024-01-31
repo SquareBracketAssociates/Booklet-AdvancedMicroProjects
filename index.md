@@ -29,7 +29,6 @@ The current document contains a collection of design exercises at different leve
 In this part we propose multiple extensions to the previous mini projects.
 It is fun to challenge ourselves to see how we could support the proposed variations.
 
-%<!inputFile|path=Chapters/SimpleLan/Simple-LAN-Responsibility.md!>
 <!inputFile|path=Chapters/Unguided/Unguided.md!>
 
 # Unguided Games

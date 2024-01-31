@@ -38,7 +38,8 @@ You can find some slides:
 Here is a list of possible games to develop:
 
 - Light Beamer
-- Sudoku
+- Mimesweeper
+- Flood it
 - 2048
 - Memory
 - Tetris 
@@ -47,10 +48,7 @@ Here is a list of possible games to develop:
 - SameGame
 - Taquin
 - Bomberman
-- Maze generator
-
-You can find some ideas of games at: 
-[https://inventwithpython.com/blog/2012/02/20/i-need-practice-programming-49-ideas-for-game-clones-to-code/](https://inventwithpython.com/blog/2012/02/20/i-need-practice-programming-49-ideas-for-game-clones-to-code)
+- Maze generators
 
 ### Other resources
 
@@ -76,45 +74,37 @@ Note that the implementation of 2048 is a sketch and was used to brainstorm on s
 
 ### Minesweeper
 
-#### Goal
 The user should identify the bombs using hints based on the number of adjacent bombs in the 8 directions. 
 
 The user has two kinds of action: 
 - declare that a cell contains a bomb or 
-- declare that a cell is free and asking for a validation.
+- declare that a cell is free and ask for a validation.
 
-- Free cell declaration: If the user is wrong and there was a bomb then he loses the game. If the user is right then the cell displays the number of adjacent bomb around the cell. 
+- Free cell declaration: If the user is wrong and there is a bomb then he loses the game. If the user is right then the cell displays the number of adjacent bomb around the cell. 
 - Bomb declaration: when a cell is declared as a bomb a bomb is displayed.
 
 When all the cells have been revealed or marked as a bomb, the game proceeds to the validation.  If the bombs are correctly identified the user wins.
 
-![ Minesweeper: identifying mines based on the number of adjacent cells containing a bomb.](figures/MineSweeper2.png width=80&label=mine)
-
-#### Game field
-The field is composed of cells: a cell may be clean or suspected to contain a bomb. 
-At the beginning, the status of a cell status is unknown or closed.
-Once a cell is open, a clean cell displays the number of its adjacent bombs. 
-Using this information closed cells can be tagged as suspected to contain a bomb. 
+![ Minesweeper: identifying mines based on the number of adjacent cells containing a bomb.](figures/MineSweeper2.png width=60&label=mine)
 
 
 ### Flood it
 
-A certain configurations of tiles of different colors are placed on the board.
+A certain configuration of tiles of different colors are placed on the board.
 The player can do a "flood fill" on the top left tile, changing the color of any adjacent tiles of the same color. The player wins if he is able to make the entire board a single color within a certain number of moves. Figure @*Floodit*@ illustrates the situation.
 
-![ Flood it ](figures/FloodIt2048.png width=40&label=Floodit)
+![ Flood it ](figures/FloodIt.png width=40&label=Floodit)
 
 ### Tetris and variations
 
- Figure @*Floodit*@
+ Figure @*Tetris*@
 
-![ Flood it ](figures/FloodIt.png width=40&label=Floodit)
+![ Flood it ](figures/FloodIt.png width=40&label=Tetris)
+
 
 
 
 ### 2048
-
-#### Goal
 
 The user should merge numbers that are randomly drawn. 
 Two numbers of the same value are merged. The resulting number of the sum replaces the sum. 
@@ -133,7 +123,7 @@ The game ends when the board is full.
 
 ### SlideOut
 
-![SlideOut: Elements can slide in one direction but are blocked by others. The goal is to get the red element out.](figures/SlideOut.png width=60&label=GameOne)
+![SlideOut: Elements can slide in one direction but are blocked by others. The goal is to get the red element out.](figures/SlideOut.png width=40&label=GameOne)
 
 
 ### Laser game
