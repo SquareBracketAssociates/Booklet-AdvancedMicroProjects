@@ -7,8 +7,8 @@ In a second step you can add an UI layer based on the new Bloc framework.
 
 ### Loading Myg and Bloc
 
-You can get some ideas how to develop your game UI by studying the Myg framework. The Myg framework is a framework to build games. 
-A Miner, Sokoban and Takuzu have been built on top of it.
+You can get some ideas how to develop your game UI by studying the Myg framework. The Myg framework is a framework to build little 2D board games. 
+A Miner, Sokoban, and Takuzu have been built on top of it.
 It provides ways to build levels and other facilities.
 
 ```
@@ -18,15 +18,14 @@ Metacello new
  	onConflictUseIncoming;
  	load
 ```
-You will just need to execute `MygSokoban open`.
 
-
+You will just need to execute `MygSokoban open` to get a little Sokoban game.
 
 
 ### Bloc 
-
-Bloc is a new graphical library that will be part of Pharo in the future.
-If you see the name Toplo, Toplo is new widgets library built on top of Bloc. It is still under heavy development. 
+Bloc is a new graphical library that will be part of Pharo.
+If you see the name Toplo, Toplo is a new widget library built on top of Bloc. 
+It is still under heavy development. 
 
 You can find some slides: 
 - https://www.slideshare.net/esug/bloc-for-pharo-current-state-and-future-perspective
@@ -42,14 +41,12 @@ Here is a list of possible games to develop:
 - Sudoku
 - 2048
 - Memory
-- Snakes and Ladders
 - Tetris 
 - Picross (nonogram)
 - SlideOut
 - SameGame
 - Taquin
 - Bomberman
-- Four in a row
 - Maze generator
 
 You can find some ideas of games at: 
@@ -77,9 +74,9 @@ Note that the implementation of 2048 is a sketch and was used to brainstorm on s
 
 
 
-## Minesweeper
+### Minesweeper
 
-### Goal
+#### Goal
 The user should identify the bombs using hints based on the number of adjacent bombs in the 8 directions. 
 
 The user has two kinds of action: 
@@ -93,19 +90,31 @@ When all the cells have been revealed or marked as a bomb, the game proceeds to 
 
 ![ Minesweeper: identifying mines based on the number of adjacent cells containing a bomb.](figures/MineSweeper2.png width=80&label=mine)
 
-### Game field
+#### Game field
 The field is composed of cells: a cell may be clean or suspected to contain a bomb. 
 At the beginning, the status of a cell status is unknown or closed.
 Once a cell is open, a clean cell displays the number of its adjacent bombs. 
 Using this information closed cells can be tagged as suspected to contain a bomb. 
 
 
+### Flood it
+
+A certain configurations of tiles of different colors are placed on the board.
+The player can do a "flood fill" on the top left tile, changing the color of any adjacent tiles of the same color. The player wins if he is able to make the entire board a single color within a certain number of moves. Figure @*Floodit*@ illustrates the situation.
+
+![ Flood it ](figures/FloodIt2048.png width=40&label=Floodit)
+
+### Tetris and variations
+
+ Figure @*Floodit*@
+
+![ Flood it ](figures/FloodIt2048.png width=40&label=Floodit)
 
 
 
-## 2048
+### 2048
 
-### Goal
+#### Goal
 
 The user should merge numbers that are randomly drawn. 
 Two numbers of the same value are merged. The resulting number of the sum replaces the sum. 
@@ -118,22 +127,16 @@ The game starts with 2 and continues with the sum e.g., 4, 8, 16, 64.... It shou
 The game ends when the board is full.
 
 
-
-
-
-## Memory
+### Memory
 
 ![ Memory ](figures/Memory.png width=40&label=Memory)
 
-## SlideOut
+### SlideOut
 
-![SlideOut: Elements can slides in one direction but are blocked by others. The goal is to get the red element out.](figures/SlideOut.png width=60&label=GameOne)
-
-
+![SlideOut: Elements can slide in one direction but are blocked by others. The goal is to get the red element out.](figures/SlideOut.png width=60&label=GameOne)
 
 
-
-## Laser game
+### Laser game
 
 The game will be played on a grid. We will imagine having a laser beam that can be activated by the user. This will fire into the grid from a specific location. The laser beam will always fire from the bottom edge underneath the first column of cells (marked by the arrow in Figure *GameOne*). As the laser beam traverses inside our grid it can hit deflecting mirrors. These mirrors will divert the laser beam's direction as it travels. Ultimately the beam should hit a target location inside our grid.  Once the laser is fired we will see how the cells guide the laser to a destination. 
 
@@ -149,40 +152,35 @@ The user may click on a mirror cell and cause it to slide one grid-cell in a ver
 
 %+Finding a longer path, first move, slide %mirror.>file://figures/2-LongerPath1-Slide.png|width=60|label=LongerPathOne+
 
-A further intermediate result is produced by rotating the mirror shown in Figure *LongerPathTwo*.
+A further intermediate result is produced by rotating the mirror shown in Figure @*LongerPathTwo*@.
 
 %+Finding a longer path, second move, rotate %mirror.>file://figures/2-LongerPath2-Rotate.png|width=60|label=LongerPathTwo+
 
 %+Finding a longer path, last move, rotate %mirror.>file://figures/2-LongerPath3-Slide.png|width=60|label=LongerPathThree+
 
-As a last step, one more mirror is moved to get the laser back to the target cell as shown in Figure *LongerPathThree*. This time the path of the laser is longer than before. And of course, it was strictly a random coincidence that the initial cell configuration already provided a correct path for the laser.
+As a last step, one more mirror is moved to get the laser back to the target cell as shown in Figure @*LongerPathThree*@. This time the path of the laser is longer than before. And of course, it was strictly a random coincidence that the initial cell configuration already provided a correct path for the laser.
 
 That's the general idea. We can add laser cell-path counters and other game instrumentation as we develop.
 
 
-## Same game
+### Same game
 
-### Goal 
+The goal of the game is to eliminate all the colored cells of the game. A group of connected cells of the same color are eliminated altogether. When a column is empty, it is eliminated so that the two sides are touching each other. Figure *@same@* shows a same game. 
 
-The goal of the game is to eliminate all the colored cells of the game. A group of connected cells of the same color are eliminated altogether. When a column is empty, it is eliminated so that the two side are touching each other.
-
-![ SameGame : collapsing columns by removing one by one colored of the cell of the same color. ](figures/SameGame.png width=40&label=mine)
+![ SameGame: collapsing columns by removing one by one colored of the cell of the same color. ](figures/SameGame.png width=40&label=same)
 
 
 
-## Nonogram
+### Nonogram
 
-### Goal
+Nonograms  are addictive types of logic puzzles where you use the number clues around the sides to color in boxes to reveal a picture.  
+The other names of nonograms are Griddler or Picross (Nintendo game)
 
-The goal of the game is to 
+https://delightfulpaths.com/what-are-nonograms-or-griddlers explains the rules of the game. 
+You can see an example in Figure @*nonograms*@. Nonograms can be in black and white or colors.
 
-## Taquin
+![ Nonograms: coloring cells based on number clues. ](figures/nonograms.png width=40&label=nonograms)
 
+### Taquin
 
-
-## Four in a row
-
-
-## Lightout
-
-![ LightOut or Quinto ](figures/Quinto.png width=60&label=quinto)
+### Conclusion

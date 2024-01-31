@@ -1,22 +1,26 @@
 ## For the teachers
 
-The material of the mooc available at [http://advanced-mooc.pharo.org](http://advanced-mooc.pharo.org) has been used 
-for very successful lectures. 
-We describe here some possible pedagocial objectives, some key insights, and different setup to take advantages of such material.
+The material of the _'Advanced Object-Oriented Design'_ MOOC available at [http://advanced-mooc.pharo.org](http://advanced-mooc.pharo.org) has been refined over several years. It has been used for successful lectures at different levels and set up.
 
-### Possible pedagocial objectives
+We describe here some possible pedagogical objectives, some key insights, and different setups to take advantage of such a material.
 
-The material proposed by the mooc can be used to give lectures on the following topics:
+### Possible pedagogical objectives
 
-- Basic object-oriented programming (excluding Law of demeter, Typing, Design pattern for example)
-- Test-Driven Design 
-- Advanced object-oriented design 
+The material proposed by the MOOC can be used to give lectures on the following topics:
+
+- Basic object-oriented programming (excluding Law of Demeter, Typing, Design patterns for example)
+- Test-Driven Design
+- Basic Object-Oriented Design (creating hooks and template, designing reusable objects)
+- Advanced object-oriented design (including type consideration)
 
 In addition and as we will show below, such goals can be easily enriched with soft skills such as:
 
-- how to find information?
-- how to report information?
-- how to get some help by asking questions in forums or online chat?
+- How to find information?
+- How to report activity?
+- How to get some help by asking questions in forums or online chat?
+- How to report problems?
+
+The _'Advanced Object-Oriented Design'_ Mooc can be combined with the Pharo Mooc available at http://mooc.pharo.org.
 
 
 ### Essence of OO Design from 1/2 to 1 Day Lecture
@@ -82,14 +86,16 @@ Often we start by one day on Pharo and we take another day to show the essence o
 
 
 
+more here.
+
 
 
 ### Advanced Design Lecture Example
 
-During several years we used and developed around this material the following lecture whose description is available at [https://github.com/UnivLille-Meta/Miage23](https://github.com/UnivLille-Meta/Miage23)
+During several years we used and developed around this material the following lecture whose description is available at [https://github.com/pharo-mooc/AdvancedOODesignWithTDD](https://github.com/pharo-mooc/AdvancedOODesignWithTDD)
 
-The lectures length was 10 slots of 4 hours covering a mix of lectures and labs. The level of the students was Master 1.
-Their level was heterogeneous. 
+The lectures length is around 10 slots of 4 hours covering a mix of lectures and labs.
+The level of the students was Master 1. Their level is heterogeneous. 
 
 The objectives of the lectures were: 
 
@@ -99,9 +105,10 @@ The objectives of the lectures were:
 - Reverse engineering
 - Test quality with mutation testing
 - Soft skills:
--- reporting: how to report activities
--- how to ask help, how to find information
--- how to learn fast a new language
+	- reporting: how to report activities?
+	- how to ask help, how to find information?
+	- how to learn fast a new language?
+	- how to report problems?
 
 ### Setup 
 
@@ -115,8 +122,30 @@ We gave no lectures on Pharo. We listed some resources but gave no indication.
 - [https://scg.unibe.ch/download/oorp/OORP.pdf](Object-Oriented Reengineering Patterns)
 
 
-
-Each week the students had to watch a couple of videos and one or two lectures were stressed during the lectures.
+Each week the students have to watch a couple of videos and one or two lectures are given by us.
 During the first 6 weeks, each week they had to do some exercises following some scripts.
+
+### Calendar 
+Our calendar is the following one: basically
+
+## One glance schedule
+
+- 01 Week:  Test introduction
+- 02 Week:  OOP refresh
+- 03 Week:  Reverse engineering
+- 04 Week: Test Quality
+- 05 Week: Presentation -- *Presentations on Learning and data structure analysis*
+- 06 Week: Hook and templates
+- 07 Week: Double dispatch -- Examen
+Break
+- 08 Week Visitor
+- 09 Week Composite 
+- 10 Week Inheritance
+- 11 Week Types
+-- Exam
+
+
+
+
 
 
