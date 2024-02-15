@@ -67,7 +67,7 @@ Metacello new
     load
 ```
 
-Note that the implementation of 2048 is a sketch and was used to brainstorm on skinning. It should be rewrite using more recent implementations of Bloc.
+Note that the implementation of 2048 is a sketch and was used to brainstorm on skinning. It should be rewritten using more recent implementations of Bloc.
 
 
 

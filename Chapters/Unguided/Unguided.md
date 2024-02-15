@@ -87,11 +87,33 @@ Now certain dices can only be played by certain player:
 - A cheating dice that can only be played by a cheater. 
 
 
-### About the DSL 
+### About the die DSL 
 
-In the DSL we can implement the solution without double dispatch. Do it.
+In the die DSL we can implement the solution without double dispatch. Do it.
 
 
+### About Visitors
+
+Pharo has a Visitor library for its Abstract Syntax Tree (AST). 
+Browse the class `RBProgramNodeVisitor`. This class is an abstract class. It defines all the methods available for building 
+specialized Visitors. All the nodes in an AST are subclasses of RBProgramNode. 
+The following shows the core elements where the indentation reflects the inheritance.
+
+```
+RBProgramNode	RBComment	RBMethodNode	RBPragmaNode	RBReturnNode	RBSequenceNode	RBValueNode		RBArrayNode		RBAssignmentNode		RBBlockNode		RBCascadeNode		RBLiteralNode			RBLiteralArrayNode			RBLiteralValueNode		RBMessageNode		RBSelectorNode		RBVariableNode			RBArgumentNode			RBGlobalNode			RBInstanceVariableNode			RBSelfNode			RBSuperNode			RBTemporaryNode			RBThisContextNode
+```
+
+The following script shows how to execute a visitor on the AST of the method `Point>>#degrees`.
+
+```
+MyVisitor new visit: (Point>>#degrees) ast 
+```
+
+Here is a list of possible Visitors that you can simply define:
+- a visitor that checks whether a method is a utility method: it does not access instance variables not self or super.
+- a visitor that returns the list of instance variables accessed by the method. 
+- a visitor that checks all the self message send of a method and returns the list of the compiled method found in the class or its superclass. You can use the method `lookupSelector:` defined on `Class` to find the corresponding method.
+- a visitor that adds a return to the expression given. For SequenceNode it will put the return node on the last statement of the sequence node.
 
 
 
