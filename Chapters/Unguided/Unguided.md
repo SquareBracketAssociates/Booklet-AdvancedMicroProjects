@@ -100,7 +100,30 @@ specialized Visitors. All the nodes in an AST are subclasses of RBProgramNode.
 The following shows the core elements where the indentation reflects the inheritance.
 
 ```
-RBProgramNode	RBComment	RBMethodNode	RBPragmaNode	RBReturnNode	RBSequenceNode	RBValueNode		RBArrayNode		RBAssignmentNode		RBBlockNode		RBCascadeNode		RBLiteralNode			RBLiteralArrayNode			RBLiteralValueNode		RBMessageNode		RBSelectorNode		RBVariableNode			RBArgumentNode			RBGlobalNode			RBInstanceVariableNode			RBSelfNode			RBSuperNode			RBTemporaryNode			RBThisContextNode
+RBProgramNode
+	RBComment
+	RBMethodNode
+	RBPragmaNode
+	RBReturnNode
+	RBSequenceNode
+	RBValueNode
+		RBArrayNode
+		RBAssignmentNode
+		RBBlockNode
+		RBCascadeNode
+		RBLiteralNode
+			RBLiteralArrayNode
+			RBLiteralValueNode
+		RBMessageNode
+		RBSelectorNode
+		RBVariableNode
+			RBArgumentNode
+			RBGlobalNode
+			RBInstanceVariableNode
+			RBSelfNode
+			RBSuperNode
+			RBTemporaryNode
+			RBThisContextNode
 ```
 
 The following script shows how to execute a visitor on the AST of the method `Point>>#degrees`.
@@ -112,9 +135,19 @@ MyVisitor new visit: (Point>>#degrees) ast
 Here is a list of possible Visitors that you can simply define:
 - a visitor that checks whether a method is a utility method: it does not access instance variables not self or super.
 - a visitor that returns the list of instance variables accessed by the method. 
-- a visitor that checks all the self message send of a method and returns the list of the compiled method found in the class or its superclass. You can use the method `lookupSelector:` defined on `Class` to find the corresponding method.
+- a visitor that checks all the self-message sends of a method and returns the list of the compiled method found in the class or its superclass. You can use the method `lookupSelector:` defined on `Class` to find the corresponding method.
 - a visitor that adds a return to the expression given. For SequenceNode it will put the return node on the last statement of the sequence node.
 
+
+### Microdown 
+
+Microdown is a markup language compatible with a subset of markdown. It is used by the Pharo community to produce slides, booklets, and documentation. 
+A nice little project is to use Microdown to define a blog and its posts.
+A potential roadmap is the following:
+
+- Given a file repository we should generate a little table of contents. For this, we can reuse the HTML generation of Microdown. To do so we can do it either by generating a microdown document using the microdown builder and passing it to the HTML visitor. Or by creating the tree of objects for the table of contents and applying the HTML generation on it. 
+- You can also render all the post to generate HTML files. 
+- Finally having a visitor that extract the title of a post and a couple of line of the first paragraph so that the user can see a summary before clicking to get access to the full post can be nice. 
 
 
 
