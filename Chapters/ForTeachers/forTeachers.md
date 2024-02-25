@@ -1,6 +1,73 @@
-## For the teachers
+## About Pharo and Moocs
+
+### A truly excellent and pedagocial language
+
+Pharo is an truly excellent language and environment to teach object-oriented programming. 
+Here are some reasons you will certainly recognize if you ever programmed or taught Pharo.
+
+- **Tiny Syntax**. The full syntax of Pharo fits on half of a postcard.
+- **A uniform object model without exception**. Everything is an object and there is not a single exception. The execution model is the same at all levels. There is no special rules for class methods.
+- **Ready to use out of the box**. Pharo is ready to use in 2 min. There is no need to configure Eclipse. Unit framework is ready to use. 
+- **Highly immersive IDE**. Developers get immersed in a sea of objects. They can interact with live objects. 
+- **Gorgeous TDD support**. Pharo is the best environment to develop in Test-Driven Design. It supports eXtreme Test-Driven Design that take full advantage of Test-Driven Design and liveness of Pharo.
+- **Advanced tools**. Pharo supports microcommits: all the changes and versions of all compiled methods are one click away.
+It has a full integration with Git. It offers 
+
+The full syntax
+```
+exampleWithNumber: x
+	"This method illustrates the complete syntax."
+	<aMethodAnnotation>
+	| y |
+	true & false not & (nil isNil)
+		ifFalse: [ self halt ].
+	y := self size + super size. 
+	#($a #a 'a' 1 1.0)
+		do: [ :each | Transcript
+			show: (each class name); 
+			show: (each printString); show:''].
+	^ x<y
+```
+
+
+### Some testimonies
+
+Here are some testimonies of the Pharo mooc. 
+
+_J'ai trouvé ça très intéressant, beaucoup plus que prévu ! je regrette de ne pas m'y être mis plus tôt. J'ai enfin l'impression de vraiment faire de la POO ! Ou à l'inverse je me rend que je n'en faisais pas vraiment... - Anonymous, 2019_
+
+_I have just completed week seven of the Pharo Mooc (beginner and object oriented tracks) I am starting a redo of the Mooc with the web track (TinyBlog project). I have already learned so much ! I have spent the last 20 years or so in software development and, following this Mooc, I realized I hadn’t really grasped the essence of object oriented design. - Anonymous_
+
+_Really one of the best mooc I have ever attended. And I have attended quite a few (openSAP, openHPI). As an old fashioned ABAP developer I want to be reborn as Pharo developer in my next life :-) - Anonymous_
+
+_Hi! I finished the MOOC some weeks ago and I would like to congratulate everybody involved! After a decade+ of Python programming I think I found my new favorite language :). I'm making a small Teapot server for Slack command bots, I'm goona push it to Github (yay Iceberg), if anyone is interested. - EduardoPadoan_
+
+_I just completed the @pharoproject Mooc the best investment I have ever made of my time. MAQBOOL
+Hey all - I've just finished the Mooc - thanks for an excellent course and a thouroughly interesting look at a new way to program :smile: Looking forward to starting to play with Pharo on some upcoming ideas I've had. - Tieryn_
+
+_As much as I thought I understand object-orientation, it is very clear NOW that without a truly useable Smalltalk, which Pharo is, it is impossible to really understand and exercise object-orientation. Thank you all soooo much. - Mike D. 06/12/2020_
+
+_Hey all - I've just finished the Mooc - thanks for an excellent course and a thouroughly interesting look at a new way to program :smile: Looking forward to starting to play with Pharo on some upcoming ideas I've had - Anonymous
+
+_A general comment I wanted to make is that the MOOC so far has been great. Impressed with the quality and content, and grateful that it is available and free. Many thanks! - Aryeh_
+
+_IMHO the videos were very well done. I would even say shockingly well done… for a bunch of programmers who are supposed to be clueless about design - SeanDeNigris - 10/26/2017_
+
+_The more I learning about @pharoproject the more I appreciate it's beauty and simplicity, finally, object-oriented programming is done right - MAQBOOL_
+
+_Mooc absolument remarquable. Superbe voyage autour de Pharo. Le paradigme objet qui (re)prend enfin du sens ! - Anonymous - 01/03/2019_
+
+
+## Lectures 
+
+
+Add here one testimony of the summer school student
+
+
 
 The material of the _'Advanced Object-Oriented Design'_ MOOC available at [http://advanced-mooc.pharo.org](http://advanced-mooc.pharo.org) has been refined over several years. It has been used for successful lectures at different levels and set up.
+
+
 
 We describe here some possible pedagogical objectives, some key insights, and different setups to take advantage of such a material.
 
@@ -74,6 +141,7 @@ We often also present some knowledge about tests:
 
 ### Basic OOP in 1/2 to 1 day
 
+
 - W3S01-WhatisAnObject
 - W3S02-WhatisAClass
 - W3S03-MethodVsMessages
@@ -90,7 +158,7 @@ more here.
 
 
 
-### Advanced Design Lecture Example
+### Advanced object-oriented design lecture example
 
 During several years we used and developed around this material the following lecture whose description is available at [https://github.com/pharo-mooc/AdvancedOODesignWithTDD](https://github.com/pharo-mooc/AdvancedOODesignWithTDD)
 
@@ -110,7 +178,7 @@ The objectives of the lectures were:
 	- how to learn fast a new language?
 	- how to report problems?
 
-### Setup 
+#### Setup 
 
 During the first two weeks they had to learn Pharo and report how they are learning, what were their strategies.
 We gave no lectures on Pharo. We listed some resources but gave no indication.
@@ -125,10 +193,10 @@ We gave no lectures on Pharo. We listed some resources but gave no indication.
 Each week the students have to watch a couple of videos and one or two lectures are given by us.
 During the first 6 weeks, each week they had to do some exercises following some scripts.
 
-### Calendar 
+#### Calendar 
 Our calendar is the following one: basically
 
-## One glance schedule
+#### One glance schedule
 
 - 01 Week:  Test introduction
 - 02 Week:  OOP refresh

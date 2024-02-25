@@ -10,7 +10,8 @@ The current document contains a collection of design exercises at different leve
 - The fourth part presents some games.
 
 # Teacher corner
- 
+
+
 <!inputFile|path=Chapters/ForTeachers/forTeachers.md!>
 
 # Guided Exercices 
