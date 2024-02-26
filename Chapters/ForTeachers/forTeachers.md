@@ -95,65 +95,65 @@ In addition and as we will show below, such goals can be easily enriched with so
 The _'Advanced Object-Oriented Design'_ Mooc complements the Pharo Mooc available at [http://mooc.pharo.org](http://mooc.pharo.org)
 
 
-### Essence of OO Design from 1/2 to 1 Day Lecture
+### Lecture: Essence of OO design from 1/2 to 1 day 
 
-For a lecture of three hours we usually present the essence of dispatch, key points about inheritance and core extension mechanism.
-We use the following material from  [http://advanced-mooc.pharo.org](http://advanced-mooc.pharo.org):
+For a lecture on object-oriented design of three hours we usually present the essence of dispatch, key points about inheritance, and core extension mechanism.
+We use the following material from [http://advanced-mooc.pharo.org](http://advanced-mooc.pharo.org):
 
-- M1-1 LectureEssence of Dispatch: Taking Pharo Booleans as Example
-- M1-2 LectureEssence of Dispatch: Let the receiver decide
-- M1-3 LectureInheritance Basics
-- M1-4 LectureInheritance and Lookup: Self - Understand lookup once for all
-- M1-5 LectureAbout super
-- M3-2 LectureMessage Sends are Plans for Reuse
-- M3-3 LectureHooks and Template: One of the cornerstones of OOP
+- M1-1 Essence of Dispatch: Taking Pharo Booleans as Example
+- M1-2 Essence of Dispatch: Let the receiver decide
+- M1-3 Inheritance Basics
+- M1-4 Inheritance and Lookup: Self - Understand lookup once for all
+- M1-5 About super
+- M3-2 Message Sends are Plans for Reuse
+- M3-3 Hooks and Template: One of the cornerstones of OOP
 
+As a bonus we often give a little introduction to unit testing (M2-1 Test 101: The minimum) you should know and a live demo of eXtreme Test-Driven Design as shown in (M2-4 Xtreme Test Driven Development: Getting a productivity boost).
 
-### Pharo in 1 Day Lecture
+### Lecture: Pharo in 1 day
 
-Even if this is not directed supported that the Mooc [http://advanced-mooc.pharo.org](http://advanced-mooc.pharo.org), the Pharo Mooc [http://mooc.pharo.org](http://mooc.pharo.org) can be used and combined to produce a simple introduction to Pharo.
+Even if teaching Pharo is not directed supported by the Mooc [http://advanced-mooc.pharo.org](http://advanced-mooc.pharo.org), the Pharo Mooc [http://mooc.pharo.org](http://mooc.pharo.org) can be used and combined to produce a simple introduction to Pharo.
 
-Here is the material that we use.
+Here is the material that we use:
 
-- W1S01-What is Pharo?
-- W1S05-PharoSyntaxInANutshell
-- W1S06-Blocks
-- W1S07-Basic-Blocks-Loops
-- W1S07-BasicBooleansAndCondition
-- W1S08-Loops
-- W1S10-ClassAndMethodDefinition
-- W2S01-Messages
-- W2S02-Messages-ForTheJavaProgrammers
-- W2S03-Basic-Variables
-- W2S03-Messages-Precedence
-- W2S04-Messages-Sequence
-- W2S07-CharacterStringSymbol
-- W2S08-Basic-ArraySetOrderedCollection
-- W2S10-Iterators
--  W2S11-Streams
+- W1S05 PharoSyntaxInANutshell
+- W1S06 Blocks
+- W1S07 Basic-Blocks-Loops
+- W1S07 BasicBooleansAndCondition
+- W1S08 Loops
+- W1S10 ClassAndMethodDefinition
+- W2S01 Messages
+- W2S02 Messages-ForTheJavaProgrammers
+- W2S03 Basic-Variables
+- W2S03 Messages-Precedence
+- W2S04 Messages-Sequence
+- W2S07 CharacterStringSymbol
+- W2S08 Basic-ArraySetOrderedCollection
+- W2S10 Iterators
+-  W2S11 Streams
 
-Here are some extra lectures students may want to follow
-- W2S05-ParenthesisVsSquareBrackets
-- W2S06-Yourself
-- W2S09-UnderstandingMistakes
-- W3S00-TeapotAsAPretext
+Here are some extra lectures students may want to follow: 
+- W2S05 ParenthesisVsSquareBrackets
+- W2S06 Yourself
+- W2S09 UnderstandingMistakes
+- W3S00 TeapotAsAPretext
 
 We often also present some knowledge about tests:
 
-- M2-1 LectureTest 101: The minimum you should know
-- M2-3 LectureTest-Driven Development
-- M2-4 LectureXtreme Test Driven Development: Getting a productivity boost
+- M2-1 Test 101: The minimum you should know
+- M2-3 Test-Driven Development
+- M2-4 Xtreme Test Driven Development: Getting a productivity boost
 
 ### Basic OOP in 1/2 to 1 day
 
+- First Look At Class Object Methods http://rmod-pharo-mooc.lille.inria.fr/MOOC/2018-PreSequelOOP-FR/01-FirstLookAtClassObjectMethods.mp4
+- What is An Object http://rmod-pharo-mooc.lille.inria.fr/MOOC/2018-PreSequelOOP-FR/ 02-WhatisAnObject.mp4
+- What is A Class http://rmod-pharo-mooc.lille.inria.fr/MOOC/2018-PreSequelOOP-FR/ 03-WhatisAClass.mp4
+- Method Vs Messages 	http://rmod-pharo-mooc.lille.inria.fr/MOOC/2018-PreSequelOOP-FR/04-MethodVsMessages.mp4
+- Object-Oriented Paradigm http://rmod-pharo-mooc.lille.inria.fr/MOOC/2018-PreSequelOOP-FR/05-OOParadigm.mp4
 
-- W3S01-WhatisAnObject
-- W3S02-WhatisAClass
-- W3S03-MethodVsMessages
-- W3S04-OOParadigm
 
-
-### Pharo and OOD in 2 Days
+### Pharo and Object-oriented design in 2 days
 
 Often we start by one day on Pharo and we take another day to show the essence of OOD. 
 
@@ -178,15 +178,15 @@ The objectives of the lectures were:
 - Reverse engineering
 - Test quality with mutation testing
 - Soft skills:
-	- reporting: how to report activities?
-	- how to ask help, how to find information?
-	- how to learn fast a new language?
-	- how to report problems?
+-- reporting: how to report activities?
+-- how to ask help, how to find information?
+-- how to learn fast a new language?
+-- how to report problems?
 
 #### Setup 
 
 During the first two weeks they had to learn Pharo and report how they are learning, what were their strategies.
-We gave no lectures on Pharo. We listed some resources but gave no indication.
+We gave no lectures on Pharo. We listed some resources but we gave no indication.
 
 - [http://mooc.pharo.org](the mooc on pharo)
 - [https://discord.gg/QewZMZa](Pharo discord channel)

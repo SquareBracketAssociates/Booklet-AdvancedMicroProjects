@@ -1,16 +1,16 @@
 ## Introduction
 
 This book accompanies the _'The Advanced Object-Oriented Design and Development with Pharo'_ MOOC (AOOD) that is freely available at [https://advanced-design-mooc.pharo.org](https://advanced-design-mooc.pharo.org).
+This Mooc extends the Pharo Mooc [https://mooc.pharo.org](https://mooc.pharo.org).
 
 The current document contains a collection of design exercises at different levels of guidance and difficulties.
 
-- The first part is dedicated to teachers and presents different setup in which the material has been used.
-- The second part proposes several little projects to exercise double dispatch, command and visitor patterns.
+- The first part of the book is dedicated to teachers and presents different setups in which this material has been used.
+- The second part proposes several little projects to exercise double dispatch, Command and Visitor Design Patterns.
 - The third part proposes some unguided extensions to the previous projects.
-- The fourth part presents some games.
+- The fourth part presents some game ideas that you are invited to design and build with Bloc the new graphic layer of Pharo and that can also benefit from the micro framework Myg. 
 
 # Teacher corner
-
 
 <!inputFile|path=Chapters/ForTeachers/forTeachers.md!>
 
