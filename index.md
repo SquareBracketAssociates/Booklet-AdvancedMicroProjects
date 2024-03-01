@@ -32,6 +32,9 @@ It is fun to challenge ourselves to see how we could support the proposed variat
 
 <!inputFile|path=Chapters/Unguided/Unguided.md!>
 
+<!inputFile|path=Chapters/Tamagotchi/Tamagotchi.md!>
+<!inputFile|path=Chapters/Civilization/Civilization.md!>
+
 # Unguided Games
 
 In this part, we propose you design some simple board games using the Bloc graphical framework taking as an example the games of the Myg project.

@@ -1,18 +1,18 @@
 ## About Pharo and Moocs
 
-In this short chapter we want to stress some key properties about Pharo and the teaching material available. 
+In this short chapter, we want to stress some key properties about Pharo and the teaching material available. 
 
-### A truly excellent and pedagocial language
+### A truly excellent and pedagogical language
 
-Pharo is an truly excellent language and environment to teach object-oriented programming. 
+Pharo is a truly excellent language and environment to teach object-oriented programming. 
 Here are some reasons you will certainly recognize if you ever programmed or taught Pharo.
 
-- **Tiny Syntax**. The full syntax of Pharo fits on half of a postcard (see Listing *@fullsyntax@*). Good element can learn Pharo syntax in a couple of hours and productive in a couple of days. 
-- **A uniform object model without any exception**. Everything is an object and there is not a single exception. The execution model is the same at all level. There is no special rules for class methods.
+- **Tiny Syntax**. The full syntax of Pharo fits on half of a postcard (see Listing *@fullsyntax@*). A good element can learn Pharo syntax in a couple of hours and be productive in a couple of days. 
+- **A uniform object model without any exception**. Everything is an object and there is not a single exception. The execution model is the same at all levels. There are no special rules for class methods.
 - **Ready to use out of the box**. Pharo is ready to use in 2 min. There is no need to configure Eclipse. The SUnit framework is ready to use. 
 - **Highly immersive IDE**. Developers get immersed in a sea of objects. They can interact with live objects and this is a huge win to deeply understanding the object-oriented metaphor. They talk to their objects.
-- **Gorgeous TDD support**. Pharo is the best environment to develop following Test-Driven Design. In addition Pharo supports eXtreme Test-Driven Design that take full advantage of Test-Driven Design and liveness of Pharo. You literally develop in your debugger in the context of a test execution.
-- **Advanced integrated tools**. Pharo comes out of the box with a large set of tools: It offers refactorings, code critics, test coverage. It supports microcommits: all the changes and versions of all compiled methods are one click away. Developers can navigate back in their history, run the tests to validate a change revert. It has a full integration with Git. 
+- **Gorgeous TDD support**. Pharo is the best environment to develop following Test-Driven Design. In addition, Pharo supports eXtreme Test-Driven Design that takes full advantage of Test-Driven Design and liveness of Pharo. You literally develop in your debugger in the context of a test execution.
+- **Advanced integrated tools**. Pharo comes out of the box with a large set of tools: It offers refactorings, code critics, and test coverage. It supports microcommits: all the changes and versions of all compiled methods are one click away. Developers can navigate back in their history, and run the tests to validate a change revert. It has a full integration with Git. 
 
 
 ```caption=The full syntax of Pharo&label=fullsyntax
@@ -62,17 +62,24 @@ _IMHO the videos were very well done. I would even say shockingly well done… f
 
 The more I learning about @pharoproject the more I appreciate it's beauty and simplicity, finally, object-oriented programming is done right - MAQBOOL
 
+### Conclusion
+
+The two Moocs around Pharo are the results of more than 20 years teaching object-oriented programming. 
+Our experience shows that developers will not program the same once they follow such Moocs. 
+
+
 
 
 
 ## Lectures 
 
-Add here one testimony of the summer school student
+_Pharo Summer School was a game-changer! Before, I struggled with OOP, but now I get it. The presentations were polished, and the instructors made complex concepts simple and unforgettable. I've discovered the amazing possibilities of Pharo. It's way more than just a summer school. I highly recommend it to anyone in the programming world!
+Thank you to all the instructors and the Pharo Consortium for this amazing opportunity! I hope to see you all again soon!_ Q. 
 
-The material of the _'Advanced Object-Oriented Design'_ MOOC available at [http://advanced-mooc.pharo.org](http://advanced-mooc.pharo.org) has been refined over several years. It has been used for many successful lectures at different levels and configurations.
+The material of the _'Advanced Object-Oriented Design'_ MOOC available at [http://advanced-mooc.pharo.org](http://advanced-mooc.pharo.org) has been refined over several years and used in international summer schools. It has been used for many successful lectures at different levels and configurations.
 
-We describe some possible pedagogical objectives, some key insights, and different setups to take advantage of such a material.
-The conventions to refers to the slides and videos of the two Moocs follow the one of the original names:
+We describe some possible pedagogical objectives, some key insights, and different setups to take advantage of such material.
+The conventions to refer to the slides and videos of the two Moocs following the ones of the original names:
 - W (which stands for Week) is used in the Pharo Mooc and
 - M (which stands for Module) is used in the Advanced Object-Oriented Mooc.
 
@@ -82,7 +89,7 @@ The material proposed by the MOOC can be used to give lectures on the following 
 
 - Basic object-oriented programming (excluding for example Law of Demeter, Typing, Design Patterns)
 - Test-Driven Design
-- Basic Object-Oriented Design (creating hooks and template, designing reusable objects)
+- Basic Object-Oriented Design (creating Hooks and Template, designing reusable objects)
 - Advanced object-oriented design (including Design Patterns and type consideration)
 
 In addition and as we will show below, such goals can be easily enriched with soft skills such as:
@@ -96,7 +103,7 @@ The _'Advanced Object-Oriented Design'_ Mooc complements the Pharo Mooc availabl
 
 
 ### Lecture: Essence of OO design from 1/2 to 1 day 
-
+@OOD
 For a lecture on object-oriented design of three hours we usually present the essence of dispatch, key points about inheritance, and core extension mechanism.
 We use the following material from [http://advanced-mooc.pharo.org](http://advanced-mooc.pharo.org):
 
@@ -108,11 +115,11 @@ We use the following material from [http://advanced-mooc.pharo.org](http://advan
 - M3-2 Message Sends are Plans for Reuse
 - M3-3 Hooks and Template: One of the cornerstones of OOP
 
-As a bonus we often give a little introduction to unit testing (M2-1 Test 101: The minimum) you should know and a live demo of eXtreme Test-Driven Design as shown in (M2-4 Xtreme Test Driven Development: Getting a productivity boost).
+As a bonus, we often give a little introduction to unit testing (M2-1 Test 101: The minimum) you should know and a live demo of eXtreme Test-Driven Design as shown in (M2-4 Xtreme Test Driven Development: Getting a productivity boost).
 
 ### Lecture: Pharo in 1 day
 
-Even if teaching Pharo is not directed supported by the Mooc [http://advanced-mooc.pharo.org](http://advanced-mooc.pharo.org), the Pharo Mooc [http://mooc.pharo.org](http://mooc.pharo.org) can be used and combined to produce a simple introduction to Pharo.
+Even if teaching Pharo is not directed and supported by the Mooc [http://advanced-mooc.pharo.org](http://advanced-mooc.pharo.org), the Pharo Mooc [http://mooc.pharo.org](http://mooc.pharo.org) can be used and combined to produce a simple introduction to Pharo.
 
 Here is the material that we use:
 
@@ -138,19 +145,36 @@ Here are some extra lectures students may want to follow:
 - W2S09 UnderstandingMistakes
 - W3S00 TeapotAsAPretext
 
-We often also present some knowledge about tests:
+We often also present some knowledge about tests. For this we use:
 
 - M2-1 Test 101: The minimum you should know
 - M2-3 Test-Driven Development
-- M2-4 Xtreme Test Driven Development: Getting a productivity boost
+- M2-4 Xtreme Test-Driven Development: Getting a productivity boost
 
 ### Basic OOP in 1/2 to 1 day
 
-- First Look At Class Object Methods http://rmod-pharo-mooc.lille.inria.fr/MOOC/2018-PreSequelOOP-FR/01-FirstLookAtClassObjectMethods.mp4
-- What is An Object http://rmod-pharo-mooc.lille.inria.fr/MOOC/2018-PreSequelOOP-FR/ 02-WhatisAnObject.mp4
-- What is A Class http://rmod-pharo-mooc.lille.inria.fr/MOOC/2018-PreSequelOOP-FR/ 03-WhatisAClass.mp4
-- Method Vs Messages 	http://rmod-pharo-mooc.lille.inria.fr/MOOC/2018-PreSequelOOP-FR/04-MethodVsMessages.mp4
-- Object-Oriented Paradigm http://rmod-pharo-mooc.lille.inria.fr/MOOC/2018-PreSequelOOP-FR/05-OOParadigm.mp4
+When we are teaching object-oriented basics we use the lectures available as PreSequel of the Pharo mooc
+and available under http://rmod-pharo-mooc.lille.inria.fr/MOOC/2018-PreSequelOOP-FR/ and http://rmod-pharo-mooc.lille.inria.fr/MOOC/2018-PreSequelOOP-EN/
+
+The five following lectures cover the basics.
+- First Look At Class Object Methods
+- What is An Object?
+- What is A Class?
+- Method Vs Messages
+- Object-Oriented Paradigm
+
+Since we believe that tests are also key knowledge we often also present:
+
+- M2-1 Test 101: The minimum you should know
+- M2-3 Test-Driven Development
+- M2-4 Xtreme Test-Driven Development: Getting a productivity boost
+
+Finally if time allows it we present some of the lectures presented in Section *@OOD@*.
+We focus in particular on the following 3 lectures:
+
+- M1-1 Essence of Dispatch: Taking Pharo Booleans as Example
+- M1-2 Essence of Dispatch: Let the receiver decide
+- M3-2 Message Sends are Plans for Reuse
 
 
 ### Pharo and Object-oriented design in 2 days
