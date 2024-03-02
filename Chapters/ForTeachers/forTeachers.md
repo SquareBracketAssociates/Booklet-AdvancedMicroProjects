@@ -65,7 +65,7 @@ The more I learning about @pharoproject the more I appreciate it's beauty and si
 ### Conclusion
 
 The two Moocs around Pharo are the results of more than 20 years teaching object-oriented programming. 
-Our experience shows that developers will not program the same once they follow such Moocs. 
+Our experience shows that developers do not program the same once they follow such Moocs. 
 
 
 
@@ -180,11 +180,13 @@ We focus in particular on the following 3 lectures:
 ### Pharo and Object-oriented design in 2 days
 
 Often we start by one day on Pharo and we take another day to show the essence of OOD. 
-
-
-
-more here.
-
+In addition, we often show the inspector and the fact that developers can extend to adapt to the model 
+they manipulate. We show that having adaptable tools is a productivity boost. 
+Finally we stress that eXtreme Test-Driven development as promoted by Pharo is really powerful since 
+a test specifies a clear context that is then used to code in debugger. Coding in the debugger is not just fixing a 
+bug, it is having all the information (the context) at hand in a specific configuration that helps focusing 
+on points specified by a test. This is extremelly powerful. It combines the power of Test-Driven Design with the 
+deep immersive interaction of Pharo.
 
 
 ### Advanced object-oriented design lecture example
@@ -209,8 +211,8 @@ The objectives of the lectures were:
 
 #### Setup 
 
-During the first two weeks they had to learn Pharo and report how they are learning, what were their strategies.
-We gave no lectures on Pharo. We listed some resources but we gave no indication.
+During the first two weeks they had to learn Pharo and report how they are learning, what were their strategies to learn fast.
+We gave no lectures on Pharo. We only listed the following resources:
 
 - [http://mooc.pharo.org](the mooc on pharo)
 - [https://discord.gg/QewZMZa](Pharo discord channel)
@@ -218,14 +220,13 @@ We gave no lectures on Pharo. We listed some resources but we gave no indication
 - [http://books.pharo.org](Pharo with Style)
 - [https://scg.unibe.ch/download/oorp/OORP.pdf](Object-Oriented Reengineering Patterns)
 
-
-Each week the students have to watch a couple of videos and one or two lectures are given by us.
-During the first 6 weeks, each week they had to do some exercises following some scripts.
+Each week, the students have to watch a couple of videos and one or two lectures are given by us.
+During the first 6 weeks, each week they had to do some exercises following some scripts or exercises such as the ones
+reported later in this book. Then in the subsequent weeks students are asked to develop a little board game as shown in Chapter @games.
+In the new version of the lecture, we plan to make the lecture centered around the game design so that students get more time. 
 
 #### Calendar 
-Our calendar is the following one: basically
-
-#### One glance schedule
+Our calendar is the following one:
 
 - 01 Week:  Test introduction
 - 02 Week:  OOP refresh
@@ -241,8 +242,15 @@ Break
 - 11 Week Types
 -- Exam
 
+### Conclusion
 
+Our experience shows that Pharo and its Moocs are excellent material for teaching 
+a large range of lectures focusing on key and perennial knowledge that can be mapped to any hype language.
+In addition, an aspect that is often not stress enough if the large overhead that teachers are facing when using language
+such as Java. Pharo is a out-of-the-box running environment. 
 
+All the materials around Pharo are release under permissive licenses and the Pharo community (with exercism, discord channels)
+is welcoming newbies.
 
 
 

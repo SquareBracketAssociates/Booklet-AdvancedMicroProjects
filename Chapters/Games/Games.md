@@ -1,4 +1,5 @@
 ## Designing little board games
+@games
 
 This chapter lists some game descriptions. The idea is to be able to use elements of such a list as design exercises. All the games in this chapter requires a 2D grid that can be found in the package Array2D of the following http://github.com/Pharo-contribution repository.
 

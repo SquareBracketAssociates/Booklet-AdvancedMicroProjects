@@ -7,7 +7,7 @@ The current document contains a collection of design exercises at different leve
 
 - The first part of the book is dedicated to teachers and presents different setups in which this material has been used.
 - The second part proposes several little projects to exercise double dispatch, Command and Visitor Design Patterns.
-- The third part proposes some unguided extensions to the previous projects.
+- The third part proposes some unguided extensions to the previous projects as well as some exercises that are also losely described to let space for variations. 
 - The fourth part presents some game ideas that you are invited to design and build with Bloc the new graphic layer of Pharo and that can also benefit from the micro framework Myg. 
 
 # Teacher corner
