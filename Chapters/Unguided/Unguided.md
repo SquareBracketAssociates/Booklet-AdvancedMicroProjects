@@ -7,16 +7,24 @@ In many exercises you should avoid to rely on conditionals.
 ### LAN simulator
 
 A LAN is composed of different kinds of nodes. Packets circulate inside the LAN from node to node. 
+The code is available at:
 
-A node has an address and a next node to which it forward packets that are not addressed to it. 
+```
+Metacello new
+  baseline: 'SimpleLAN';
+  repository: 'github://Ducasse/SimpleLAN/src';
+  load.
+```
+
+A node has an address and a next node to which it forwards packets that are not addressed to it. 
 When the packet is addressed to a node, then depending on the node kind it performs its action. 
-A packet has an address and a contents.
+A packet has an address and contents.
 
 A simple LAN is composed of simple nodes. Simple nodes just forward the packets that are not addressed to them to their next node.
 
-##### Different kind of nodes
+##### Different kinds of nodes
 
-Let us introduce new kind of nodes.
+Let us introduce new kinds of nodes.
 - printer nodes print the contents of the packet they receive if the packet is addressed.
 - workstation nodes can emit packets.
 
@@ -24,24 +32,34 @@ Let us introduce new kind of nodes.
 
 There are several possible extensions: 
 
+##### Better way to follow the execution of the simulation. 
+In the default implementation, the `accept:` method writes on the Transcript. This is not good since the trace is mixed with 
+other program traces. (Note that the Transcript is a global variable shared by the complete environment). In addition, it is not easy to write tests for the `send:` and `accept:` methods. 
+One solution is to have a stream shared by all the nodes of a simulation, stream on which all the messages written to the Transcript are now written to. Propose one solution. To validate your solution, write some tests for `send:` and `accept:`. 
+They should be able to run without writing to the Transcript.
+
 ##### Star node
+
 Introduce a star node that supports the creation of star network. A star node does not have one but many following nodes. 
 
+
+##### Avoiding some conditions.
+The way the instance variable `nextNode` is managed (having nil or a node as value) is based on conditions in different places: the method `accept:` or the method `send:`. Propose a solution to be able to remove such conditions. One possible solution is to apply the NullObject design pattern.
 
 
 ##### Trottling node
 
-This node accumulates packets and wait before to forward them.
+This node accumulates packets and waits before forwarding them.
 They wait to have received a certain number of packets before sending a batch of collected packets.
 
 ##### Handling loops
 
-Introduce a origin to the packet and make sure that if it reaches the node that emitted it is not propagated. 
+Introduce an origin to the packet and make sure that if it reaches the node that emitted it is not propagated. 
 
 ##### Limited packet distance
 
-We decide that a packet can only be forward a given number of times. After that it should reemitted or is not propagated if it did not reach its destination. 
-Introduce a repetiting node that recharges the distance number of packet can have. 
+We decided that a packet can only be forwarded a given number of times. After that, it should reemitted or is not propagated if it did not reach its destination. 
+Introduce a repeating node that recharges the distance number of packet can have. 
 
 ##### Different kinds of packets
 
