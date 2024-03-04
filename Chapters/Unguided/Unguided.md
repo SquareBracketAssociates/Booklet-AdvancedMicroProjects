@@ -22,15 +22,26 @@ A packet has an address and contents.
 
 A simple LAN is composed of simple nodes. Simple nodes just forward the packets that are not addressed to them to their next node.
 
-##### Different kinds of nodes
-
-Let us introduce new kinds of nodes.
-- printer nodes print the contents of the packet they receive if the packet is addressed.
-- workstation nodes can emit packets.
-
 ### Extensions
 
 There are several possible extensions: 
+
+### Hook for accept
+
+Subclasses such as `LNWorkstation` or `LNPrinter` redefine the `accept:` method and systematically check that the packet is sent to the receiver to perform a specific action else they pass it to the next node. 
+The following method illustrates this behavior:
+
+```
+LNPrinter >> accept: aPacket	(aPacket isAddressedTo: self) 
+		ifTrue: [ 'Node ' , aPacket originatorName , ' sent to printer: '		, aPacket contents traceCr ]
+	ifFalse: [ super accept: aPacket ]
+```
+
+This repetition indicates that this behavior could be factored out in the superclass.
+So define such behavior in the superclass and introduce a new method called `treatPacket:`. Such a new method will be redefined in all the subclasses. 
+
+
+
 
 ##### Better way to follow the execution of the simulation. 
 In the default implementation, the `accept:` method writes on the Transcript. This is not good since the trace is mixed with 
