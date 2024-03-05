@@ -25,13 +25,12 @@ The current document contains a collection of design exercises at different leve
 <!inputFile|path=Chapters/Expression/Expression.md!>
 <!inputFile|path=Chapters/Visitor/Visitor.md!>
 
-# Unguided Extensions
+# Unguided Exercises
 
-In this part we propose multiple extensions to the previous mini projects.
+In this part, we propose multiple extensions to the previous projects.
 It is fun to challenge ourselves to see how we could support the proposed variations.
 
 <!inputFile|path=Chapters/Unguided/Unguided.md!>
-
 <!inputFile|path=Chapters/Tamagotchi/Tamagotchi.md!>
 <!inputFile|path=Chapters/Civilization/Civilization.md!>
 
