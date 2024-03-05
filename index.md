@@ -1,7 +1,7 @@
 ## Introduction
 
-This book accompanies the _'The Advanced Object-Oriented Design and Development with Pharo'_ MOOC (AOOD) that is freely available at [https://advanced-design-mooc.pharo.org](https://advanced-design-mooc.pharo.org).
-This Mooc extends the Pharo Mooc [https://mooc.pharo.org](https://mooc.pharo.org).
+This book accompanies the _'The Advanced Object-Oriented Design and Development with Pharo'_ MOOC (AOOD) that is freely available at [https://advanced-design-\-mooc.pharo.org](https://advanced-design-mooc.pharo.org).
+The AOOD Mooc is not about Pharo but about object-oriented design and present a large set of topics on this subject from basic to advanced points. From this perspective AOOD Mooc extends the Pharo Mooc [https://mooc.pharo.org](https://mooc.pharo.org). AOOD Mooc uses Pharo and readers may want to watch some videos of the Pharo Mooc to better understand the code. The module 0 of the AOOD Mocc proposes a selection of lectures to get up to speed with Pharo.
 
 The current document contains a collection of design exercises at different levels of guidance and difficulties.
 

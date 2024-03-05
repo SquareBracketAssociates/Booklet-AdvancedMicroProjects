@@ -163,18 +163,23 @@ The game ends when the board is full.
 ### Memory
 
 With the memory game, two pictures are revealed one by one and the user should pair them across the game. 
+Each player gets points based on the pairs he found. 
 
 ![ Memory ](figures/Memory.png width=40&label=Memory)
 
 ##### Specific extensions
-- Pairing many similar tiles
-- Pairing three similar tiles
-- Adding joker tiles
+- Pairing three similar tiles. Instead of identify two similar tiles, the game would have three similar tiles. 
+- Some tiles could be blurry and provide more points when paired.
+- Pairing many similar tiles could be a different game and the largest sequence could give more points: 2 for 1 points, 3 for 3 points, 4 for 6 points.
+- Adding joker tiles. Joker tiles could pair with any tiles.
 
 
 ### SlideOut
 
-![SlideOut: Elements can slide in one direction but are blocked by others. The goal is to get the red element out.](figures/SlideOut.png width=40&label=GameOne)
+Figure *@SlideOut@* describes the game: it is composed on shapes that slide in one direction. 
+By sliding the different pieces, the player should be able to move the red elements to the exit.
+
+![SlideOut: Elements can slide in one direction but are blocked by others. The goal is to get the red element out.](figures/SlideOut.png width=40&label=SlideOut)
 
 
 ### Laser game
