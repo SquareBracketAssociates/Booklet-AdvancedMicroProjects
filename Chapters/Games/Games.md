@@ -70,6 +70,15 @@ Metacello new
 
 Note that the implementation of 2048 is a sketch and was used to brainstorm on skinning. It should be rewritten using more recent implementations of Bloc.
 
+### Some generic extensions
+
+Here is a list of generic extensions that can be applied to many games:
+
+- Support the definition of levels by proposing a progression in terms of difficulties.
+- Offer the possibility to replay a given level.
+- Offer the possibility to save a game.
+- Offer the possibility to replay a game up to a certain point.
+- Record the time to finish a game with high score management. 
 
 
 
@@ -81,35 +90,64 @@ The user has two kinds of action:
 - declare that a cell contains a bomb or 
 - declare that a cell is free and ask for a validation.
 
-- Free cell declaration: If the user is wrong and there is a bomb then he loses the game. If the user is right then the cell displays the number of adjacent bomb around the cell. 
-- Bomb declaration: when a cell is declared as a bomb a bomb is displayed.
+##### Free cell declaration: 
+
+If the user is wrong and there is a bomb then he loses the game. If the user is right then the cell displays the number of adjacent bomb around the cell. 
+
+##### Bomb declaration: 
+when a cell is declared as a bomb a bomb is displayed.
 
 When all the cells have been revealed or marked as a bomb, the game proceeds to the validation.  If the bombs are correctly identified the user wins.
 
 ![ Minesweeper: identifying mines based on the number of adjacent cells containing a bomb.](figures/MineSweeper2.png width=60&label=mine)
 
+Since the Myg framework already propose an implementation we suggest the following possible extensions:
+
+##### Specific extensions:
+- Define multiple algorithms to place the bombs. Right now it is fully random. For example make sure that the user with all the information does not have to select a tile randomly.
+
 
 ### Flood it
 
-A certain configuration of tiles of different colors are placed on the board.
-The player can do a "flood fill" on the top left tile, changing the color of any adjacent tiles of the same color. The player wins if he is able to make the entire board a single color within a certain number of moves. Figure @*Floodit*@ illustrates the situation.
+A certain configuration of tiles of different colors is placed on the board (See Figure *@Floodit@*)
+The player can do a "flood fill" on the top left tile, changing the color of any adjacent tiles of the same color. The player wins if he is able to make the entire board a single color within a certain number of moves.
 
-![ Flood it ](figures/FloodIt.png width=40&label=Floodit)
+![ Flood it: change the color of any adjacent tiles with the same color. ](figures/FloodIt.png width=40&label=Floodit)
+
+##### Specific extensions:
+- you can introduce a color that matches multiple ones
+- tiles that do not match any colors
+- tiles that change colors every n actions
 
 ### Tetris and variations
 
- Figure @*Tetris*@
+With Tetris, shapes fall from the top of the screen and lines can be eliminated only when they are entirely filled up. 
 
-![ Flood it ](figures/FloodIt.png width=40&label=Tetris)
+##### Specific extensions
+
+Here are some possible extensions:
+- Add tiles that cannot be removed.
+- Add shapes that shrink/expand when placed.
+
+
+Using Tetris like tile shapes, many games can be built with different gameplay. 
+Figure *@Tetris@* shows a game where the shapes do not fall from the top of the screen but the player has to select them and drop them. 
+When a line is full it is removed not changing the lines on top. 
+
+##### Specific extensions 
+- Adding special tiles with diamonds and others and we different scoring and objectives.
+- Placing tiles that cannot be matched and removed. 
+
+![ Tetris variations ](figures/BlockBlast.png width=40&label=Tetris)
 
 
 
 
 ### 2048
 
-The user should merge numbers that are randomly drawn. 
+The user should merge multiple of two  numbers that are randomly drawn. 
 Two numbers of the same value are merged. The resulting number of the sum replaces the sum. 
-The user decides the merge by choosing one direction.
+The user decides the merge by choosing one direction. All the numbers that can merge are merged in the chosen direction.
 
 The game starts with 2 and continues with the sum e.g., 4, 8, 16, 64.... It should adapt the numbers that are placed on the board in the sense that it does not have to 2 when the average numbers are 512.
 
@@ -117,10 +155,22 @@ The game starts with 2 and continues with the sum e.g., 4, 8, 16, 64.... It shou
 
 The game ends when the board is full.
 
+##### Specific extensions
+
+- Merging two numbers could produce an explosion and destroy unmergeable tiles.
+
 
 ### Memory
 
+With the memory game, two pictures are revealed one by one and the user should pair them across the game. 
+
 ![ Memory ](figures/Memory.png width=40&label=Memory)
+
+##### Specific extensions
+- Pairing many similar tiles
+- Pairing three similar tiles
+- Adding joker tiles
+
 
 ### SlideOut
 
