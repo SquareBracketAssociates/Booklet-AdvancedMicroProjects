@@ -26,14 +26,17 @@ A simple LAN is composed of simple nodes. Simple nodes just forward the packets 
 
 There are several possible extensions: 
 
-### Hook for accept
+#### Hook for accept
 
 Subclasses such as `LNWorkstation` or `LNPrinter` redefine the `accept:` method and systematically check that the packet is sent to the receiver to perform a specific action else they pass it to the next node. 
 The following method illustrates this behavior:
 
 ```
-LNPrinter >> accept: aPacket	(aPacket isAddressedTo: self) 
-		ifTrue: [ 'Node ' , aPacket originatorName , ' sent to printer: '		, aPacket contents traceCr ]
+LNPrinter >> accept: aPacket
+
+	(aPacket isAddressedTo: self) 
+		ifTrue: [ 'Node ' , aPacket originatorName , ' sent to printer: '
+		, aPacket contents traceCr ]
 	ifFalse: [ super accept: aPacket ]
 ```
 
