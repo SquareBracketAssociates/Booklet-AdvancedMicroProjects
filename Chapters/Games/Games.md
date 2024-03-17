@@ -1,15 +1,25 @@
 ## Designing little board games
 @games
 
-This chapter lists some game descriptions. The idea is to be able to use elements of such a list as design exercises. All the games in this chapter requires a 2D grid that can be found in the package Array2D of the following http://github.com/Pharo-contribution repository.
-
+This chapter lists some game descriptions. The idea is to be able to use elements of such a list as design exercises. 
 We suggest to focus first on designing the model of the game with tests.
 In a second step you can add an UI layer based on the new Bloc framework. 
+
+### Support 
+
+All the games in this chapter requires a 2D grid that can be found in the package Array2D of the following http://github.com/Pharo-contribution repository.
+
+```
+Metacello new
+  baseline: 'ContainersArray2D';
+  repository: 'github://pharo-containers/Containers-Array2D/src';
+  load.
+```
 
 ### Loading Myg and Bloc
 
 You can get some ideas how to develop your game UI by studying the Myg framework. The Myg framework is a framework to build little 2D board games. 
-A Miner, Sokoban, and Takuzu have been built on top of it.
+A Miner, Sokoban, Memory, and Takuzu have been built on top of it.
 It provides ways to build levels and other facilities.
 
 ```
@@ -58,6 +68,7 @@ Besides the Myg framework mentioned above, there are some resources available th
 The book Learning Object-oriented Design with TDD in Pharo available on http://books.pharo.org contains a chapter building step by step a model of Snakes and Ladders. 
 
 In addition the book "Building a memory game with Bloc" available on http://book.pharo.org and https://github.com/SquareBracketAssociates/Booklet-BuildingMemoryGameWithBloc presents how to build a simple memory game. 
+It does not use Myg.
 
 In the Tutorial project of the Bloc repository there is an implementation of the 2048 game. It is in draft mode but you can get inspiration from it too.
 
@@ -74,13 +85,13 @@ Note that the implementation of 2048 is a sketch and was used to brainstorm on s
 
 Here is a list of generic extensions that can be applied to many games:
 
-- Support the definition of levels by proposing a progression in terms of difficulties.
+- Support the definition of levels by proposing a progression in terms of difficulties or different challenges.
 - Offer the possibility to replay a given level.
 - Offer the possibility to save a game.
 - Offer the possibility to replay a game up to a certain point.
-- Record the time to finish a game with high score management. 
+- Record the time or the number of moves to finish a game with high score management. 
 
-
+![ Minesweeper: identifying mines based on the number of adjacent cells containing a bomb.](figures/MineSweeper2.png width=60&label=mine)
 
 ### Minesweeper
 
@@ -99,20 +110,19 @@ when a cell is declared as a bomb a bomb is displayed.
 
 When all the cells have been revealed or marked as a bomb, the game proceeds to the validation.  If the bombs are correctly identified the user wins.
 
-![ Minesweeper: identifying mines based on the number of adjacent cells containing a bomb.](figures/MineSweeper2.png width=60&label=mine)
-
 Since the Myg framework already propose an implementation we suggest the following possible extensions:
 
 ##### Specific extensions:
 - Define multiple algorithms to place the bombs. Right now it is fully random. For example make sure that the user with all the information does not have to select a tile randomly.
 
+![ Flood it: change the color of any adjacent tiles with the same color. ](figures/FloodIt.png width=40&label=Floodit)
 
 ### Flood it
 
 A certain configuration of tiles of different colors is placed on the board (See Figure *@Floodit@*)
 The player can do a "flood fill" on the top left tile, changing the color of any adjacent tiles of the same color. The player wins if he is able to make the entire board a single color within a certain number of moves.
 
-![ Flood it: change the color of any adjacent tiles with the same color. ](figures/FloodIt.png width=40&label=Floodit)
+
 
 ##### Specific extensions:
 - you can introduce a color that matches multiple ones
@@ -138,7 +148,7 @@ When a line is full it is removed not changing the lines on top.
 - Adding special tiles with diamonds and others and we different scoring and objectives.
 - Placing tiles that cannot be matched and removed. 
 
-![ Tetris variations ](figures/BlockBlast.png width=40&label=Tetris)
+![ Tetris variations: Here the user places forms to remove rows and lines. ](figures/BlockBlast.png width=30&label=Tetris)
 
 
 
@@ -157,7 +167,7 @@ The game ends when the board is full.
 
 ##### Specific extensions
 
-- Merging two numbers could produce an explosion and destroy unmergeable tiles.
+- Merging two numbers could produce an explosion and destroy unmergeable tiles that are close to the resulting tile.
 
 
 ### Memory
@@ -184,34 +194,17 @@ By sliding the different pieces, the player should be able to move the red eleme
 
 ### Laser game
 
-The game will be played on a grid. We will imagine having a laser beam that can be activated by the user. This will fire into the grid from a specific location. The laser beam will always fire from the bottom edge underneath the first column of cells (marked by the arrow in Figure *GameOne*). As the laser beam traverses inside our grid it can hit deflecting mirrors. These mirrors will divert the laser beam's direction as it travels. Ultimately the beam should hit a target location inside our grid.  Once the laser is fired we will see how the cells guide the laser to a destination. 
-
-The cells of our grid will either be blank, have a target (shown as a circle here) or a deflecting mirror. The mirrors may be oriented in either of two ways, leaning left or right.
+A laser beam is activated from a source specific location.  As the laser beam traverses the grid it can hit deflecting mirrors. These mirrors will divert the laser beam's direction as it travels. Ultimately the beam should hit a target location inside our grid.  
 
 ![(a) Starting from its origin, the laser beam should reach the target. (b) Rotating a mirror changes the path of the laser beam](figures/Laser-2-Concept-MirrorRotation.png width=60&label=GameOne)
-
-Initial locations and orientations of the mirror cells will be randomly controlled by the game. In *GameOne*(a) the mirrors yield a correct result. However, the user has control over mirror rotation and position (to a certain amount). The user can click on a mirror cell and cause the mirror cell to rotate 90 degrees. This could alter the laser's direction as shown by Figure *GameOne*(b). When the laser hits a grid wall, its path ends.
-
-Since, initially, this is a solitaire game, it becomes more interesting to have the user manipulate the mirrors to find the longest possible path to the target.  
-
-The user may click on a mirror cell and cause it to slide one grid-cell in a vertical or horizontal direction. Note that a mirror cell cannot move through the grid walls nor through another mirror cell nor the target cell. In this way the user can adjust the mirror cells to get an intermediate result as shown by Figure *LongerPathOne*.
-
-%+Finding a longer path, first move, slide %mirror.>file://figures/2-LongerPath1-Slide.png|width=60|label=LongerPathOne+
-
-A further intermediate result is produced by rotating the mirror shown in Figure @*LongerPathTwo*@.
-
-%+Finding a longer path, second move, rotate %mirror.>file://figures/2-LongerPath2-Rotate.png|width=60|label=LongerPathTwo+
-
-%+Finding a longer path, last move, rotate %mirror.>file://figures/2-LongerPath3-Slide.png|width=60|label=LongerPathThree+
-
-As a last step, one more mirror is moved to get the laser back to the target cell as shown in Figure @*LongerPathThree*@. This time the path of the laser is longer than before. And of course, it was strictly a random coincidence that the initial cell configuration already provided a correct path for the laser.
+It becomes more interesting to have the user manipulate the mirrors to find the longest possible path to the target.  
 
 That's the general idea. We can add laser cell-path counters and other game instrumentation as we develop.
 
 
 ### Same game
 
-The goal of the game is to eliminate all the colored cells of the game. A group of connected cells of the same color are eliminated altogether. When a column is empty, it is eliminated so that the two sides are touching each other. Figure *@same@* shows a same game. 
+The goal of the game is to eliminate all the colored cells of the game. A group of connected cells of the same color are eliminated. When a column is empty, it is eliminated so that the two sides are touching each other. Figure *@same@* shows a same game instance. 
 
 ![ SameGame: collapsing columns by removing one by one colored of the cell of the same color. ](figures/SameGame.png width=40&label=same)
 
@@ -219,14 +212,19 @@ The goal of the game is to eliminate all the colored cells of the game. A group 
 
 ### Nonogram
 
-Nonograms  are addictive types of logic puzzles where you use the number clues around the sides to color in boxes to reveal a picture.  
-The other names of nonograms are Griddler or Picross (Nintendo game)
+Nonograms are logic puzzles where you use the number clues around the sides to color the cells in the grid to reveal a picture.  The other names of nonograms are Griddler or Picross (Nintendo game).
 
-https://delightfulpaths.com/what-are-nonograms-or-griddlers explains the rules of the game. 
-You can see an example in Figure @*nonograms*@. Nonograms can be in black and white or colors.
+[https://delightfulpaths.com/what-are-nonograms-or-griddlers](https://delightfulpaths.com/what-are-nonograms-or-griddlers) explains the rules of the game. 
+You can see an example in Figure *@nonograms@*. Nonograms can be in black and white or with colors.
+The player should select a tile and declare whether it contains or not a color. 
+The players can make a certain number of mistakes before losing the game. 
 
-![ Nonograms: coloring cells based on number clues. ](figures/nonograms.png width=40&label=nonograms)
-
-### Taquin
+![ Nonograms: coloring cells based on number clues. ](figures/nonograms.png width=35&label=nonograms)
 
 ### Conclusion
+
+Developing such games using Testing Driven Development is  pedagogically worth because each test can validate a given aspect of the game. In addition, a bunch of UML diagrams do not easily capture the essence of a game, as some new developers may think. Adding new features may invalidate certain previously passing tests and often require refactoring the model. 
+
+We definitively encourage you to play the game and develop a game and variations to exercise your object-oriented skills. 
+
+ 
