@@ -1,6 +1,6 @@
 ## About Pharo and Moocs
 
-In this short chapter, we want to stress some key properties about Pharo and the teaching material available. 
+In this short chapter, we want to stress some key properties of Pharo and the teaching material we developed around it. 
 
 ### A truly excellent and pedagogical language
 
@@ -23,7 +23,7 @@ exampleWithNumber: x
 	true & false not & (nil isNil)
 		ifFalse: [ self halt ].
 	y := self size + super size. 
-	#($a #a 'a' 1 1.0)
+	{ #($a #a 'a' 1 1.0) . 1 + 2 }
 		do: [ :each | Transcript
 			show: (each class name); 
 			show: (each printString); show:''].
@@ -60,11 +60,11 @@ A general comment I wanted to make is that the MOOC so far has been great. Impre
 
 _IMHO the videos were very well done. I would even say shockingly well done… for a bunch of programmers who are supposed to be clueless about design - SeanDeNigris - 10/26/2017_
 
-The more I learning about @pharoproject the more I appreciate it's beauty and simplicity, finally, object-oriented programming is done right - MAQBOOL
+The more I'm learning about @pharoproject the more I appreciate it's beauty and simplicity, finally, object-oriented programming is done right - MAQBOOL
 
 ### Conclusion
 
-The two Moocs around Pharo are the results of more than 20 years teaching object-oriented programming. 
+The two Moocs around Pharo are the results of more than 60 years teaching object-oriented programming. 
 Our experience shows that developers do not program the same once they follow such Moocs. 
 
 
@@ -151,7 +151,7 @@ We often also present some knowledge about tests. For this we use:
 - M2-3 Test-Driven Development
 - M2-4 Xtreme Test-Driven Development: Getting a productivity boost
 
-### Basic OOP in 1/2 to 1 day
+### Lecture: Basic OOP in 1/2 to 1 day
 
 When we are teaching object-oriented basics we use the lectures available as PreSequel of the Pharo mooc
 and available under http://rmod-pharo-mooc.lille.inria.fr/MOOC/2018-PreSequelOOP-FR/ and http://rmod-pharo-mooc.lille.inria.fr/MOOC/2018-PreSequelOOP-EN/
@@ -169,7 +169,7 @@ Since we believe that tests are also key knowledge we often also present:
 - M2-3 Test-Driven Development
 - M2-4 Xtreme Test-Driven Development: Getting a productivity boost
 
-Finally if time allows it we present some of the lectures presented in Section *@OOD@*.
+Finally, if time allows it we present some of the lectures presented in Section *@OOD@*.
 We focus in particular on the following 3 lectures:
 
 - M1-1 Essence of Dispatch: Taking Pharo Booleans as Example
@@ -177,7 +177,7 @@ We focus in particular on the following 3 lectures:
 - M3-2 Message Sends are Plans for Reuse
 
 
-### Pharo and Object-oriented design in 2 days
+### Lecture: Pharo and Object-oriented design in 2 days
 
 Often we start by one day on Pharo and we take another day to show the essence of OOD. 
 In addition, we often show the inspector and the fact that developers can extend to adapt to the model 
@@ -189,7 +189,7 @@ on points specified by a test. This is extremelly powerful. It combines the powe
 deep immersive interaction of Pharo.
 
 
-### Advanced object-oriented design lecture example
+### Lecture: Advanced object-oriented design lecture example
 
 During several years we used and developed around this material the following lecture whose description is available at [https://github.com/pharo-mooc/AdvancedOODesignWithTDD](https://github.com/pharo-mooc/AdvancedOODesignWithTDD)
 
@@ -211,7 +211,7 @@ The objectives of the lectures were:
 
 #### Setup 
 
-During the first two weeks they had to learn Pharo and report how they are learning, what were their strategies to learn fast.
+During the first two weeks they had to learn Pharo and report how they were learning, and what were their strategies to learn fast.
 We gave no lectures on Pharo. We only listed the following resources:
 
 - [http://mooc.pharo.org](the mooc on pharo)
@@ -222,7 +222,7 @@ We gave no lectures on Pharo. We only listed the following resources:
 
 Each week, the students have to watch a couple of videos and one or two lectures are given by us.
 During the first 6 weeks, each week they had to do some exercises following some scripts or exercises such as the ones
-reported later in this book. Then in the subsequent weeks students are asked to develop a little board game as shown in Chapter @games.
+reported later in this book. Then in the subsequent weeks, students are asked to develop a little board game as shown in Chapter @games.
 In the new version of the lecture, we plan to make the lecture centered around the game design so that students get more time. 
 
 #### Calendar 
