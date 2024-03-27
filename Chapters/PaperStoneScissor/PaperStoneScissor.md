@@ -1,13 +1,13 @@
 ## Stone paper scissors
 %spellchecked
-@cha_stone
+@cha:stone
 
 As we already saw sending a message is in fact making a choice. Indeed when we send a message, the method associated with the method in the class hierarchy of the receiver will be selected and executed. 
 
 Now we often have cases where we would like to select a method based on the receiver of the message and one argument. 
-Again there is a simple solution named double dispatch that consists in sending another message to the argument hence making two choices one after the other. 
+Again there is a simple solution named double dispatch that consists of sending another message to the argument hence making two choices one after the other. 
 
-This technique while simple can be challenging to grasp because programmers are so used to thinking that choices are made using explicit conditionals.  In this chapter, we will show an example of double dispatch via the paper stone scissors game. 
+This technique while simple can be challenging to grasp because programmers are so used to thinking that choices are made using explicit conditionals.  In this chapter, we will show an example of double dispatch via the paper-stone-scissors game. 
 
 This exercise will show you an important paradigmatic shift where you will go from asking questions (conditionals) to sending orders.
 It is a clear illustration of the 'Don't ask, Tell' design principle.
@@ -336,7 +336,7 @@ This exercise about double dispatch is really simple and it has two aspects that
 
 First, it is symmetrical. You play a stone against a paper or the inverse. Not all the double dispatches are symmetrical. For example, when drawing an object against a canvas the operation for example `drawOn: aCanva` is directed. It does not change much about the double dispatch but we wanted to make clear that it does not have to be this way. 
 
-Second the secondary methods \(`playAgainstXXX`\) do not use the argument and this is because the example is super simple. In real-life example, the secondary methods do use the argument for example to call back behavior on the argument. We will see this with the visitor design pattern.
+Second, the secondary methods (`playAgainstXXX`) do not use the argument and this is because the example is super simple. In real-life examples, the secondary methods do use the argument for example to call back behavior on the argument. We will see this with the visitor design pattern.
 
 
 ### A Better API
@@ -354,7 +354,7 @@ Most of the time he will have to check again the returned result to perform some
 
 So all in all, while this was a good exercise to help you understand that we do not need to have explicit conditionals and that we can use message passing instead, it felt a bit disappointing. 
 
-But there is a much better solution using double dispatch. The idea is to pass the action to be executed to the object and that the object decides what to do. 
+But there is a much better solution using double dispatch. The idea is to pass the action to be executed to the object and the object decides what to do. 
 
 ```
 Paper new competeWith: Paper new
@@ -403,7 +403,7 @@ Paper >> playAgainstPaper: anElement
 
 
 What we see is that this new API is not that nice. Being forced to create blocks is not that great.
-A possibility would be to pass an object that knows what do do.
+A possibility would be to pass an object that knows what to do.
 
 
 ```

@@ -93,7 +93,6 @@ The material proposed by the MOOC can be used to give lectures on the following 
 - Advanced object-oriented design (including Design Patterns and type consideration)
 
 In addition and as we will show below, such goals can be easily enriched with soft skills such as:
-
 - How to find information?
 - How to report activity?
 - How to get some help by asking questions in forums or online chat?
@@ -204,10 +203,10 @@ The objectives of the lectures were:
 - Reverse engineering
 - Test quality with mutation testing
 - Soft skills:
--- reporting: how to report activities?
--- how to ask help, how to find information?
--- how to learn fast a new language?
--- how to report problems?
+  - reporting: how to report activities?
+  - how to ask help, how to find information?
+  - how to learn fast a new language?
+  - how to report problems?
 
 #### Setup 
 

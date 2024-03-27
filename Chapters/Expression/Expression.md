@@ -1,20 +1,17 @@
 ## A little expression interpreter
-
 @cha:expressions
 
-In this chapter you will build a small mathematical expression interpreter. For example you will be able to build an expression such as  \(3 + 4\) * 5 and then ask the interpreter to compute its value. You will revisit tests, classes, messages, methods and inheritance. 
+In this chapter, you will build a small mathematical expression interpreter. For example, you will be able to build an expression such as  (3 + 4) * 5 and then ask the interpreter to compute its value. You will revisit tests, classes, messages, methods, and inheritance. 
 You will also see an example of expression trees similar to the ones that are used to manipulate programs. For example, compilers and code refactorings as offered in Pharo and many modern IDEs are doing such manipulation with trees representing code. 
-In addition, in the volume two of this book, we will extend this example to present the Visitor Design Pattern. 
+In addition, we will extend this example to present the Visitor Design Pattern. 
 
 ### Starting with constant expression and a test
 
-We start with constant expression. A constant expression is an expression whose value is always the same, obviously.
+We start with a constant expression. A constant expression is an expression whose value is always the same, obviously.
 
 Let us start by defining a test case class as follows: 
 ```
-TestCase subclass: #EConstantTest
-	instanceVariableNames: ''
-	classVariableNames: ''
+TestCase << #EConstantTest
 	package: 'Expressions'
 ```
 
@@ -36,9 +33,8 @@ to the class definition.
 At the end you should have the following definition for the class `EConstant`.
 
 ```
-Object subclass: #EConstant
-	instanceVariableNames: 'value'
-	classVariableNames: ''
+Object << #EConstant
+	slots: {'value'}; 
 	package: 'Expressions'
 ```
 
@@ -68,9 +64,7 @@ Your test should pass.
 Now we can start to work on expression negation. Let us write a test and for this define a new test case class named `ENegationTest`. 
 
 ```
-TestCase subclass: #ENegationTest
-	instanceVariableNames: ''
-	classVariableNames: ''
+TestCase << #ENegationTest
 	package: 'Expressions'
 ```
 
@@ -86,9 +80,8 @@ ENegationTest >> testEvaluate
 Let us execute the test and let the system help us to define the class. A negation defines an instance variable to hold the expression that it negates.
 
 ```
-Object subclass: #ENegation
-	instanceVariableNames: 'expression'
-	classVariableNames: ''
+Object << #ENegation
+	slots: { #expression };
 	package: 'Expressions'
 ```
 
@@ -109,7 +102,7 @@ ENegation >> evaluate
 ```
 
 
-![A flat collection of classes \(with a suspect duplication\).](figures/Expressions.png width=70&label=figExpression)
+![A flat collection of classes (with a suspect duplication).](figures/Expressions.png width=70&label=figExpression)
 
 Following the same principle, we will add expression addition and multiplication. Then we will make the system a bit more easy to manipulate and revisit its first design. 
 
@@ -120,9 +113,7 @@ To be able to do more than constant and negation we will add two extra expressio
 To add an expression that supports addition, we start to define a test case class and a simple test. 
 
 ```
-TestCase subclass: #EAdditionTest
-	instanceVariableNames: ''
-	classVariableNames: ''
+TestCase << #EAdditionTest
 	package: 'Expressions'
 ```
 
@@ -141,9 +132,8 @@ EAdditionTest >> testEvaluate
 You should define the class `EAddition`: it has two instance variables for the two subexpressions it adds. 
 
 ```
-EExpression subclass: #EAddition
-	instanceVariableNames: 'left right'
-	classVariableNames: ''
+EExpression << #EAddition
+	slots: { #left . #right};
 	package: 'Expressions'
 ```
 
@@ -176,9 +166,7 @@ EAdditionTest >> testEvaluateWithNegation
 We do the same for multiplication: create a test case class named `EMultiplicationTest`, a test, a new class `EMultiplication`, a couple of setter methods and finally a new `evaluate` method. Let us do it fast and without much comments. 
 
 ```
-TestCase subclass: #EMultiplicationTest
-	instanceVariableNames: ''
-	classVariableNames: ''
+TestCase << #EMultiplicationTest
 	package: 'Expressions'
 ```
 
@@ -194,8 +182,7 @@ EMultiplicationTest >> testEvaluate
 
 ```
 Object subclass: #EMultiplication
-	instanceVariableNames: 'left right'
-	classVariableNames: ''
+	slots: { #left . #right};
 	package: 'Expressions'
 ```
 
@@ -205,12 +192,10 @@ EMultiplication >> right: anExpression
 	right := anExpression
 ```
 
-
 ```
 EMultiplication >> left: anExpression
 	left := anExpression
 ```
-
 
 ```
 EMultiplication >> evaluate
@@ -406,9 +391,7 @@ Let us introduce a new class to obtain the situation depicted by Figure *@figExp
 We can simply do it by adding a new class:
 
 ```
-Object subclass: #EExpression
-	instanceVariableNames: ''
-	classVariableNames: ''
+Object << #EExpression
 	package: 'Expressions'
 ```
 
@@ -417,9 +400,8 @@ and changing all the previous definitions to inherit from `EExpression` instead 
 For example the class `EConstant` is then defined as follows. 
 
 ```
-EExpression subclass: #EConstant
-	instanceVariableNames: 'value'
-	classVariableNames: ''
+EExpression << #EConstant
+	slots: { #value};
 	package: 'Expressions'
 ```
 
@@ -427,7 +409,7 @@ EExpression subclass: #EConstant
 We can also use for the first transformation the class refactoring _Insert superclass_. Refactorings are code transformations that do not change the behavior of a program. You can find it under the refactorings list when you bring the menu on the classes. 
 Now it is only useful for the first changes. 
 
-Once the classes `EConstant`, `ENegation`, `EAddition`, and `EMultiplication` are subclasses of `EEXpression`, we should focus on the method `negated`. Now the method refactoring _Push up_ will really help us. 
+Once the classes `EConstant`, `ENegation`, `EAddition`, and `EMultiplication` are subclasses of `EEXpression`, we should focus on the method `negated`. Now the method refactoring _Push up_ will help us. 
 
 - Select the method `negated` in one of the classes
 - Select the refactoring _Push up_
@@ -609,24 +591,25 @@ EMultiplication class >> fiveTimesThree
 ```
 
 
-What is nice with such examples is that 
-- they help documenting the class by providing objects that we can directly use,
+What is nice about such examples is that 
+- they help to document the class by providing objects that we can directly use,
 - they support the creation of tests by providing objects that can serve as input for tests,
 - they simplify the writing of tests. 
 
 
-So think to use them. 
+So think about using them. 
 
 ### Printing
 
 It is quite annoying that we cannot really see an expression when we inspect it. We would like to get something better than `'aEConstant'` and `'anEAddition'` when we debug our programs.
 To display such information the debugger and inspector send to the objects the message `printString` which by default just prefix the name of the class with 'an' or 'a'. 
 
-Let us change this situation. For this, we will specialize the method `printOn: aStream`. The message `printOn:` is called on the object when a program or the system send to the object the message `printString`. From that perspective `printOn:` is a system customisation point that developers can take advantage to enhance their programming experience.
+Let us change this situation. For this, we will specialize the method `printOn: aStream`. The message `printOn:` is called on the object when a program or the system send to the object the message `printString`. From that perspective `printOn:` is a system customization point that developers can take advantage to enhance their programming experience.
 
-Note that we do not redefine the method `printString` because it is more complex and `printString` is reused for all the objects in the system. We just have to implement the part that is specific to a given class. In object-oriented design jargon, `printString` is a template method in the sense that it sets up a context which is shared by other objects and it hosts hook methods which are program customisation points. `printOn:` is a hook method. The term hook comes from the fact that code of subclasses are invoked in the hook place \(see Figure *@fig:ExpressionsHierarchyPrintOn@*\).
+Note that we do not redefine the method `printString` because it is more complex and `printString` is reused for all the objects in the system. We just have to implement the part that is specific to a given class. In object-oriented design jargon, `printString` is a template method in the sense that it sets up a context that is shared by other objects and it hosts hook methods which are program customization points. `printOn:` is a hook method. The term hook comes from the fact that code of subclasses is invoked in the hook place (see Figure *@fig:ExpressionsHierarchyPrintOn@*).
 
-The default definition of the method `printOn:` as defined on the class `Object` is the following: it grabs the class name and checks if it starts with a vowel or not and write to the stream the 'a/an class'. This is why by default we got `'anEConstant'` when we printed a constant expression. 
+The default definition of the method `printOn:` as defined on the class `Object` is the following: 
+it grabs the class name, checks if it starts with a vowel or not and writes to the stream the 'a/an class'. This is why by default we got `'anEConstant'` when we printed a constant expression. 
 
 ```
 Object >> printOn: aStream
@@ -644,7 +627,7 @@ Object >> printOn: aStream
 
 #### A word about streams
 
-A stream is basically a container for a sequence of objects. Once we get a stream we can either read from it or write to it. In our case we will write to the stream. Since the stream passed to printOn: is a stream expecting characters we will add characters or strings \(sequence of characters\) to it. We will use the messages: `nextPut: aCharacter` and `nextPutAll: aString`. 
+A stream is a container for a sequence of objects. Once we get a stream we can either read from it or write to it. In our case we will write to the stream. Since the stream passed to printOn: is a stream expecting characters we will add characters or strings \(sequence of characters\) to it. We will use the messages: `nextPut: aCharacter` and `nextPutAll: aString`. 
 They add to the stream the arguments at the next position and following. We will guide you and it is simple. 
 You can find more information on the chapter about Stream in the book: Pharo by Example available at [http://books.pharo.org](http://books.pharo.org)
 
@@ -707,14 +690,13 @@ ENegation >> printOn: aStream
 
 The difference between the first solution and the alternate implementation is the following:
 In the solution using `printString`, the system creates two streams: one for each invocation of the message `printString`. One for printing the expression and one for printing the negation. Once the first stream is used the message `printString` converts the stream contents into a string and this new string is put inside the second stream which at the end is converted again as a string. So the first solution is not really efficient. 
-With the second solution, only one stream is created and each of the method just put the needed string elements inside. 
+With the second solution, only one stream is created and each of the methods just put the needed string elements inside. 
 At the end of the process, the single `printString` message converts it into a string. 
 
 
 
 
 #### Printing addition
-
 
 Now let us write yet another test for addition printing. 
 
@@ -752,8 +734,8 @@ EMultiplication >> printOn: aStream
 ### Revisiting negated message for Negation
 
 
-Now we can go back on negating an expression. Our implementation is not nice even if we can negate any expression and get the correct value. If you look at it carefully negating a negation could be better. 
-Printing a negated negation illustrates well the problem: we get two minuses instead of none. 
+Now we can go back to negating an expression. Our implementation is not nice even if we can negate any expression and get the correct value. If you look at it carefully negating a negation could be better. 
+Printing a negated negation illustrates well the problem: we get two minus operations instead of none. 
 
 ```
 (EConstant value: 11) negated 
@@ -764,9 +746,9 @@ Printing a negated negation illustrates well the problem: we get two minuses ins
 ```
 
 
-A solution could be to change the printOn: definition and to check if the expression that is negated is a negation 
+A solution could be to change the `printOn:` definition and to check if the expression that is negated is a negation 
 and in such case to not emit the minus. Let us say it now, this solution is not nice because we do not want to write code
-that depends on explicitly checking if an object is of a given class. Remember we want to send message and let the object do some actions. 
+that depends on explicitly checking if an object is of a given class. Remember we want to send a message and let the object do some actions. 
 
 A good solution is to _specialize_ the message `negated` so that when it is sent to a _negation_ it does not create a new negation that points to the receiver but instead returns the expression itself, otherwise the method implemented in `EExpression` will be executed. This way the trees created by a `negated` message can never have negated negation but the arithmetic values obtained are correct. Let us implement this solution, we just need to implement a different version of the method `negated` for `ENegation`. 
 
@@ -797,9 +779,7 @@ When we send a message to an object, the system looks for the corresponding meth
 By adding a method in the class `ENegation`, we created the situation shown in Figure *@fig:ExpressionsHierarchyOptimized@*. We said that the message `negated` is overridden in `ENegation` because for instances of `ENegation` it hides the method defined in the superclass `EExpression`. 
 
 It works the following:
-- When we send the message `negated` to a constant, the message is not found in the class `EConstant` and then it is looked up in the class `EExpression` and it is found there and applied to the receiver \(the instance of `EConstant`\).
-
-
+- When we send the message `negated` to a constant, the message is not found in the class `EConstant` and then it is looked up in the class `EExpression` and it is found there and applied to the receiver (the instance of `EConstant`).
 - When we send the message `negated` to a negation, the message is found in the class `ENegation` and executed on the negation expression. 
 
 
@@ -812,25 +792,21 @@ Now we will take a moment to improve our first design. We will factor out the be
 
 
 ```
-EExpression subclass: #EBinaryExpression
-	instanceVariableNames: ''
-	classVariableNames: ''
+EExpression << #EBinaryExpression
 	package: 'Expressions'
 ```
 
 
 ```
-EBinaryExpression subclass: #EAddition
-	instanceVariableNames: 'left right'
-	classVariableNames: ''
+EBinaryExpression << #EAddition
+	slots: { #left . #right'};
 	package: 'Expressions'
 ```
 
 
 ```
-EBinaryExpression subclass: #EMultiplication
-	instanceVariableNames: 'left right'
-	classVariableNames: ''
+EBinaryExpression << #EMultiplication
+	slots: { #left . #right};
 	package: 'Expressions'
 ```
 
@@ -838,35 +814,30 @@ EBinaryExpression subclass: #EMultiplication
 
 Now we can use again a refactoring to pull up the instance variables `left` and `right`, as well as the methods `left:` and `right:`.
 
-Select the class `EMuplication`, bring the menu and select in the Refactoring menu the instance variables refactoring _Push Up_. Then select the instance variables.
+Select the class `EMuplication`, bring the menu, and select in the Refactoring menu the instance variables refactoring _Push Up_. Then select the instance variables.
 
 Now you should get the following class definitions, where the instance variables are defined in the new class and removed from the two subclasses. 
 
 ```
-EExpression subclass: #EBinaryExpression
-	instanceVariableNames: 'left right'
-	classVariableNames: ''
+EExpression << #EBinaryExpression
+	slots: { #left . #right }; 
 	package: 'Expressions'
 ```
 
 
 ```
-EBinaryExpression subclass: #EAddition
-	instanceVariableNames: ''
-	classVariableNames: ''
+EBinaryExpression << #EAddition
 	package: 'Expressions'
 ```
 
 
 ```
-EBinaryExpression subclass: #EMultiplication
-	instanceVariableNames: ''
-	classVariableNames: ''
+EBinaryExpression << #EMultiplication
 	package: 'Expressions'
 ```
 
 
-We should get a situation similar to the one of Figure *@figExpressionFactoredState@*. All your tests should still pass. 
+We should get a situation similar to the one in Figure *@figExpressionFactoredState@*. All your tests should still pass. 
 
 ![Factoring instance variables.](figures/ExpressionsHierarchyStateFactored.png width=70&label=figExpressionFactoredState)
 
@@ -875,7 +846,7 @@ Now we can move the same way the methods. Select the method `left:` and apply th
 #### Creating a template and hook method
 
 
-Now we can look at the methods `printOn:` of additions and multiplications. They are really similar: Just the operator is changing. Now we cannot simply copy one of the definitions because it will not work for the other. But what we can do is to apply the same design point that implemented for `printString` and `printOn:`: we can create a template and hooks that will be specialized in the subclasses. 
+Now we can look at the methods `printOn:` of additions and multiplications. They are really similar: Just the operator is changing. Now we cannot simply copy one of the definitions because it will not work for the other. But what we can do is apply the same design point that was implemented for `printString` and `printOn:`: we can create a template and hooks that will be specialized in the subclasses. 
 
 We will use the method `printOn:` as a template with a hook redefined in each subclass.
 
@@ -891,7 +862,7 @@ EBinaryExpression >> printOn: aStream
 ```
 
 
-Then you can do it manually or use the _Extract Method_ Refactoring: This refactoring creates a new method from a part of an existing method and sends a message to the new created method: select the ' + ' inside the method pane and bring the menu and select the Extract Method refactoring, and when prompt give the name `operatorString`. 
+Then you can do it manually or use the _Extract Method_ Refactoring: This refactoring creates a new method from a part of an existing method and sends a message to the new created method: select the ' + ' inside the method pane and bring the menu and select the Extract Method refactoring, and when prompt gives the name `operatorString`. 
 
 Here is the result you should get:  
 
@@ -928,13 +899,13 @@ EMultiplication >> operatorString
 
 The introduction of the class `EBinaryExpression` is a rich experience in terms of lessons that we can learn. 
 
-- Refactorings are more than simple code transformations. Usually refactorings pay attention that their application does not change the behavior of programs. As we saw refactorings are powerful operations that really help doing complex operations in a few action.
+- Refactorings are more than simple code transformations. Usually, refactorings pay attention that their application does not change the behavior of programs. As we saw refactorings are powerful operations that really help doing complex operations in a few actions.
 
 
-- We saw that the introduction of a new superclass and moving instance variables or method to a superclass does not change the structure or behavior of the subclasses. This is because \(1\) for the state, the structure of an instance is based on the state of its class and all its superclasses, \(2\) the lookup starts in the class of the receiver and look in superclasses.
+- We saw that the introduction of a new superclass and moving instance variables or methods to a superclass does not change the structure or behavior of the subclasses. This is because (1) for the state, the structure of an instance is based on the state of its class and all its superclasses, (2) the lookup starts in the class of the receiver and looks in superclasses.
 
 
-- While the method `printOn:` is by itself a hook for the method `printString`, it can also play the role of a template method. The method `operatorString` reuses the context created by the `printOn:` method which acts as a template method. In fact each time we do a self send we create a hook method that subclasses can specialize.
+- While the method `printOn:` is by itself a hook for the method `printString`, it can also play the role of a template method. The method `operatorString` reuses the context created by the `printOn:` method which acts as a template method. In fact, each time we do a self-send we create a hook method that subclasses can specialize.
 
 
 ### About hook methods
@@ -946,7 +917,6 @@ When we introduced `EBinaryExpression` we defined the method `operatorString` as
 EBinaryExpression >> operatorString
 	^ ' + '
 ```
-
 
 ```
 EMultiplication >> operatorString
@@ -963,7 +933,7 @@ First creating a hook is also a good idea. Because you rarely know how your syst
 
 #### Avoid not documenting hooks
 
-Second we could have just defined one method `operatorString` in each subclass and no method in the superclass `EBinaryExpression`. It would have worked because `EBinaryExpression` is not meant to have direct instances. Therefore there is no risk that a `printOn:` message is sent to one of its instance and cause a error because no method `operatorString` is found. 
+Second, we could have just defined one method `operatorString` in each subclass and no method in the superclass `EBinaryExpression`. It would have worked because `EBinaryExpression` is not meant to have direct instances. Therefore there is no risk that a `printOn:` message is sent to one of its instances and causes an error because no method `operatorString` is found. 
 
 The code would have looked like the following: 
 ```
@@ -1068,9 +1038,8 @@ p value
 If we go a step further, we want to be able to build more complex expressions where instead of having constants we can manipulate variables. This way we will be able to build more advanced behavior such as expression derivations. 
 
 ```
-EExpression subclass: #EVariable
-	instanceVariableNames: 'id'
-	classVariableNames: ''
+EExpression << #EVariable
+	slots: { #id};
 	package: 'Expressions'
 ```
 
@@ -1130,8 +1099,8 @@ EEXpression >> evaluateWith: aDictionary
 ```
 
 
-However it does not work for at least the following reasons: 
-- It does not use its argument. It only works for trees composed out exclusively of constant. 
+However, it does not work for at least the following reasons: 
+- It does not use its argument. It only works for trees composed exclusively of constant. 
 - When we send a message `evaluateWith:` to an addition, this message is then turned into an `evaluate` message sent to its subexpression and such subexpression do not get an `evaluateWith:` message but an `evaluate`.
 
 
@@ -1150,13 +1119,13 @@ Alternatively we could add the binding to the variable itself and only provide a
 
 
 We should transform all the implementations and message sends from `evaluate` to `evaluateWith:` Since this is a tedious task we will use the method refactoring _Add Parameter_.
-Since a refactoring applies itself on the complete system, we should be a bit cautious because other Pharo classes implement methods named `evaluate` and we do not want to impact them. 
+Since a refactoring applies itself to the complete system, we should be a bit cautious because other Pharo classes implement methods named `evaluate` and we do not want to impact them. 
 
 So here are the steps that we should follow.
 - Select the Expression package
 - Choose Browse Scoped \(it brings a browser with only your package\)
 - Using this browser, select a method evaluate
-- Select the _Add Parameter_ refactoring: type `evaluateWith:` as method selector and proceed when prompted for a default value `Dictionary new`. This last expression is needed because the engine will rewrite all the messages `evaluate` but `evaluateWith: Dictionary new`.
+- Select the _Add Parameter_ refactoring: type `evaluateWith:` as the method selector and proceed when prompted for a default value `Dictionary new`. This last expression is needed because the engine will rewrite all the messages `evaluate` but `evaluateWith: Dictionary new`.
 - The system is performing many changes. Check that they only touch your classes and accept them all. 
 
 
@@ -1208,9 +1177,9 @@ This little exercise was full of learning potential. Here is a little summary of
 
 - A message specifies an intent while a method is a named list of execution. We often have one message and a list of methods with the same name. 
 - Sending a message is finding the method corresponding to the message selector: this selection is based on the class of the object receiving the message. When we look for a method we start in the class of the receiver and go up the inheritance link. 
-- Tests are a really nice way to specify what we want to achieve and then to verify after each change that we did not break something. Tests do not prevent bugs but they help us building confidence in the changes we do by identifying fast errors. 
-- Refactorings are more than simple code transformations. Usually refactorings  pay attention their application does not change the behavior of program. As we saw refactorings are powerful operations that really help doing complex operation in a few action. 
-- We saw that the introduction of a new superclass and moving instance variables or method to a superclass does not change the structure or behavior of the subclasses. This is because \(1\) for the state, the structure of an instance is based on the state of its class and all its superclasses, \(2\) the lookup starts in the class of the receiver and look in superclasses. 
-- Each time we send a message, we create a potential place \(a hook\) for subclasses to get their code definition used in place of the superclass's one.
+- Tests are a really nice way to specify what we want to achieve and then to verify after each change that we did not break something. Tests do not prevent bugs but they help us build confidence in the changes we make by identifying fast errors. 
+- Refactorings are more than simple code transformations. Usually refactorings pay attention to their application does not change the behavior of program. As we saw refactorings are powerful operations that really help do complex operations in a few action. 
+- We saw that the introduction of a new superclass and moving instance variables or methods to a superclass does not change the structure or behavior of the subclasses. This is because (1) for the state, the structure of an instance is based on the state of its class and all its superclasses, (2) the lookup starts in the class of the receiver and look in superclasses. 
+- Each time we send a message, we create a potential place (a hook) for subclasses to get their code definition used in place of the superclass's one.
 
 

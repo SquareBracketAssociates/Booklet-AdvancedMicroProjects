@@ -9,13 +9,37 @@ The AOOD Mooc is not about Pharo but about object-oriented design and presents a
 The current document contains a collection of design exercises at different levels of guidance and difficulties.
 
 - The first part of the book is dedicated to teachers and presents different setups in which this material has been used.
-- The second part proposes several little projects to exercise double dispatch, Command and Visitor Design Patterns.
-- The third part proposes some unguided extensions to the previous projects as well as some exercises that are also losely described to let space for variations. 
-- The fourth part presents some game ideas that you are invited to design and build with Bloc the new graphic layer of Pharo and that can also benefit from the micro framework Myg. 
+- The second part proposes several little projects to exercise double dispatch, Command, and Visitor Design Patterns.
+- The third part proposes some unguided extensions to the previous projects as well as some exercises that are also loosely described to give space for variations. 
+- The fourth part presents some game ideas that you are invited to design and build with Bloc the new graphic layer of Pharo and that can also benefit from the micro-framework Myg. 
 
 # Teacher corner
 
 <!inputFile|path=Chapters/ForTeachers/forTeachers.md!>
+
+## Module Exercises
+
+The module is composed of 10 modules and an optional one around Pharo.
+There is no direct mapping one to one mapping between the exercises and the modules. 
+For example the Module 2 around tests is the second one so that the learners can try to write tests
+in any of the exercises. In addition when we could all the guided exercises contained tests. 
+
+
+- Chapter A basic LAN application
+- Chapter *@cha:dsl@* (Crafting a simple embedded DSL with Pharo)
+- Chapter *@@cha:stone@* (Stone paper scissors)
+- Chapter *@cha:dsldd* (Revisiting the Die DSL: a case for double dispatch)
+- A little saturn PathFinder
+- Chapter *@cha:compass@* (Finding the North with Compass)
+- Chapter *@cha:expressions@* (A little expression interpreter)
+- Understanding visitors
+
+- Little unguided projects
+- Tamagotchi Mechanics
+- Civilization
+- Designing little board games
+
+
 
 # Guided Exercices 
 <!inputFile|path=Chapters/SimpleLan/Simple-LAN-Definition.md!>
