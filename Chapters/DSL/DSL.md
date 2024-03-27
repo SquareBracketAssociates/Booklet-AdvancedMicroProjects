@@ -1,11 +1,10 @@
 ## Crafting a simple embedded DSL with Pharo
-
 @cha:dsl
 
-In this chapter you will develop a simple domain specific language (DSL) for rolling dice. Players of games such as Dungeons & Dragons are familiar with such DSL. An example of such DSL is the following expression: `2 D20 + 1 D6` which means that we should roll two 20-faces dice and one 6-faces die. 
+In this chapter, you will develop a simple domain-specific language (DSL) for rolling dice. Players of games such as Dungeons & Dragons are familiar with such DSL. An example of such DSL is the following expression: `2 D20 + 1 D6` which means that we should roll two 20-faces dice and one 6-face die. 
 It is called an embedded DSL because the DSL uses the syntax of the language used to implement it. Here we use the Pharo syntax to implement the Dungeons & Dragons rolling die language. 
 
-This little exercise shows how we can (1) simply reuse traditional operator such as `+`, (2) develop an embedded domain specific language and (3) use class extensions (the fact that we can define a method in another package than the one of the class of the method).
+This little exercise shows how we can (1) simply reuse traditional operators such as `+`, (2) develop an embedded domain-specific language and (3) use class extensions (the fact that we can define a method in another package than the one of the class of the method).
 
 ### Getting started
 
@@ -19,9 +18,7 @@ It is always empowering to verify that the code we write is always working as we
 Define the class `DieTest` as a subclass of `TestCase` as follows: 
 
 ```
-TestCase subclass: #DieTest
-	instanceVariableNames: ''
-	classVariableNames: ''
+TestCase <<#DieTest
 	package: 'Dice'
 ```
 
@@ -45,7 +42,7 @@ The class `Die` inherits from `Object` and it has an instance variable, `faces` 
 ![A single class with a couple of messages. Note that the method `withFaces:` is  a class method.](figures/OneClassDiceDesign.pdf width=25&label=figOneClassDiceDesign)
 
 ```
-Object subclass:
+Object <<
 	... Your solution ...
 ```
 
@@ -84,7 +81,7 @@ Die >> roll
 
 Now we can create an instance `Die new` and send it the message  `roll` and get a result.
 Do `Die new inspect` to get an inspector and then type in the bottom pane `self roll`.
-You should get an inspector like the one shown in Figure *@figDiceNoDetail@*. With it you can interact with a die by writing expression in the bottom pane.
+You should get an inspector like the one shown in Figure *@figDiceNoDetail@*. With it you can interact with a die by writing an expression in the bottom pane.
 
 ![Inspecting and interacting with a die.](figures/DiceNoDetail.png width=60&label=figDiceNoDetail)
 
@@ -93,7 +90,7 @@ You should get an inspector like the one shown in Figure *@figDiceNoDetail@*. Wi
 ### Creating another test
 
 But better, let us define a test that verifies that rolling a newly created dice with a default 6 faces only returns 
-value comprised between 1 and 6. This is what the following test method is actually specifying.
+a value comprised between 1 and 6. This is what the following test method actually specifies.
  
 ```
 DieTest >> testRolling
@@ -103,16 +100,16 @@ DieTest >> testRolling
 ```
 
 
-**Important** Often it is better to define the test even before the code it tests. Why? Because you can think about the API of your objects and a scenario that illustrate their correct behavior. It helps you to program your solution.
+**Important** Often it is better to define the test even before the code it tests. Why? Because you can think about the API of your objects and a scenario that illustrates their correct behavior. It helps you to program your solution.
 
 
 ### Instance creation interface
 
-We would like to get a simpler way to create `Die` instances. For example we want to create a 20-faces die as follows: `Die withFaces: 20` instead of always having to send the new message to the class as in `Die new faces: 20`.
+We would like to get a simpler way to create `Die` instances. For example, we want to create a 20-face die as follows: `Die withFaces: 20` instead of always having to send the new message to the class as in `Die new faces: 20`.
 Both expressions are creating the same die but one is shorter.
 
 Let us look at it: 
-- In the expression `Die withFaces:`, the message `withFaces:` is sent to the class `Die`. It is not new, we constantly sent the message `new` to `Die` to create instances. 
+- In the expression `Die withFaces:`, the message `withFaces:` is sent to the class `Die`. It is not new, we constantly send the message `new` to `Die` to create instances. 
 - Therefore we should define a method that will be executed 
 
 
@@ -169,7 +166,7 @@ Now your tests should run. So even if the class `Die` could implement more behav
 
 #### \[Optional\] Alternate instance creation definition
 
- In a first reading you can skip this section. The _class_ method definition `withFaces:` above is strictly equivalent to the one below.
+ In a first reading, you can skip this section. The _class_ method definition `withFaces:` above is strictly equivalent to the one below.
 
 ```
 Die class >> withFaces: aNumber
@@ -177,7 +174,7 @@ Die class >> withFaces: aNumber
 ```
 
 
-Let us explain it a bit. `self` represents the class `Die` itself. Sending it the message `new`, we create an instance and send it the `faces:` message. And we return the expression. So why do we need the message `yourself`. The message `yourself` is needed to make sure that whatever value the instance message `faces:` returns, the instance creation method we are defining returns the new created instance. You can try to redefine the instance method `faces:` as follows:
+Let us explain it a bit. `self` represents the class `Die` itself. Sending it the message `new`, we create an instance and send it the `faces:` message. And we return the expression. So why do we need the message `yourself`. The message `yourself` is needed to make sure that whatever value the instance message `faces:` returns, the instance creation method we are defining returns the newly created instance. You can try to redefine the instance method `faces:` as follows:
 
 ```
 Die >> faces: aNumber 
@@ -187,14 +184,14 @@ Die >> faces: aNumber
 
 Without the use of `yourself`, `Die withFaces: 20` will return 33. With `yourself` it will return the instance.
 
-The trick is that `yourself` is a simple method defined on `Object` class: The message `yourself` returns the receiver of a message.
+The trick is that `yourself` is a simple method defined in `Object` class: The message `yourself` returns the receiver of a message.
 The use of `;` sends the message to the receiver of the previous message (here `faces:`).  The message `yourself` is then sent to the object resulting from the execution of the expression `self new` (which returns a new instance of the class `Die`), as a consequence it returns the new instance. 
 
 
 ### First specification of a die handle
 
 Let us define a new class `DieHandle` that represents a die handle. 
-Here is the API that we would like to offer for now (as shown in Figure *@fig:DiceDesign@*). We create a new handle then add some dice to it.
+Here is the API that we would like to offer for now (as shown in Figure *@fig:DiceDesign@*). We create a new handle and then add some dice to it.
 
 ![A die handle is composed of dice.](figures/DiceDesign.pdf width=60&label=fig:DiceDesign)
 
@@ -210,9 +207,7 @@ DieHandle new
 Of course we will define tests first for this new class. We define the class `DieHandleTest`.
 
 ```
-TestCase subclass: #DieHandleTest
-	instanceVariableNames: ''
-	classVariableNames: ''
+TestCase << #DieHandleTest
 	package: 'Dice'
 ```
 
@@ -256,7 +251,7 @@ Easy!
 The class `DieHandle` inherits from `Object` and it defines one instance variable to hold the dice it contains. 
 
 ```
-Object subclass: ...
+Object << ...
 	... Your solution ...
 ```
 
@@ -289,7 +284,7 @@ DieHandle new
 ![Inspecting a DieHandle.](figures/DiceHandleNoDetail.png width=60&label=DieHandleNoDetail)
 
 
-Finally we should add the method `diceNumber` to the `DieHandle` class to be able to get the number of dice of the handle. We just return the size of the dice collection.
+Finally, we should add the method `diceNumber` to the `DieHandle` class to be able to get the number of dice of the handle. We just return the size of the dice collection.
 
 ```
 DieHandle >> diceNumber  
@@ -302,7 +297,7 @@ Now your tests should run and this is a good moment to save and publish your cod
 ### Improving programmer experience
 
 
-Now when you open an inspector you cannot see well the dice that compose the die handle. Click on the `dice` instance variable and you will only get a list of `a Dice` without further information. What we would like to get is something like `a Die (6)` or `a Die (10)` so that in a glance we know the faces a die has. 
+Now when you open an inspector you cannot see well the dice that compose the die handle. Click on the `dice` instance variable and you will only get a list of `a Dice` without further information. What we would like to get is something like `a Die (6)` or `a Die (10)` so that at a glance we know the faces a die has. 
 
 ```
 DieHandle new 
@@ -312,7 +307,7 @@ DieHandle new
 ```
 
 
-This is the  message `printOn:` that is responsible to provide a textual representation of the message receiver. By default, it just prints the name of the class prefixed with `'a'` or `'an'`. So we will enhance the `printOn:` method of the `Die` class to provide more information. Here we simply add the number of faces surrounded by parenthesis. The `printOn:` message is sent with a stream as argument. It is in this stream that we should add information. We use the message `nextPutAll:` to add a number of characters to the stream. We concatenate the characters to compose `()` using the message `,` comma defined on collections (and that concatenate collections and strings).
+This is the message `printOn:` that is responsible for providing a textual representation of the message receiver. By default, it just prints the name of the class prefixed with `'a'` or `'an'`. So we will enhance the `printOn:` method of the `Die` class to provide more information. Here we simply add the number of faces surrounded by parenthesis. The `printOn:` message is sent with a stream as an argument. It is in this stream that we should add information. We use the message `nextPutAll:` to add several characters to the stream. We concatenate the characters to compose `()` using the message `,` comma defined on collections (and that concatenate collections and strings).
 
 ```
 Die >> printOn: aStream
@@ -322,7 +317,7 @@ Die >> printOn: aStream
 ```
 
 
-Now in your inspector you can see effectively the number of faces a die handle has as shown by Figure *@diceDetail@* and it is now easier to check the dice contained inside a handle (See Figure *@DieHandleDetail@*). 
+Now in your inspector, you can see effectively the number of faces a die handle has as shown by Figure *@diceDetail@* and it is now easier to check the dice contained inside a handle (See Figure *@DieHandleDetail@*). 
 
 ![Die details.](figures/DiceDetail.png width=70&label=diceDetail) 
 
@@ -330,7 +325,7 @@ Now in your inspector you can see effectively the number of faces a die handle h
 
 #### Optimization Remark. 
 
-Note that this implementation of `printOn:` is suboptimal since it is creating a separate stream (during the invocation of `faces printString`) instead of reusing the stream passed as argument. A better solution is to rewrite `printOn:` as follows: 
+Note that this implementation of `printOn:` is suboptimal since it is creating a separate stream (during the invocation of `faces printString`) instead of reusing the stream passed as an argument. A better solution is to rewrite `printOn:` as follows: 
 
 ```
 Die >> printOn: aStream
@@ -348,7 +343,7 @@ As an exercise we let you browse the methods `printString` on class `Object` and
 ### Rolling a die handle
 
 
-Now we can define the rolling of a die handle by simply summing result of rolling each of its dice. 
+Now we can define the rolling of a die handle by simply summing the result of rolling each of its dice. 
 Implement the `roll` method of the `DieHandle` class. This method must collect the results of rolling each dice of the handle and sum them.
 
 You may want to have a look at the method `sum` in the class `Collection` or use a simple loop. 
@@ -381,17 +376,17 @@ DieHandleTest >> testRoll
 ### About Dice and DieHandle API
 
 
-It is worth to spend some times looking at the relationship between `DieHandle` and `Dice`. 
+It is worth spending some time looking at the relationship between `DieHandle` and `Dice`. 
 A die handle is composed of dice. What is an important design decision is that the API of the main behavior (`roll`) is the same for a die or a die handle. You can send the message `roll` to a die or a die handle. This is an important property.
 
-Why? Because it means that from a client perspective, they can treat the receiver without having to take care about the kind of object it is manipulating. A client just sends the message `roll` to an object and gets back a number (as shown in Figure *@figDieHandleComposition@*). The client is not concerned by the fact that the receiver is composed out a simple object or a complex one. Such design decision supports the _Don't ask, tell_ principle.
+Why? Because it means that from a client's perspective, they can treat the receiver without having to take care about the kind of object it is manipulating. A client just sends the message `roll` to an object and gets back a number (as shown in Figure *@figDieHandleComposition@*). The client is not concerned by the fact that the receiver is composed of a simple object or a complex one. Such design decision supports the _Don't ask, tell_ principle.
 
 ![A polymorphic API supports the _Don't ask, tell_ principle.](figures/DiceHandleComposition.pdf width=60&label=figDieHandleComposition)
 
 
 **Important** Offering polymorphic API is a tenet of good object-oriented design. It enforces the _Don't ask, tell_ principle. Clients do not have to worry about the type of the objects to which they talk to. 
 
-For example we can write the following expression that adds a die and a dieHandle to a collection and collects the different values (we convert the result into an array so that we can print it in the book).
+For example, we can write the following expression that adds a die and a dieHandle to a collection and collects the different values (we convert the result into an array so that we can print it in the book).
 
 ```testcase=true
 | col |
@@ -409,7 +404,7 @@ Composite objects such as document objects (a book is composed of chapters, a ch
 
 ### Handle's addition
 
-Now what is missing is that possibility to add several handles together to form a new one. Of course let's write a test first to be clear on what we mean.
+Now what is missing is the possibility to add several handles together to form a new one. Of course, let's write a test first to be clear on what we mean.
 
 ```
 DieHandleTest >> testSumOfHandles
@@ -422,11 +417,11 @@ DieHandleTest >> testSumOfHandles
 
 
 
-We will define a method `+` on the `DieHandle` class. In other languages this is often not possible or is based on operator overloading. In Pharo `+` is just a message as any other, therefore we can define it on the classes we want.
+We will define a method `+` on the `DieHandle` class. In other languages, this is often not possible or is based on operator overloading. In Pharo `+` is just a message as any other, therefore we can define it in the classes we want.
 
-Now we should ask ourself what is the semantics of adding two handles. Should we modify the receiver of the expression or create a new one. We preferred a more functional style and chose to create a third one. 
+Now we should ask ourselves what is the semantics of adding two handles. Should we modify the receiver of the expression or create a new one? We preferred a more functional style and chose to create a third one. 
 
-The method `+` creates a new handle then adds the dice of the receiver to it, and then one of the handles passed as argument to the message. Finally we return it. 
+The method `+` creates a new handle then adds the dice of the receiver to it, and then one of the handles is passed as an argument to the message. Finally, we return it. 
 
 ```
 DieHandle >> + aDieHandle
@@ -438,13 +433,13 @@ Now we want to be able to execute the method `(2 D20 + 1 D6) roll` nicely and st
 So let us see that.
 
 
-### Role playing syntax
+### Role-playing syntax
 
 
-Now we are ready to offer a syntax following practice of role playing game, i.e., using `2 D20` to create a handle of two dice with 20 faces each.  For this purpose we will define class extensions: we will define methods in the class `Integer` but these methods will be only available when the package Dice will be loaded. 
+Now we are ready to offer a syntax following the practice of role role-playing games, i.e., using `2 D20` to create a handle of two dice with 20 faces each.  For this purpose we will define class extensions: we will define methods in the class `Integer` but these methods will be only available when the package Dice is loaded. 
 
-But first let us specify  what we would like to obtain by writing a new test in the class `DieHandleTest`. Remember
-to always take any opportunity to write tests.  When we execute `2 D20` we  should get a new handle  composed of two
+But first, let us specify what we would like to obtain by writing a new test in the class `DieHandleTest`. Remember
+to always take any opportunity to write tests.  When we execute `2 D20` we should get a new handle composed of two
 dice and can verify that. This is what the method `testSimpleHandle` is doing.
 
 ```
@@ -468,13 +463,13 @@ Integer >> D20
 
 
 We asked you to place the method `D20` in a protocol starting with a star and having the name of the package (`'*Dice'`) because we want this method to be saved (and packaged) together with the code of the classes we already created (`Die`, `DieHandle`,...) 
-Indeed in Pharo we can define methods in classes that are not defined in our package. Pharoers call this action a class extension: we can add methods to a class that is not ours. For example `D20` is defined on the class `Integer`. Now such methods only make sense when the package `Dice` is loaded. 
+Indeed in Pharo, we can define methods in classes that are not defined in our package. Pharoers call this action a class extension: we can add methods to a class that is not ours. For example `D20` is defined on the class `Integer`. Now such methods only make sense when the package `Dice` is loaded. 
 This is why we want to save and load such methods with the package we created. This is why we are defining the protocol as `'*Dice'`.
 This notation is a way for the system to know that it should save the methods with the package and not with the package of the class `Integer`. 
 
 Now your tests should pass and this is probably a good moment to save your work either by publishing your package and to save your image. 
 
-We can do the same for the default dice with different faces number: 4, 6, 10, and 20. But we should avoid duplicating logic and code. So first we will introduce a new method `D:` and based on it we will define all the others.
+We can do the same for the default dice with different face numbers: 4, 6, 10, and 20. But we should avoid duplicating logic and code. So first we will introduce a new method `D:` and based on it we will define all the others.
 
 Make sure that all the new methods are placed in the protocol `'*Dice'`. To verify you can press the button Browse of the Monticello package browser and you should see the methods defined in the class `Integer`. 
 
@@ -524,6 +519,7 @@ DiceHandleTest >> testSumming
 
 
 This chapter illustrates how to create a small DSL based on the definition of some domain classes (here `Dice` and  
- `DieHandle`) and the extension of core class such as `Integer`. It also shows that we can create packages with all the methods that are needed even when such methods are defined on classes external (here `Integer`) to the package.  
+ `DieHandle`) and the extension of core classes such as `Integer`. 
+ It also shows that we can create packages with all the methods that are needed even when such methods are defined on classes external (here `Integer`) to the package.  
 It shows that in Pharo we can use usual operators such as `+` to express natural models.
 
