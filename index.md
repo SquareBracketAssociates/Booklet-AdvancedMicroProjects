@@ -1,7 +1,10 @@
 ## Introduction
 
-This book accompanies the _'The Advanced Object-Oriented Design and Development with Pharo'_ MOOC (AOOD) that is freely available at [https://advanced-design-\-mooc.pharo.org](https://advanced-design-mooc.pharo.org).
-The AOOD Mooc is not about Pharo but about object-oriented design and present a large set of topics on this subject from basic to advanced points. From this perspective AOOD Mooc extends the Pharo Mooc [https://mooc.pharo.org](https://mooc.pharo.org). AOOD Mooc uses Pharo and readers may want to watch some videos of the Pharo Mooc to better understand the code. The module 0 of the AOOD Mocc proposes a selection of lectures to get up to speed with Pharo.
+
+
+
+This book accompanies the _'The Advanced Object-Oriented Design and Development with Pharo'_ MOOC (AOOD) that is freely available at [https://advanced-design-mooc.pharo.org](https://advanced-design-mooc.pharo.org).
+The AOOD Mooc is not about Pharo but about object-oriented design and presents a large set of topics on this subject from basic to advanced points. From this perspective, AOOD Mooc extends the Pharo Mooc [https://mooc.pharo.org](https://mooc.pharo.org). AOOD Mooc uses Pharo and readers may want to watch some videos of the Pharo Mooc to better understand the code. The module 0 of the AOOD Mocc proposes a selection of lectures to get up to speed with Pharo.
 
 The current document contains a collection of design exercises at different levels of guidance and difficulties.
 
@@ -15,6 +18,7 @@ The current document contains a collection of design exercises at different leve
 <!inputFile|path=Chapters/ForTeachers/forTeachers.md!>
 
 # Guided Exercices 
+<!inputFile|path=Chapters/SimpleLan/Simple-LAN-Definition.md!>
 <!inputFile|path=Chapters/DSL/DSL.md!>
 <!inputFile|path=Chapters/PaperStoneScissor/PaperStoneScissor.md!>
  
@@ -25,7 +29,7 @@ The current document contains a collection of design exercises at different leve
 <!inputFile|path=Chapters/Expression/Expression.md!>
 <!inputFile|path=Chapters/Visitor/Visitor.md!>
 
-# Unguided Exercises
+# Unguided exercises
 
 In this part, we propose multiple extensions to the previous projects.
 It is fun to challenge ourselves to see how we could support the proposed variations.
@@ -34,9 +38,11 @@ It is fun to challenge ourselves to see how we could support the proposed variat
 <!inputFile|path=Chapters/Tamagotchi/Tamagotchi.md!>
 <!inputFile|path=Chapters/Civilization/Civilization.md!>
 
-# Unguided Games
+# Unguided games
 
 In this part, we propose you design some simple board games using the Bloc graphical framework taking as an example the games of the Myg project.
 
 <!inputFile|path=Chapters/Games/Games.md!>
+
+
 

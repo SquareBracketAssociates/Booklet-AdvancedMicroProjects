@@ -1,12 +1,12 @@
 ## Little unguided projects
 
-In this chapter we present a list of small projects that we encourage you to code. 
+In this chapter, we present a list of small projects that we encourage you to code. 
 Such projects are fun and playing with them will force you to practice different coding idioms or design patterns.
-In many exercises you should avoid to rely on conditionals. 
+In many exercises, you should avoid relying on conditionals. 
 
 ### LAN simulator
 
-A LAN is composed of different kinds of nodes. Packets circulate inside the LAN from node to node. 
+As shown in chapter *@basicLan@*, a LAN is composed of different kinds of nodes. Packets circulate inside the LAN from node to node. 
 The code is available at:
 
 ```
@@ -21,8 +21,10 @@ When the packet is addressed to a node, then depending on the node kind it perfo
 A packet has an address and contents.
 
 A simple LAN is composed of simple nodes. Simple nodes just forward the packets that are not addressed to them to their next node.
+Check the tests that are provided to get an understanding. 
 
-### Extensions
+
+### LAN extensions
 
 There are several possible extensions: 
 
