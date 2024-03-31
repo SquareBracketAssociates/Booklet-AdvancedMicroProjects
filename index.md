@@ -33,12 +33,11 @@ The current document contains a collection of design exercises at different leve
 
 # Unguided exercises
 
-In this part, we propose multiple extensions to the previous projects.
-It is fun to challenge ourselves to see how we could support the proposed variations.
+In this part, we propose two less guided projects and multiple extensions to the previous projects. It is fun to challenge ourselves to see how we could support the proposed variations.
 
-<!inputFile|path=Chapters/Unguided/Unguided.md!>
 <!inputFile|path=Chapters/Tamagotchi/Tamagotchi.md!>
 <!inputFile|path=Chapters/Civilization/Civilization.md!>
+<!inputFile|path=Chapters/Unguided/Unguided.md!>
 
 # Unguided Projects
 
