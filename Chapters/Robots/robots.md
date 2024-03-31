@@ -1,5 +1,5 @@
 ## A little saturn PathFinder
-
+@cha:robot
 
 
 We launched a pathfinder robot on Saturn and the communication with the robot is difficult.
@@ -36,7 +36,7 @@ So when moving a robot should put back the previous tile.
 
 ### Scripts 
 
-A robot receives script as string containing _orders_.
+A robot receives a script as strings containing _orders_.
 The following test illustrates this.
 - First a robot is created.
 - Second a board is created. The robot is placed in the space.
@@ -65,10 +65,10 @@ The script contains different orders: such as `mov 3`, `dir #north`.
 
 ### Getting the code 
 
-To help you developping this project we provide some core behavior. 
+To help you develop this project we provide some core behavior. 
 The robot code is available at: `https://github.com/pharo-mooc/AdvancedDesignMoocProjectCode`.
-- To start, load the baseline name `RobotsProject`, it contains the board logic, board tests in addition to basic behavior for tiles composing the space. Note that this 
-- Once you define the class `RbsRobot` (for example in a package named `Robots`) as subclass of `RbsAbstractRobot`, load the package `Robots-Tests`. It contains the tests for the behavior you will have to define. 
+- To start, load the baseline name `RobotsProject`, it contains the board logic, and board tests in addition to basic behavior for tiles composing the space. Note that this 
+- Once you define the class `RbsRobot` (for example in a package named `Robots`) as a subclass of `RbsAbstractRobot`, load the package `Robots-Tests`. It contains the tests for the behavior you will have to define. 
 
 
 ### Basic robot behavior
@@ -86,7 +86,7 @@ testRobotDefaultDirection
 
 ### Robot move
 
-The first step is to implement orders such as `mov`, `dir`. Each order can be implementation defining method such as `move: aDistance` and `direction:`.
+The first step is to implement orders such as `mov`, `dir`. Each order can be implemented by defining a method such as `move: aDistance` and `direction:`.
 Propose an implementation for these methods. Here is a possible test for the `move:`.
 
 ```
@@ -106,7 +106,7 @@ testRobotMove
 
 Pay attention that `move:` should put back the ground after moving. 
 
-To help you we propose to use the following method `computeNewPosition:`, but there is bug (it does not return a point).
+To help you we propose to use the following method `computeNewPosition:`, but there is a bug (it does not return a point).
 Write a couple of tests and fix the method.
 
 ```
@@ -124,8 +124,8 @@ computeNewPosition: anInteger
 ```
 
 
-The method `move:` now handle the fact that we put back the background tile when moving the robot. 
-But we were tired and there is a bug in that method, fix it!
+The method `move:` now handles the fact that we put back the background tile when moving the robot. 
+But we were tired and there was a bug in that method, fix it!
 
 ```
 move: anInteger 

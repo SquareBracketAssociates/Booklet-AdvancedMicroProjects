@@ -1,4 +1,5 @@
 ## Tamagotchi Mechanics
+@cha:tama
 
 ### Problem Context
 

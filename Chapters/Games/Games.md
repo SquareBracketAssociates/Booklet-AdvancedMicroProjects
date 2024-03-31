@@ -1,5 +1,5 @@
 ## Designing little board games
-@games
+@cha:games
 
 This chapter lists some game descriptions. The idea is to be able to use elements of such a list as design exercises. 
 We suggest to focus first on designing the model of the game with tests.

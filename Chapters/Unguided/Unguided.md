@@ -1,20 +1,14 @@
 ## Little unguided projects
-
+@cha:unguided
 In this chapter, we present a list of small projects that we encourage you to code. 
 Such projects are fun and playing with them will force you to practice different coding idioms or design patterns.
 In many exercises, you should avoid relying on conditionals. 
 
 ### LAN simulator
 
-As shown in chapter *@basicLan@*, a LAN is composed of different kinds of nodes. Packets circulate inside the LAN from node to node. 
-The code is available at:
+As shown in Chapter *@cha:basicLan@*, a LAN is composed of different kinds of nodes. Packets circulate inside the LAN from node to node. 
 
-```
-Metacello new
-  baseline: 'SimpleLAN';
-  repository: 'github://Ducasse/SimpleLAN/src';
-  load.
-```
+
 
 A node has an address and a next node to which it forwards packets that are not addressed to it. 
 When the packet is addressed to a node, then depending on the node kind it performs its action. 
@@ -23,6 +17,16 @@ A packet has an address and contents.
 A simple LAN is composed of simple nodes. Simple nodes just forward the packets that are not addressed to them to their next node.
 Check the tests that are provided to get an understanding. 
 
+### Loading LAN code. 
+
+If you did not follow Chapter *@cha:basicLan@*, the code is available at:
+
+```
+Metacello new
+	baseline: 'SimpleLAN';
+	repository: 'github://Ducasse/SimpleLAN/src';
+	load.
+```
 
 ### LAN extensions
 
@@ -114,7 +118,7 @@ Now we introduce different kinds of dice.
 - A middle die has no 1 and 6 but two 3 and two 4: e.g. 2, 3, 3, 4, 4, 5.
 - A cheated die has no 1 and 2 but 3 6 values: e.g. 3, 4, 5, 6, 6, 6.
 
-##### Pair of player and die
+##### Pairs of player and die
 
 Now certain dices can only be played by certain player: 
 - A middle die can only be played by a lucky or super lucky player.
@@ -173,9 +177,12 @@ Here is a list of possible Visitors that you can simply define:
 - a visitor that adds a return to the expression given. For SequenceNode it will put the return node on the last statement of the sequence node.
 
 
-### Microdown 
+### Microdown and Visitors
 
 Microdown is a markup language compatible with a subset of markdown. It is used by the Pharo community to produce slides, booklets, and documentation. 
+Microdown heavily uses Visitors
+The repository is at https://github.com/pillar-markup/microdown.
+
 A nice little project is to use Microdown to define a blog and its posts.
 A potential roadmap is the following:
 

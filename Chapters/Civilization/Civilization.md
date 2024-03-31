@@ -1,4 +1,5 @@
 ## Civilization
+@cha:civilization
 
 In this chapter you will design a simplified version of the combat mechanics in
 turn-based strategy games such as Civilization or FreeCiv [https://en.wikipedia.org/wiki/Freeciv](https://en.wikipedia.org/wiki/Freeciv) as an open-source alternative.

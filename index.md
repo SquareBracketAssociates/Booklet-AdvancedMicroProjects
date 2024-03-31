@@ -16,28 +16,8 @@ The current document contains a collection of design exercises at different leve
 # Teacher corner
 
 <!inputFile|path=Chapters/ForTeachers/forTeachers.md!>
+<!inputFile|path=Chapters/ForTeachers/exerciseMap.md!>
 
-## Module Exercises
-
-The module is composed of 10 modules and an optional one around Pharo.
-There is no direct mapping one to one mapping between the exercises and the modules. 
-For example the Module 2 around tests is the second one so that the learners can try to write tests
-in any of the exercises. In addition when we could all the guided exercises contained tests. 
-
-
-- Chapter A basic LAN application
-- Chapter *@cha:dsl@* (Crafting a simple embedded DSL with Pharo)
-- Chapter *@@cha:stone@* (Stone paper scissors)
-- Chapter *@cha:dsldd* (Revisiting the Die DSL: a case for double dispatch)
-- A little saturn PathFinder
-- Chapter *@cha:compass@* (Finding the North with Compass)
-- Chapter *@cha:expressions@* (A little expression interpreter)
-- Understanding visitors
-
-- Little unguided projects
-- Tamagotchi Mechanics
-- Civilization
-- Designing little board games
 
 
 
@@ -62,7 +42,7 @@ It is fun to challenge ourselves to see how we could support the proposed variat
 <!inputFile|path=Chapters/Tamagotchi/Tamagotchi.md!>
 <!inputFile|path=Chapters/Civilization/Civilization.md!>
 
-# Unguided games
+# Unguided Projects
 
 In this part, we propose you design some simple board games using the Bloc graphical framework taking as an example the games of the Myg project.
 

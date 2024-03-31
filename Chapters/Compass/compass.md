@@ -9,7 +9,7 @@ In this chapter, we will work on an alternative way to represent directions and 
 
 #### Computing new position based on a direction.
 
-In the Robot implementation, we computed the new position of a robot as follows: 
+In the Robot implementation proposed in Chapter *@cha:robot@*, we computed the new position of a robot as follows: 
 
 ```
 computeNewPosition: anInteger 

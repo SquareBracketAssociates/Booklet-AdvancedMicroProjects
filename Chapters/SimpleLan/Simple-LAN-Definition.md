@@ -1,5 +1,5 @@
 ## A basic LAN application
-@basicLan
+@cha:basicLan
 The purpose of this mini-project is to define a little network simulator. 
  If you understand well basic object-oriented concepts, you can skip this part of the book even if it is fun to code a little simulator and in particular its less guided extensions.
  
@@ -64,7 +64,7 @@ LNNodeTest >> testName
 
 #### Exercise: Define the method `hasNextNode`
 
-Define a method called `hasNextNode` that returns whether the receiver has a next LNNode or not. 
+Define a method called `hasNextNode` that returns whether the receiver has a next `LNNode` or not. 
 Notice that by default a newly created node does not have a next node.
 The following test should pass. 
 
@@ -79,7 +79,7 @@ LNNode >> testHasNextNode
 
 A `LNNode` has two basic messages to send and receive packets. 
 
-When a packet is sent to a node, the node has to accept the packet, and send it on. Note that with this simple behavior, the packet can 
+When a packet is sent to a node, the node has to accept the packet and send it on. Note that with this simple behavior, the packet can 
 loop infinitely in the LAN. We will propose some solutions to this issue later. To implement this behavior, you should add a protocol `send-receive`, and implement the following two methods:
 
 ```
