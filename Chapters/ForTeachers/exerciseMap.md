@@ -15,7 +15,7 @@ By default we suggest
 - Chapter *@cha:dsl@* (Crafting a simple embedded DSL with Pharo)
 - Chapter *@cha:stone@* (Stone paper scissors)
 - Chapter *@cha:dsldd@* (Revisiting the Die DSL: a case for double dispatch)
-- Chapter *@cha:robot*@ (A little saturn PathFinder)
+- Chapter *@cha:robot@* (A little saturn PathFinder)
 - Chapter *@cha:compass@* (Finding the North with Compass)
 - Chapter *@cha:expressions@* (A little expression interpreter)
 - Chapter *@cha:visitors@* (Understanding visitors)
@@ -23,36 +23,39 @@ By default we suggest
 - Chapter *@cha:tama@* (Tamagotchi Mechanics)
 - Chapter *@cha:civilization@* (Civilization)
 - Chapter *@cha:games@* (Designing little board games)
-- Chapter *@cha:microdown* (Microdown projects)
+- Chapter *@cha:microdown@* (Microdown projects)
 
 ![Module exercise map.](figures/mapL.pdf)
 
 ### Exercises proposition per Module
 
 #### Module 1.
-	Chapter *@cha:basicLan@* (A basic LAN application)
+Chapter *@cha:basicLan@* (A basic LAN application)
 
 #### Module 2. 
-	Chapter *@cha:dsl@* (Crafting a simple embedded DSL with Pharo)
+Chapter *@cha:dsl@* (Crafting a simple embedded DSL with Pharo).
+Another interesting exercise is Chapter *@cha:expressions@* (A little expression interpreter) since it illustrates well object-oriented design and will be extended in Module 6.
 
 #### Module 3.
-To exercise Hooks you can work on the Chapter *@cha:unguided@*  section related to the LAN extension.
+To exercise Hooks you can work on the Chapter *@cha:unguided@*  section related to the LAN extension. You can also 
 
 #### Module 4. 
-Here you can for example do the 
+To prepare the exercises of Module 6 we suggest doing Chapter *@cha:expressions@* (A little expression interpreter). 
+Here you can for example follow
+Chapters *@cha:tama@* (Tamagotchi Mechanics) and  *@cha:civilization@* (Civilization).
 
 #### Module 5. 
-- Chapter *@cha:robot*@ (A little saturn PathFinder)
-Chapter *@cha:compass@* (Finding the North with Compass)
+To exercise the Command pattern do the 
+Chapter *@cha:robot@* (A little saturn PathFinder) and you can continue with
+Chapter *@cha:compass@* (Finding the North with Compass).
+In addition, Chapter *@cha:tama@* is a nice exercise to use the State pattern.
 
 #### Module 6. 
 In this module you should do the exercises of Chapter *@cha:stone@* (Stone paper scissors) as well as the one of Chapter *@cha:visitors@* (Understanding visitors).
-From then on, you can do the unguided exercises about AST in Chapter *@cha:unguided@* (Little unguided projects) and the Microdown extensions of Chapter *@cha:microdown* (Microdown projects)
+From then on, you can do the unguided exercises about AST in Chapter *@cha:unguided@* (Little unguided projects) and the Microdown extensions of Chapter *@cha:microdown@* (Microdown projects).
 	
-#### Module 7. 
-#### Module 8. 
-#### Module 9. 
- 	
+#### Module 7, 8, 9, 10. 
+From then on you should  	
 	
 	
 
