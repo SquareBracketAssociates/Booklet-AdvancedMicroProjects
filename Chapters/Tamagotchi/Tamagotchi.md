@@ -23,14 +23,14 @@ A pet can eat then:
 - If it is happy, it increases its happiness level by one.
 - If it is sad, it will not eat, and an error should happen.
 
-##### Playing Alone.
+#### Playing Alone.
 A pet can play with itself then: 
 - If it is hungry, its happiness level is reduced by 4.
 - If it is happy, it increases its happy level by two. If it plays two times since eating,
 it gets hungry.
 - If it is sad, it gets happy.
 
-##### Playing With Other Pets.
+#### Playing With Other Pets.
 A pet can play with another pet then: 
 - If any of them is hungry, they don’t play and nothing changes.
 - If the pet is happy, it increases its happy level by four. If it plays two times since
@@ -41,10 +41,10 @@ eating, it gets hungry.
 As the game got so popular, we have to add new mechanics to it. We are going to add
 two additional types of Pets. 
 
-#####Dog.
+#### Dog.
 - Whenever it eats, its happiness level rises to 5, then it rises normally by 1. 
 
-##### Lonely Cat.
+#### Lonely Cat.
 - Whenever it plays with another pet, it gets sad.
 
 ### Tests
