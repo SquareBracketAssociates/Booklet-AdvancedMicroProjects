@@ -7,10 +7,9 @@ For example the Module 2 around tests is the second one so that the learners can
 
 ### Default flow
 By default we suggest 
-- follow the book order and perform the exercises. 
-Note that the Tamagotchi (Chapter *@cha:tama@*) and Civilization (Chapter *@cha:civilization@*) projects are less guided on purpose and this can give you more space to design solutions.
+- follow the book order and perform the exercises. Note that the Tamagotchi (Chapter *@cha:tama@*) and Civilization (Chapter *@cha:civilization@*) projects are less guided on purpose and this can give you more space to design solutions.
 - then follow some unguided projects as described in Chapter *@cha:unguided@*. Note that each of the unguided projects requires that the extended project has been performed. For the LAN we are giving the possibility to load the code since the exercise is simple. 
-- Finally we suggest to implement one of the games proposed in Chapter *@cha:games@* or a nice extension of the Microdown project proposed in Chapter *@cha:microdown@*
+-  implement one of the games proposed in Chapter *@cha:games@* or a nice extension of the Microdown project proposed in Chapter *@cha:microdown@*.
 
 - Chapter *@cha:basicLan@* (A basic LAN application)
 - Chapter *@cha:dsl@* (Crafting a simple embedded DSL with Pharo)
@@ -32,12 +31,24 @@ Note that the Tamagotchi (Chapter *@cha:tama@*) and Civilization (Chapter *@cha:
 
 #### Module 1.
 	Chapter *@cha:basicLan@* (A basic LAN application)
+
 #### Module 2. 
 	Chapter *@cha:dsl@* (Crafting a simple embedded DSL with Pharo)
+
 #### Module 3.
+To exercise Hooks you can work on the Chapter *@cha:unguided@*  section related to the LAN extension.
+
 #### Module 4. 
+Here you can for example do the 
+
 #### Module 5. 
+- Chapter *@cha:robot*@ (A little saturn PathFinder)
+Chapter *@cha:compass@* (Finding the North with Compass)
+
 #### Module 6. 
+In this module you should do the exercises of Chapter *@cha:stone@* (Stone paper scissors) as well as the one of Chapter *@cha:visitors@* (Understanding visitors).
+From then on, you can do the unguided exercises about AST in Chapter *@cha:unguided@* (Little unguided projects) and the Microdown extensions of Chapter *@cha:microdown* (Microdown projects)
+	
 #### Module 7. 
 #### Module 8. 
 #### Module 9. 
