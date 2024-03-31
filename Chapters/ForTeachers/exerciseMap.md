@@ -15,7 +15,7 @@ By default we suggest
 - Chapter *@cha:dsl@* (Crafting a simple embedded DSL with Pharo)
 - Chapter *@cha:stone@* (Stone paper scissors)
 - Chapter *@cha:dsldd@* (Revisiting the Die DSL: a case for double dispatch)
-- Chapter *@cha:robot@* (A little saturn PathFinder)
+- Chapter *@cha:robot@* (A little Saturn PathFinder)
 - Chapter *@cha:compass@* (Finding the North with Compass)
 - Chapter *@cha:expressions@* (A little expression interpreter)
 - Chapter *@cha:visitors@* (Understanding visitors)
