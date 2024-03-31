@@ -10,7 +10,7 @@ By default we suggest
 - follow the book order and perform the exercises. 
 Note that the Tamagotchi (Chapter *@cha:tama@*) and Civilization (Chapter *@cha:civilization@*) projects are less guided on purpose and this can give you more space to design solutions.
 - then follow some unguided projects as described in Chapter *@cha:unguided@*. Note that each of the unguided projects requires that the extended project has been performed. For the LAN we are giving the possibility to load the code since the exercise is simple. 
-- Finally we suggest to implement one of the game proposed in Chapter *@cha:games@*
+- Finally we suggest to implement one of the games proposed in Chapter *@cha:games@* or a nice extension of the Microdown project proposed in Chapter *@cha:microdown@*
 
 - Chapter *@cha:basicLan@* (A basic LAN application)
 - Chapter *@cha:dsl@* (Crafting a simple embedded DSL with Pharo)
@@ -24,6 +24,7 @@ Note that the Tamagotchi (Chapter *@cha:tama@*) and Civilization (Chapter *@cha:
 - Chapter *@cha:tama@* (Tamagotchi Mechanics)
 - Chapter *@cha:civilization@* (Civilization)
 - Chapter *@cha:games@* (Designing little board games)
+- Chapter *@cha:microdown* (Microdown projects)
 
 ![Module exercise map.](figures/mapL.pdf)
 
@@ -33,4 +34,15 @@ Note that the Tamagotchi (Chapter *@cha:tama@*) and Civilization (Chapter *@cha:
 	Chapter *@cha:basicLan@* (A basic LAN application)
 #### Module 2. 
 	Chapter *@cha:dsl@* (Crafting a simple embedded DSL with Pharo)
+#### Module 3.
+#### Module 4. 
+#### Module 5. 
+#### Module 6. 
+#### Module 7. 
+#### Module 8. 
+#### Module 9. 
+ 	
+	
+	
+
 

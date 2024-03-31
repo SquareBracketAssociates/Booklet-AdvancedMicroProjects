@@ -50,45 +50,45 @@ This repetition indicates that this behavior could be factored out in the superc
 So define such behavior in the superclass and introduce a new method called `treatPacket:`. Such a new method will be redefined in all the subclasses. 
 
 
+#### Understanding execution flow 
 
-
-##### Better way to follow the execution of the simulation. 
+Better way to follow the execution of the simulation. 
 In the default implementation, the `accept:` method writes on the Transcript. This is not good since the trace is mixed with 
 other program traces. (Note that the Transcript is a global variable shared by the complete environment). In addition, it is not easy to write tests for the `send:` and `accept:` methods. 
 One solution is to have a stream shared by all the nodes of a simulation, stream on which all the messages written to the Transcript are now written to. Propose one solution. To validate your solution, write some tests for `send:` and `accept:`. 
 They should be able to run without writing to the Transcript.
 
-##### Star node
+#### Star node
 
 Introduce a star node that supports the creation of star network. A star node does not have one but many following nodes. 
 
 
-##### Avoiding some conditions.
+#### Avoiding some conditions.
 The way the instance variable `nextNode` is managed (having nil or a node as value) is based on conditions in different places: the method `accept:` or the method `send:`. Propose a solution to be able to remove such conditions. One possible solution is to apply the NullObject design pattern.
 
 
-##### Trottling node
+#### Trottling node
 
 This node accumulates packets and waits before forwarding them.
 They wait to have received a certain number of packets before sending a batch of collected packets.
 
-##### Handling loops
+#### Handling loops
 
 Introduce an origin to the packet and make sure that if it reaches the node that emitted it is not propagated. 
 
-##### Limited packet distance
+#### Limited packet distance
 
 We decided that a packet can only be forwarded a given number of times. After that, it should reemitted or is not propagated if it did not reach its destination. 
 Introduce a repeating node that recharges the distance number of packet can have. 
 
-##### Different kinds of packets
+#### Different kinds of packets
 
 In this extension we introduce several kinds of packet.
 
 - Some packets can auto replicate themselves to flood the LAN, it means that when they are accepted by a node and even if they are addressed to a node receiving them they force their forwarding. 
 - Urgent packets cannot be trottled by trollting nodes.
 
-##### Signing node
+#### Signing node
 
 A signing node encodes the contents of a package and only nodes with the same signing behavior can decode the contents. 
 We would like to have different combinations of contents encodings. One possible design is to use a Decorator design pattern,
@@ -106,19 +106,19 @@ Let us imagine that we have die and die handle and that we can roll a die and a 
 
 A normal player is one player that roll normally its die handle. Introduce the class Player and make sure that it gets the possibility to roll die handles.
 
-##### Kind of players
+#### Kind of players
 Now we want to introduce different kind of players.
 - A cheater player is one player that will take the max of value of its die handle value and multiply by the number of dices. For example if he gets 2,3,4, after rolling its dice, he will say that he hot 4,4,4.
 - A lucky player is a player that will always have plus one to its roll. For example, rolling its dice returns, 2,3,4 and the lucky player will have 10 and not 9.
 - A super lucky player is a player that will always have plus one to the values of all the value of its dices. For example, rolling its dice returns 2,3,4 and the super lucky player will return 3,4,5 i.e. 12.
 
-##### Different kinds of die
+#### Different kinds of die
 Now we introduce different kinds of dice. 
 - A normal die has equi proportional values from 1 to its max face number: e.g., 1, 2, 3, 4, 5, 6.
 - A middle die has no 1 and 6 but two 3 and two 4: e.g. 2, 3, 3, 4, 4, 5.
 - A cheated die has no 1 and 2 but 3 6 values: e.g. 3, 4, 5, 6, 6, 6.
 
-##### Pairs of player and die
+#### Pairs of player and die
 
 Now certain dices can only be played by certain player: 
 - A middle die can only be played by a lucky or super lucky player.
@@ -127,7 +127,7 @@ Now certain dices can only be played by certain player:
 
 ### About the die DSL 
 
-In the die DSL we can implement the solution without double dispatch. Do it.
+In Chapter  *@cha:dsldd@* we introduce double dispatch to mix die and dice handles, we can implement the expected behavior without double dispatch. Do it.
 
 
 ### About Visitors
@@ -177,18 +177,7 @@ Here is a list of possible Visitors that you can simply define:
 - a visitor that adds a return to the expression given. For SequenceNode it will put the return node on the last statement of the sequence node.
 
 
-### Microdown and Visitors
 
-Microdown is a markup language compatible with a subset of markdown. It is used by the Pharo community to produce slides, booklets, and documentation. 
-Microdown heavily uses Visitors
-The repository is at https://github.com/pillar-markup/microdown.
-
-A nice little project is to use Microdown to define a blog and its posts.
-A potential roadmap is the following:
-
-- Given a file repository we should generate a little table of contents. For this, we can reuse the HTML generation of Microdown. To do so we can do it either by generating a microdown document using the microdown builder and passing it to the HTML visitor. Or by creating the tree of objects for the table of contents and applying the HTML generation on it. 
-- You can also render all the post to generate HTML files. 
-- Finally having a visitor that extract the title of a post and a couple of line of the first paragraph so that the user can see a summary before clicking to get access to the full post can be nice. 
 
 
 
