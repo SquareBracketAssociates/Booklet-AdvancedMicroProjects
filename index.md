@@ -19,8 +19,6 @@ The current document contains a collection of design exercises at different leve
 <!inputFile|path=Chapters/ForTeachers/exerciseMap.md!>
 
 
-
-
 # Guided Exercices 
 <!inputFile|path=Chapters/SimpleLan/Simple-LAN-Definition.md!>
 <!inputFile|path=Chapters/DSL/DSL.md!>
@@ -47,6 +45,6 @@ It is fun to challenge ourselves to see how we could support the proposed variat
 In this part, we propose you design some simple board games using the Bloc graphical framework taking as an example the games of the Myg project.
 
 <!inputFile|path=Chapters/Games/Games.md!>
-
+<!inputFile|path=Chapters/Games/Microdown.md!>
 
 
