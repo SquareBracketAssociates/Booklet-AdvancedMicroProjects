@@ -13,10 +13,12 @@ The current document contains a collection of design exercises at different leve
 - The third part proposes some unguided extensions to the previous projects as well as some exercises that are also loosely described to give space for variations. 
 - The fourth part presents some game ideas that you are invited to design and build with Bloc the new graphic layer of Pharo and that can also benefit from the micro-framework Myg. 
 
+<!inputFile|path=Chapters/ForTeachers/exerciseMap.md!>
+
 # Teacher corner
 
 <!inputFile|path=Chapters/ForTeachers/forTeachers.md!>
-<!inputFile|path=Chapters/ForTeachers/exerciseMap.md!>
+
 
 
 # Guided Exercices 
@@ -33,7 +35,7 @@ The current document contains a collection of design exercises at different leve
 
 # Unguided exercises
 
-In this part, we propose two less guided projects and multiple extensions to the previous projects. It is fun to challenge ourselves to see how we could support the proposed variations.
+In this part, we propose two less-guided projects and multiple extensions to the previous projects. It is fun to challenge ourselves to see how we could support the proposed variations.
 
 <!inputFile|path=Chapters/Tamagotchi/Tamagotchi.md!>
 <!inputFile|path=Chapters/Civilization/Civilization.md!>

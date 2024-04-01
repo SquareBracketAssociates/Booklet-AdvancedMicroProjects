@@ -25,7 +25,7 @@ By default we suggest
 %- Chapter *@cha:games@* (Designing little board games)
 %- Chapter *@cha:microdown@* (Microdown projects)
 
-![Module exercise map.](figures/mapL.pdf)
+%![Module exercise map.](figures/mapL.pdf)
 
 ### Exercises proposition per Module
 
