@@ -1,8 +1,8 @@
 ## Module Exercises
 
-The module is composed of 10 modules and an optional one around Pharo.
+The Mooc is composed of 10 modules and an optional one around Pharo.
 There is no direct mapping one to one mapping between the exercises and the modules. 
-For example the Module 2 around tests is the second one so that the learners can try to write tests in any of the exercises. In addition when we could all the guided exercises contained tests. 
+For example, Module 2 around tests is the second one so that the learners can try to write tests in any of the exercises. In addition when we could all the guided exercises contained tests. 
 
 
 ### Default flow
