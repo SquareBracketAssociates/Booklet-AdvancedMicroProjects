@@ -3,9 +3,9 @@ name: Centralized book generation
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
   schedule:
     - cron:  '0 0 * * 0'
 
@@ -16,4 +16,4 @@ jobs:
   build:
     uses: SquareBracketAssociates/BookBuilderDashboard/.github/workflows/main.yml@master
     with:
-      bookname: MicroProjects-wip
+      bookname: MicroProjects
