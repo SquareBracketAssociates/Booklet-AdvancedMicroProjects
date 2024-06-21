@@ -234,7 +234,8 @@ Define the method `isAddressedTo: aNode` which returns whether a packet is addre
 ```
 LNPacketTest >> testIsAddressedTo
 
-	^ (LNPacket new addresseeName: 'Mac') isAddressedTo: (LNNode new name: 'Mac')
+		self assert: ((LNPacket new addresseeName: 'Mac') isAddressedTo:
+			 (LNNode new name: 'Mac'))
 ```
 
 #### Exercise: adding a `printOn:` method
