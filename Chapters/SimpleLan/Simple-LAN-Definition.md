@@ -178,7 +178,7 @@ LNNode >> testPrintingJustInitializedNode
 
 	self
 		assert: LNNode new printString
-		equals: 'unamed -> \'
+		equals: 'unnamed -> \'
 ```
 
 From an implementation perspective, we could add a test in the `printOn:` method. 
