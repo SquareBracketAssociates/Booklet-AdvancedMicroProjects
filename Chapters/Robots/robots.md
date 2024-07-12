@@ -101,7 +101,7 @@ testRobotMove
 	self assert: (rb board atX: 4 atY: 1) equals: rb.
 	rb move: 10.
 	self assert: (rb board atX: 14 atY: 1) equals: rb.
-	self assert: (rb board atX: 14 atY: 1) equals: rb
+	self deny: (rb board atX: 4 atY: 1) equals: rb
 ```
 
 Pay attention that `move:` should put back the ground after moving. 
