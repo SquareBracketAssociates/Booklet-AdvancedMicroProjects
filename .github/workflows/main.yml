@@ -1,5 +1,4 @@
-
-name: Centralized book generation
+name: Book with Pillar
 
 on:
   push:
@@ -14,6 +13,6 @@ on:
 
 jobs:
   build:
-    uses: SquareBracketAssociates/BookBuilderDashboard/.github/workflows/main.yml@master
+    uses: SquareBracketAssociates/BookBuilderDashboard/.github/workflows/main.yml@newVersionOfPillar
     with:
-      bookname: MicroProjects
+      bookname: MoocCompanion
