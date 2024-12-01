@@ -10,6 +10,145 @@ The repository is at
 https://github.com/pillar-markup/microdown
 ```
 
+### Loading
+
+Pay attention to follow the loading instructions to develop Microdown as defined on the readme on the project. You should execute them else you may have problems since a different version of Microdown 
+preloaded in Pharo may conflict with the version you will load. 
+
+
+### Getting started
+
+#### Model
+Have a look at the document model
+- What is the root of a document?
+- What is the class of the object that represents code block?
+- What is the class that represents italic font?
+
+
+#### From text to objects
+
+- Read the tests to understand how to get an object representing the text?
+- Turn the following text into a document object
+
+We will reuse the following text in other exercises. So we store it into a variable. 
+```
+miniDoc := '
+# Microdown 
+
+Microdown is a super cool markdown description language.
+It supports basic markdown but also extensions that are important to write books.
+
+
+# Architecture
+
+Microdown proposes visitors to 
+
+- Export in LaTeX, HTML
+- Dump the document tree as objects
+- Checkers
+
+## Visitors
+
+Visitors just visit the structure tree and perform the corresponding actions. 
+
+## A builder
+
+A builder proposes an API to produce Microdown instructions without manipulating text directly. 
+It decouples the structure from the actual textual representation. It allows developers to script documentation. 
+'
+```
+
+- Check that the root of the document is effectively an instance of the class you identified earlier. 
+- Navigate some children of the root. 
+
+#### Programmatically writing a textual document
+
+While visitors often go from objects to textual representations, we often need to generate textual 
+representations of the manipulated document objects.
+
+We could also simply manipulate strings and concatenate them by hand. This, however, would expose
+our program to any simple language evolution. Identify the solution proposed by Microdown. 
+
+
+
+
+### Table of contents
+
+We would like to have a table of content builder. Given a book, the Toc builder will generate a microdown document tree containing references to the corresponding book entities (chapter, section).
+
+To achieve this exercise we propose several solutions. 
+
+#### Generating a plain text TOC
+
+Define a simple Visitor that will generate a text. For example
+
+```
+vis := SimpleTOCGenerator new.
+vis visit: (Microdown parse: miniDoc)
+vis contents
+>
+
+'
+Microdown
+Architecture
+  Visitors
+  A builder
+'
+
+#### Controlling the level
+
+Now we can also want to only show sections whose nested in higher than a certain level.
+
+```
+vis := SimpleTOCGenerator new.
+vis showOnlyAbove: 1.  
+vis visit: (Microdown parse: miniDoc)
+vis contents
+>
+
+'
+Microdown
+Architecture
+'
+
+#### Showing numbers
+
+Now we may want to get the TOC numbered
+
+```
+vis := SimpleTOCGenerator new.
+vis showOnlyAbove: 1.  
+vis numbered.
+vis visit: (Microdown parse: miniDoc)
+vis contents
+>
+
+'
+1 Microdown
+2 Architecture
+'
+
+#### Producing Microdown
+
+Now we would like to be able to produce Microdown text that represents the TOC.
+This solution should use the textual builder.
+
+```
+vis := SimpleTOCGenerator new.
+vis showOnlyAbove: 1.  
+vis visit: (Microdown parse: miniDoc)
+vis contents
+>
+
+'
+# Microdown
+# Architecture
+'
+
+
+
+
+
 ### Blog and its posts
 
 A nice little project is to use Microdown to define a blog and its posts.
@@ -39,9 +178,6 @@ In Section *@anchor1@* we can find Fig. *@figanchor@*.
 We would like to have a checker that reports to the users the set of references (defined using the `*@xxx@*` instruction  that are not found. 
 
 
-### Table of contents
-
-We would like to have a table of content builder. Given a book, the Toc builder will generate a microdown document tree containing references to the corresponding book entities (chapter, section)
 
 ### Book Sanitizer
 

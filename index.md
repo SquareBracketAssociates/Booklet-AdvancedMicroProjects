@@ -46,6 +46,6 @@ In this part, we propose two less-guided projects and multiple extensions to the
 In this part, we propose you design some simple board games using the Bloc graphical framework taking as an example the games of the Myg project.
 
 <!inputFile|path=Chapters/Games/Games.md!>
-<!inputFile|path=Chapters/Games/Microdown.md!>
+<!inputFile|path=Chapters/Unguided/Microdown.md!>
 
 
