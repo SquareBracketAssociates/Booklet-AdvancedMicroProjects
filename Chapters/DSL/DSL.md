@@ -416,7 +416,6 @@ DieHandleTest >> testSumOfHandles
 ```
 
 
-
 We will define a method `+` on the `DieHandle` class. In other languages, this is often not possible or is based on operator overloading. In Pharo `+` is just a message as any other, therefore we can define it in the classes we want.
 
 Now we should ask ourselves what is the semantics of adding two handles. Should we modify the receiver of the expression or create a new one? We preferred a more functional style and chose to create a third one. 
@@ -448,8 +447,8 @@ DieHandleTest >> testSimpleHandle
 ```
 
 
-Verify that the test is not working! It is much more satisfactory to get a test running when it was not working before. Now define the method `D20` with a protocol named `*NameOfYourPackage` (`'*Dice`' if you named your package `'Dice'`).
-The `*` (star) prefixing a protocol name indicates that the protocol and its methods belong to another package than the package of the class. Here we want to say that while the method `D20` is defined in the class `Integer`, it should be saved with the package `Dice`. 
+Verify that the test is not working! It is much more satisfactory to get a test running when it was not working before. 
+
  
 The method `D20` simply creates a new die handle, adds the correct number of dice to this handle, and returns the handle.
 
@@ -458,20 +457,30 @@ Integer >> D20
 	... Your solution ...
 ```
 
+Your tests should pass. 
+It is time for us to think a bit about packaging this definition in the `Integer` class.
 
-#### About class extensions
+### About packaging and class extensions
+
+We have defined the method `D20` in the class `Integer`. However, if we load the package `Dice`, it will not contain this method, and the code will break. 
+Therefore, we would like to package the method  `D20` in the `Dice` package. This way it will be packaged together with the classes `Die` and `DieHandle`.
+
+To define that the method `D20` is packaged with the package `Dice`, do the following steps
+- Browse the `D20` method in the default class browser. At the bottom you should see two checkboxes: one with the label F and one with the label extension. 
+- Click on the extension check box, it will open a package list. 
+- Select the 'Dice' package. 
+
+So in Pharo, we can define methods in classes that are not defined in our package. Pharoers call this action a class extension: we can add methods to a class that is not ours. 
 
 
-We asked you to place the method `D20` in a protocol starting with a star and having the name of the package (`'*Dice'`) because we want this method to be saved (and packaged) together with the code of the classes we already created (`Die`, `DieHandle`,...) 
-Indeed in Pharo, we can define methods in classes that are not defined in our package. Pharoers call this action a class extension: we can add methods to a class that is not ours. For example `D20` is defined on the class `Integer`. Now such methods only make sense when the package `Dice` is loaded. 
-This is why we want to save and load such methods with the package we created. This is why we are defining the protocol as `'*Dice'`.
-This notation is a way for the system to know that it should save the methods with the package and not with the package of the class `Integer`. 
 
-Now your tests should pass and this is probably a good moment to save your work either by publishing your package and to save your image. 
+Your tests should pass, and you packaged the method with the `'Dice'` package. This is probably a good moment to save your work either by publishing your package and to save your image. 
+
+### D20 Continued
 
 We can do the same for the default dice with different face numbers: 4, 6, 10, and 20. But we should avoid duplicating logic and code. So first we will introduce a new method `D:` and based on it we will define all the others.
 
-Make sure that all the new methods are placed in the protocol `'*Dice'`. To verify you can press the button Browse of the Monticello package browser and you should see the methods defined in the class `Integer`. 
+Make sure that all the new methods are packaged in the package `'Dice'`. You verify if the methods are well packaged, check the greyed class Integer in the package `'Dice'`.
 
 ```
 Integer >> D: anInteger
@@ -513,6 +522,41 @@ DiceHandleTest >> testSumming
 	handle := 2 D20 + 3 D10.
 	self assert: handle diceNumber equals: 5.
 ```
+
+
+### DieHandle addition alternate design
+
+We would like to revisit the implementation of `+`.
+
+Here is a possible solution:
+- It creates a new die handle
+- It iterates over the die of the receiver and add them to the new hd handle
+- It grabs the die of the aDieHandle. Here we need to introduce the getter `dice`.
+
+
+```
+DieHandle >> + aDieHandle
+	| hd |
+	hd := DieHandle new. 
+	dice do: [ :d | hd addDie: d ].
+	aDieHandle dice do: [ :d | hd addDie: d ].
+	^ hd
+```
+This definition centralizes the knowledge. 
+
+Now we can have an alternate solution based on delegation.
+We define the method `fillUp:` that will add the dice of the receiver into the argument. 
+
+```
+DieHandle >> fillUp: aDieHandle     dice do: [ :each | aDieHandle addDie: each ]```	
+
+Then we can redefine the definition of the method `+` using the message `fillUp:`.
+
+```DieHandle >> + aDieHandle    | hd |    hd := DieHandle new.    self fillUp: hd.    aDieHandle fillUp: hd.    ^ hd
+```
+
+This new version is interesting because it does not force the definition of the getter `dice` and it is based 
+on delegation.
 
 
 ### Conclusion
