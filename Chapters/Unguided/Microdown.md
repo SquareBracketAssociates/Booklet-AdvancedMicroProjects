@@ -94,6 +94,7 @@ Architecture
   Visitors
   A builder
 '
+```
 
 #### Controlling the level
 
@@ -110,6 +111,7 @@ vis contents
 Microdown
 Architecture
 '
+```
 
 #### Showing numbers
 
@@ -127,6 +129,7 @@ vis contents
 1 Microdown
 2 Architecture
 '
+```
 
 #### Producing Microdown
 
@@ -144,6 +147,7 @@ vis contents
 # Microdown
 # Architecture
 '
+```
 
 
 
@@ -175,7 +179,7 @@ https://pharo.org
 In Section *@anchor1@* we can find Fig. *@figanchor@*.
 ```
 
-We would like to have a checker that reports to the users the set of references (defined using the `*@xxx@*` instruction  that are not found. 
+We would like to have a checker that reports to the users the set of references (defined using the `*@xxx@*` instruction)  that are not found. 
 
 
 
@@ -197,6 +201,7 @@ Here are some guidelines about writing style and spelling
 - Caption should start with an uppercase and terminate by a period.
 - Titles (section, chapter, ...) should just have the first letter capitalized.
 ```
+
 ### The great book.
 ```
 - Figure caption should end with a period and be capitalized.
@@ -212,7 +217,7 @@ Here are some guidelines about writing style and spelling
 
 #### Job
 
-A book sanitizer can perform modifications of the document tree to reflect them. 
+A book sanitizer can modify the document tree to reflect them. 
 A subsequent version could change the files to reflect such change so that the user can
 save them.
 

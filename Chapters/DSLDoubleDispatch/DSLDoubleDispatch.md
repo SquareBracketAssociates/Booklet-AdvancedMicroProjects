@@ -1,11 +1,15 @@
 ## Revisiting the Die DSL: a case for double dispatch
 @cha:dsldd
 
-In Chapter *@cha:dsl@*, using the Die DSL we could only sum die handles together as in `2 D20 + 1 D4`. In this new chapter, we extend the Die DSL implementation to support the sum of a die with another one or with a die handle \(and vice versa\). 
+In Chapter *@cha:dsl@*, using the Die DSL, we could only sum die handles together as in `2 D20 + 1 D4`. In this new chapter, we extend the Die DSL implementation to support the sum of a die with another one or with a die handle (and vice versa). 
+We will do that in several ways: first, using double dispatch and in a second time delegating to objects in a different way.             
 
-One of the challenges is that the message `+` should be able to manage different types of receivers and arguments. The message will have either a die or a die handle as receiver and arguments, so we should manage the following possibilities: die + die handle, die + die, die handle + die handle, and die handle + die. While this extension at first may look trivial, we will take it as a way to explore double dispatch. 
 
-Double dispatch is a technic that avoids hardcoding type checks and also can define incrementally the behavior handling all the possible cases. Indeed double dispatch does not use any explicit conditionals and is the basis of more advanced Design Patterns such as the Visitor. 
+### The challenge
+
+One of the challenges is that the message `+` should be able to manage different types of receivers and arguments. The message will have either a die or a die handle as the receiver and arguments, so we should manage the following possibilities: die + die handle, die + die, die handle + die handle, and die handle + die. While this extension at first may look trivial, we will take it as a way to explore double dispatch. 
+
+Double dispatch is a technique that avoids hardcoding type checks and also can define incrementally the behavior handling all the possible cases. Indeed, double dispatch does not use any explicit conditionals and is the basis of more advanced Design Patterns such as the Visitor. 
 
 Double dispatch is based on the _Don't ask, tell_ object-oriented principle applied twice. In the case of the `+` message, there is a first dispatch to select the adequate method. Then a second dispatch happens when in this method a new message is sent to the _argument_ of the `+` message telling this argument the way the current receiver should be summed. This description is too abstract so we will go over a full example to explain it. 
 
@@ -13,7 +17,7 @@ Double dispatch is based on the _Don't ask, tell_ object-oriented principle appl
 
 In a previous chapter, you implemented a small DSL to add dice and manage die handles. With this DSL, you could create dice and add them to a die handle. Later on, you could sum two different die handles and obtain a new one following the "Dungeons and Dragons" ruling book. 
 
-The following tests show these two behaviors: First the dice handle creation and second the sum of die handles.
+The following tests show these two behaviors: First, the dice handle creation and second the sum of die handles.
 
 ```
 DieHandleTest >> testCreationAdding
@@ -31,36 +35,6 @@ DieHandleTest >> testSummingWithNiceAPI
 	handle := 2 D20 + 3 D10.
 	self assert: handle diceNumber equals: 5
 ```
-
-
-The implementation of `+` was simple since we could only sum die handles together. The method `+` creates a new handle, adds the dice of the receiver and of the argument to the newly created handle and returns it. 
-
-```
-DieHandle >> + aDieHandle
-	"Returns a new handle that represents the addition of the receiver and the argument."
-	| handle |
-	handle := self class new.
-	self dice do: [ :each | handle addDie: each ].
-	aDieHandle dice do: [ :each | handle addDie: each ].
-	^ handle
-```
-
-### [Optional] Alternate way 
-
-We could also implement `+` using by asking the argument die handle to add its own dice as follows: 
-
-```
-DieHandle >> + aDieHandle
-	"Returns a new handle that represents the addition of the receiver and the argument."
-	| handle |
-	handle := self class new.
-	self dice do: [ :each | handle addDie: each ].
-	aDieHandle addDiceTo: handle.
-	^ handle
-```
-
-Implement the corresponding method `addDiceTo:` and verify that your tests still pass. 
-
 
 ### New requirements 
 
@@ -85,10 +59,26 @@ The second requirement is that we want to be able to mix and add a die to a die 
  (Die withFaces: 6) + 2 D20
 ```
 
+### A first incomplete design
+
+Let us focus on how we can simply turn a die into a die handle.
+First we define the following test showing what we want to achieve here:
+We want to be able to send the message `+` to a die with a die handle as argument. 
+
+```
+DieTest >> testAddingADieAndDiceHandle	| hd |	hd := (Die withFaces: 10) + 2 D10.	self assert: hd dices size equals: 3```	
+
+Here in this variation we turn the die into a die handle and send again the `+` now with the receiver as a die handle. 
+
+```
+Die >> + aDiceable	| hd |	hd := DieHandle new addDie: self. 	^ hd + aDiceable
+```
+
+This approach is not really good because it does not propose anything for the case where the argument is 
+a die. 
 
 
 ### Turning requirements into tests
-
 
 Since we are test-infested, we turn such expected behavior into automatically testable expected behavior: we write them as tests. 
 
@@ -391,6 +381,75 @@ DieHandleTest >> testAddingAnHandleWithADie
 	res := handle + (Die withFaces: 20).
 	self assert: res diceNumber equals: 3
 ```
+
+
+
+
+
+### Alternative design: passing a basket around
+
+While double dispatch is powerful it may look a bit overkill when we just have a couple of classes. 
+This is why we present now a simpler alternate design to satisfy our ne requirements. 
+
+The solution go that to the definition of the method `+` as done in the previous chapter. 
+We repeat here its definition for better reading flow. 
+This alternate design continues on the idea to pass around the resulting handle and use it to ask other objects to 
+place their elements to this container. 
+
+
+```
+DieHandle >> addDiceTo: aDieHandle
+     dice do: [ :each | aDieHandle addDie: each ]
+```	
+
+```
+DieHandle >> + aDieHandle
+    | hd |
+    hd := DieHandle new.
+    self addDiceTo: hd.
+    aDieHandle addDiceTo: hd.
+    ^ hd
+```
+
+
+Now let us remember that the following test should pass. 
+
+```
+DieHandle >> testAddingADieHandleAndADie	| hd |	hd := 2 D10 + (Die new faces: 12). 	self assert: hd dices size equals: 3```
+
+The test shows that the argument of the `+` can be a die and not a die handle. 
+This is why we should define the method `addDiceTo:` on the class `Die too. 
+It is as simple as the following one. 
+
+``` 
+Die >> addDiceTo: aDieHandle 	aDieHandle addDie: self
+```
+
+Now we should make sure that we can have a die as receiver
+
+```
+DieHandle >> testAddingADieAndADieHandle	| hd |	hd := (Die new faces: 12) + 2 D10. 	self assert: hd dices size equals: 3```
+
+We should then define the method `+` on `Die`.
+
+
+``` 
+Die >> + aDicable 
+   | hd |
+   hd := DieHandle new.
+   self addDiceTo: hd.
+   aDicable addDiceTo: hd.
+   ^ hd
+```
+Notice that the argument can be either a die or a die handle: now both understand the message `addDieTo:`.
+
+#### Adding to dice
+
+We can now verify that we can add two dice. 
+```
+DieHandle >> testAddingTwoDice	| hd |	hd := (Die new faces: 12) + (Die new faces: 4). 	self assert: hd dices size equals: 2```
+Since the two classes accept the message `addDiceTo:`, the test passes.  
+
 ### Conclusion
 
 

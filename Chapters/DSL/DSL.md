@@ -69,9 +69,9 @@ Now your tests should all pass (and turn green).
 
 ### Rolling a die
 
-To roll a die you should use the method from Number `atRandom` which draws randomly a 
-number between one and the receiver. For example `10 atRandom` draws number between 1 to 10. 
-Therefore we define the method `roll`:
+To roll a die, you should use the method from Number `atRandom` which draws randomly a 
+number between one and the receiver. For example `10 atRandom` draws a number between 1 to 10. 
+Therefore, we define the method `roll`:
 
 ```
 Die >> roll
@@ -83,24 +83,24 @@ Now we can create an instance `Die new` and send it the message  `roll` and get 
 Do `Die new inspect` to get an inspector and then type in the bottom pane `self roll`.
 You should get an inspector like the one shown in Figure *@figDiceNoDetail@*. With it you can interact with a die by writing an expression in the bottom pane.
 
-![Inspecting and interacting with a die.](figures/DiceNoDetail.png width=60&label=figDiceNoDetail)
+![Inspecting and interacting with a die. % width=60&label=figDiceNoDetail](figures/DiceNoDetail.png)
 
  
 
 ### Creating another test
 
 But better, let us define a test that verifies that rolling a newly created dice with a default 6 faces only returns 
-a value comprised between 1 and 6. This is what the following test method actually specifies.
+a value between 1 and 6. This is what the following test method actually specifies.
  
 ```
-DieTest >> testRolling
+DieTest >> testRollin
 	| d |
 	d := Die new.
 	10 timesRepeat: [ self assert: (d roll between: 1 and: 6) ]
 ```
 
 
-**Important** Often it is better to define the test even before the code it tests. Why? Because you can think about the API of your objects and a scenario that illustrates their correct behavior. It helps you to program your solution.
+**Important** Often, it is better to define the test even before the code it tests. Why? Because you can think about the API of your objects and a scenario that illustrates their correct behavior. It helps you to program your solution.
 
 
 ### Instance creation interface
@@ -109,7 +109,7 @@ We would like to get a simpler way to create `Die` instances. For example, we wa
 Both expressions are creating the same die but one is shorter.
 
 Let us look at it: 
-- In the expression `Die withFaces:`, the message `withFaces:` is sent to the class `Die`. It is not new, we constantly send the message `new` to `Die` to create instances. 
+- In the expression `Die withFaces:`, the message `withFaces:` is sent to the class `Die`. It is not new; we constantly send the message `new` to `Die` to create instances. 
 - Therefore we should define a method that will be executed 
 
 
@@ -149,10 +149,10 @@ Let us explain this method
 - Finally returns the newly created instance.
 
 
-Pay attention that a class method `withFaces:` is sent to a class, and an instance method is sent to the newly created instance `faces:`. Note that the class method could have also named `faces:` or any name we want, it does not matter, it is executed when the receiver is the class `Die`.
+Pay attention that a class method `withFaces:` is sent to a class, and an instance method is sent to the newly created instance `faces:`. Note that the class method could have also named `faces:` or any name we want, it does not matter. It is executed when the receiver is the class `Die`.
 
 
-If you execute it will not work since we did not yet create the method `faces:`. Now is the time to define it. Pay attention that method `faces:` is sent to an instance of the class `Die` and not the class itself. It is an instance method, therefore make sure that you deselect the class button before editing it.
+If you execute it will not work since we did not yet created the method `faces:`. Now is the time to define it. Pay attention that the method `faces:` is sent to an instance of the class `Die` and not the class itself. It is an instance method, therefore make sure that you deselect the class button before editing it.
 
 ```
 Die >> faces: aNumber
@@ -164,7 +164,7 @@ Now your tests should run. So even if the class `Die` could implement more behav
 
 **Important** A class method is a method executed in reaction to messages sent to a _class_. It is defined on the class side of the class. In `Die withFaces: 20`, the message `withFaces:` is sent to the class `Die`. In `Die new faces: 20`, the message `new` is sent to the _class_ `Die` and the message `faces:` is sent to the _instance_ returned by `Die new`. 
 
-#### \[Optional\] Alternate instance creation definition
+#### Alternate instance creation definition
 
  In a first reading, you can skip this section. The _class_ method definition `withFaces:` above is strictly equivalent to the one below.
 
@@ -193,7 +193,7 @@ The use of `;` sends the message to the receiver of the previous message (here `
 Let us define a new class `DieHandle` that represents a die handle. 
 Here is the API that we would like to offer for now (as shown in Figure *@fig:DiceDesign@*). We create a new handle and then add some dice to it.
 
-![A die handle is composed of dice.](figures/DiceDesign.pdf width=60&label=fig:DiceDesign)
+![A die handle is composed of dice. % width=60&label=fig:DiceDesign](figures/DiceDesign.pdf)
 
 
 ```
@@ -204,7 +204,7 @@ DieHandle new
 ```
 
 
-Of course we will define tests first for this new class. We define the class `DieHandleTest`.
+Of course, we will define tests first for this new class. We define the class `DieHandleTest`.
 
 ```
 TestCase << #DieHandleTest
@@ -281,7 +281,7 @@ DieHandle new
 ```
 
 
-![Inspecting a DieHandle.](figures/DiceHandleNoDetail.png width=60&label=DieHandleNoDetail)
+![Inspecting a DieHandle. %width=60&label=DieHandleNoDetail](figures/DiceHandleNoDetail.png)
 
 
 Finally, we should add the method `diceNumber` to the `DieHandle` class to be able to get the number of dice of the handle. We just return the size of the dice collection.
@@ -319,9 +319,9 @@ Die >> printOn: aStream
 
 Now in your inspector, you can see effectively the number of faces a die handle has as shown by Figure *@diceDetail@* and it is now easier to check the dice contained inside a handle (See Figure *@DieHandleDetail@*). 
 
-![Die details.](figures/DiceDetail.png width=70&label=diceDetail) 
+![Die details. %width=70&label=diceDetail](figures/DiceDetail.png ) 
 
-![A die handle with more information.](figures/DiceHandleDetail.png width=90&label=DieHandleDetail) 
+![A die handle with more information. % width=90&label=DieHandleDetail](figures/DiceHandleDetail.png) 
 
 #### Optimization Remark. 
 
@@ -337,13 +337,13 @@ Die >> printOn: aStream
 ```
 
 
-As an exercise we let you browse the methods `printString` on class `Object` and `print:` on class `Stream`.
+As an exercise, we let you browse the methods `printString` on class `Object` and `print:` on class `Stream`.
 
 
 ### Rolling a die handle
 
 
-Now we can define the rolling of a die handle by simply summing the result of rolling each of its dice. 
+Now we can define the rolling of a die handle by simply summing the results of rolling each of its dice. 
 Implement the `roll` method of the `DieHandle` class. This method must collect the results of rolling each dice of the handle and sum them.
 
 You may want to have a look at the method `sum` in the class `Collection` or use a simple loop. 
@@ -379,12 +379,12 @@ DieHandleTest >> testRoll
 It is worth spending some time looking at the relationship between `DieHandle` and `Dice`. 
 A die handle is composed of dice. What is an important design decision is that the API of the main behavior (`roll`) is the same for a die or a die handle. You can send the message `roll` to a die or a die handle. This is an important property.
 
-Why? Because it means that from a client's perspective, they can treat the receiver without having to take care about the kind of object it is manipulating. A client just sends the message `roll` to an object and gets back a number (as shown in Figure *@figDieHandleComposition@*). The client is not concerned by the fact that the receiver is composed of a simple object or a complex one. Such design decision supports the _Don't ask, tell_ principle.
+Why? Because it means that from a client's perspective, they can treat the receiver without having to take care about the kind of object it is manipulating. A client just sends the message `roll` to an object and gets back a number (as shown in Figure *@figDieHandleComposition@*). The client is not concerned by the fact that the receiver is composed of a simple object or a complex one. Such a design decision supports the _Don't ask, tell_ principle.
 
 ![A polymorphic API supports the _Don't ask, tell_ principle.](figures/DiceHandleComposition.pdf width=60&label=figDieHandleComposition)
 
 
-**Important** Offering polymorphic API is a tenet of good object-oriented design. It enforces the _Don't ask, tell_ principle. Clients do not have to worry about the type of the objects to which they talk to. 
+**Important** Offering a polymorphic API is a tenet of good object-oriented design. It enforces the _Don't ask, tell_ principle. Clients do not have to worry about the type of objects to which they talk. 
 
 For example, we can write the following expression that adds a die and a dieHandle to a collection and collects the different values (we convert the result into an array so that we can print it in the book).
 
@@ -400,7 +400,7 @@ col add: (DieHandle new addDie: (Die withFaces: 4); yourself).
 
 #### About composition
 
-Composite objects such as document objects (a book is composed of chapters, a chapter is composed of sections, a section is composed of paragraphs) often have a more complex composition relationship than the composition between a die and a die handle. Often the composition is recursive in the sense that an element can be the whole: for example, a diagram can be composed of lines, circles, and other diagrams. We will see an example of such composition in the Expression Chapter *@cha:expressions@*.
+Composite objects, such as document objects (a book is composed of chapters, a chapter is composed of sections, a section is composed of paragraphs), often have a more complex composition relationship than the composition between a die and a die handle. Often, the composition is recursive in the sense that an element can be the whole: for example, a diagram can be composed of lines, circles, and other diagrams. We will see an example of such a composition in the Expression Chapter *@cha:expressions@*.
 
 ### Handle's addition
 
@@ -416,9 +416,9 @@ DieHandleTest >> testSumOfHandles
 ```
 
 
-We will define a method `+` on the `DieHandle` class. In other languages, this is often not possible or is based on operator overloading. In Pharo `+` is just a message as any other, therefore we can define it in the classes we want.
+We will define a method `+` on the `DieHandle` class. In other languages, this is often not possible or is based on operator overloading. In Pharo `+` is just a message as any other: we can define it in the classes we want.
 
-Now we should ask ourselves what is the semantics of adding two handles. Should we modify the receiver of the expression or create a new one? We preferred a more functional style and chose to create a third one. 
+Now we should ask ourselves what is the semantics of adding two handles. Should we modify the receiver of the expression or create a new one? We prefer a more functional style and chose to create a third one. 
 
 The method `+` creates a new handle then adds the dice of the receiver to it, and then one of the handles is passed as an argument to the message. Finally, we return it. 
 
@@ -466,7 +466,7 @@ We have defined the method `D20` in the class `Integer`. However, if we load the
 Therefore, we would like to package the method  `D20` in the `Dice` package. This way it will be packaged together with the classes `Die` and `DieHandle`.
 
 To define that the method `D20` is packaged with the package `Dice`, do the following steps
-- Browse the `D20` method in the default class browser. At the bottom you should see two checkboxes: one with the label F and one with the label extension. 
+- Browse the `D20` method in the default class browser. At the bottom, you should see two checkboxes: one with the label F and one with the label extension. 
 - Click on the extension check box, it will open a package list. 
 - Select the 'Dice' package. 
 
@@ -529,9 +529,9 @@ DiceHandleTest >> testSumming
 We would like to revisit the implementation of `+`.
 
 Here is a possible solution:
-- It creates a new die handle
-- It iterates over the die of the receiver and add them to the new hd handle
-- It grabs the die of the aDieHandle. Here we need to introduce the getter `dice`.
+- It creates a new die handle.
+- It iterates over the die of the receiver and add them to the new `hd` handle.
+- It grabs the dice of the aDieHandle. Here we need to introduce the getter `dice`.
 
 
 ```
@@ -542,21 +542,31 @@ DieHandle >> + aDieHandle
 	aDieHandle dice do: [ :d | hd addDie: d ].
 	^ hd
 ```
-This definition centralizes the knowledge. 
+This definition centralizes the knowledge but it is not very nice to our taste because it forces the definition and use of the getter `dice`, and as a general principle, limiting the exposure of object internal state is a good practice. 
+
 
 Now we can have an alternate solution based on delegation.
 We define the method `fillUp:` that will add the dice of the receiver into the argument. 
 
 ```
-DieHandle >> fillUp: aDieHandle     dice do: [ :each | aDieHandle addDie: each ]```	
+DieHandle >> addDiceTo: aDieHandle
+
+     dice do: [ :each | aDieHandle addDie: each ]
+```	
 
 Then we can redefine the definition of the method `+` using the message `fillUp:`.
 
-```DieHandle >> + aDieHandle    | hd |    hd := DieHandle new.    self fillUp: hd.    aDieHandle fillUp: hd.    ^ hd
+```
+DieHandle >> + aDieHandle
+    | hd |
+    hd := DieHandle new.
+    self addDiceTo: hd.
+    aDieHandle addDiceTo: hd.
+    ^ hd
 ```
 
 This new version is interesting because it does not force the definition of the getter `dice` and it is based 
-on delegation.
+on delegation. Verify that all your tests are passing.
 
 
 ### Conclusion
