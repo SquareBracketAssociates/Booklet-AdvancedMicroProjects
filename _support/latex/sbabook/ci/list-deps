@@ -82,15 +82,15 @@ function find-packages {
 }
 
 function list-deps {
-    local main="${1:-main}"
-    main="${main%.@(tex|aux|fls)}" # extglob
-    [[ -f "$main.fls" ]] || die 1 "no such file: $main.fls"
+    local index="${1:-index}"
+    index="${index%@(tex|aux|fls)}" # extglob
+    [[ -f "$index.fls" ]] || die 1 "no such file: $index.fls"
 
-    filter-inputs "$main.fls" | sort --unique > "$main.inputs"
-    info "$(wc -l "$main.inputs")"
+    filter-inputs "$index.fls" | sort --unique > "$index.inputs"
+    info "$(wc -l "$index.inputs")"
 
-    find-packages < "$main.inputs" | tee "$main.deps"
-    sort --unique --output "$main.deps" "$main.deps"
+    find-packages < "$index.inputs" | tee "$index.deps"
+    sort --unique --output "$index.deps" "$index.deps"
 }
 
 # Only call the main function if this script was called as a command. This makes
