@@ -57,13 +57,12 @@
 %%%
 \RequirePackage{fontspec,opensans,FiraMono}
 
-\setmainfont{GentiumBookPlus}
+\setmainfont{GentiumBook}
 \setsansfont{Open Sans}[
   sBoldFont = {* Bold},
   Scale=MatchLowercase,
   Numbers=OldStyle
 ]
-
 \setmonofont{Fira Mono}[
   Scale=MatchLowercase,
   HyphenChar={-} % enable hyphenation (disabled by default in mono fonts)
