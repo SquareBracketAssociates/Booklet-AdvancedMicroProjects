@@ -21,7 +21,11 @@ The current document contains a collection of design exercises at different leve
 
 
 
-# Guided Exercices 
+# Guided Exercices
+
+In this part of the book we start with simple exercises: first a little network simulation system. This exercise practices basic object-oriented concepts such as self, super, Hook/Template design pattern. Then we propose a die system composed of a mini Composite pattern and build a Domain Specific Language that minimic roll playing book notation.
+We then continue with double dispach, Command, Composite and Visitor design patterns. 
+
 <!inputFile|path=Chapters/SimpleLan/Simple-LAN-Definition.md!>
 <!inputFile|path=Chapters/DSL/DSL.md!>
 <!inputFile|path=Chapters/PaperStoneScissor/PaperStoneScissor.md!>
